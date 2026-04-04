@@ -1,43 +1,82 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio - Projects</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"
-  >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     body {
       background: linear-gradient(180deg, #f8f9fa 0%, #eef3ff 100%);
       min-height: 100vh;
     }
 
+    /* ── Navbar ── */
+    .navbar { transition: box-shadow 0.3s ease; }
+    .navbar.nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.25) !important; }
+    .nav-link { position: relative; transition: color 0.25s; }
+    .nav-link::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 50%; width: 0; height: 2px;
+      background: #0d6efd;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; left: 0; }
+
+    /* ── Page load ── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .anim    { animation: fadeSlideUp 0.65s ease both; }
+    .anim-d1 { animation-delay: 0.12s; }
+    .anim-d2 { animation-delay: 0.24s; }
+
+    /* ── Project card ── */
     .project-card {
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.13) !important;
     }
 
-    .project-card:hover {
-      transform: translateY(-4px);
+    /* Card footer button reveal on hover */
+    .project-card .card-footer {
+      transition: background-color 0.25s ease;
+    }
+    .project-card:hover .card-footer {
+      background-color: #f0f4ff !important;
+    }
+
+    /* ── Buttons ── */
+    .btn { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .btn:hover  { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+    .btn:active { transform: translateY(0); }
+
+    /* ── Table rows ── */
+    .table tbody tr { transition: background-color 0.2s ease; }
+
+    /* ── Badges ── */
+    .badge { transition: transform 0.2s ease; }
+    .badge:hover { transform: scale(1.1); }
+
+    /* ── Hover card (roadmap) ── */
+    .hover-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .hover-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.1) !important; }
+
+    /* ── Responsive ── */
+    @media (max-width: 575px) {
+      .display-6 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand fw-semibold" href="index.html">Md Saimum Al Mahmud</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#mainNavbar"
-        aria-controls="mainNavbar"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="mainNavbar">
@@ -54,7 +93,9 @@
 
   <main class="py-5">
     <div class="container">
-      <section class="mb-4">
+
+      <!-- HEADER -->
+      <section class="mb-4 anim">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
           <h1 class="display-6 fw-semibold mb-0">My Projects</h1>
           <span class="badge text-bg-dark">4 Featured Projects</span>
@@ -67,9 +108,11 @@
         </div>
       </section>
 
+      <!-- PROJECT CARDS – responsive grid -->
       <section>
-        <div class="row row-cols-1 row-cols-lg-2 g-4">
-          <div class="col">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-2 g-4">
+
+          <div class="col anim anim-d1">
             <div class="card project-card h-100 border-0 shadow-sm">
               <div class="card-body">
                 <h2 class="h5 card-title">Personal Portfolio Website</h2>
@@ -83,14 +126,12 @@
                 </p>
               </div>
               <div class="card-footer bg-white border-0 pt-0 pb-3 px-3">
-                <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioProjectModal">
-                  Project Details
-                </button>
+                <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#portfolioProjectModal">Project Details</button>
               </div>
             </div>
           </div>
 
-          <div class="col">
+          <div class="col anim anim-d1">
             <div class="card project-card h-100 border-0 shadow-sm">
               <div class="card-body">
                 <h2 class="h5 card-title">Student Grade Calculator</h2>
@@ -108,7 +149,7 @@
             </div>
           </div>
 
-          <div class="col">
+          <div class="col anim anim-d2">
             <div class="card project-card h-100 border-0 shadow-sm">
               <div class="card-body">
                 <h2 class="h5 card-title">Course Registration System</h2>
@@ -127,7 +168,7 @@
             </div>
           </div>
 
-          <div class="col">
+          <div class="col anim anim-d2">
             <div class="card project-card h-100 border-0 shadow-sm">
               <div class="card-body">
                 <h2 class="h5 card-title">Simple To-Do List App</h2>
@@ -145,15 +186,17 @@
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
+      <!-- ROADMAP TABLE -->
       <section class="mt-5">
-        <div class="card border-0 shadow-sm">
+        <div class="card border-0 shadow-sm hover-card">
           <div class="card-body p-4">
             <h2 class="h5 mb-3">Project Roadmap</h2>
             <div class="table-responsive">
-              <table class="table table-bordered align-middle mb-0">
+              <table class="table table-bordered table-hover align-middle mb-0">
                 <thead class="table-light">
                   <tr>
                     <th scope="col">Project</th>
@@ -192,8 +235,9 @@
     </div>
   </footer>
 
+  <!-- MODAL -->
   <div class="modal fade" id="portfolioProjectModal" tabindex="-1" aria-labelledby="portfolioProjectModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-title h5" id="portfolioProjectModalLabel">Portfolio Project Details</h2>
@@ -211,10 +255,11 @@
     </div>
   </div>
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainNav').classList.toggle('nav-scrolled', window.scrollY > 30);
+    });
+  </script>
 </body>
 </html>
