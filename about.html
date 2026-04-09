@@ -146,8 +146,14 @@
           <!-- DETAILS TABLE -->
           <div class="card border-0 shadow-sm mt-4 hover-card anim anim-d2">
             <div class="card-body p-4">
-              <h2 class="h4 mb-3">Personal Details</h2>
-              <div class="table-responsive">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h2 class="h4 mb-0">Personal Details</h2>
+                  <button class="btn btn-outline-secondary btn-sm"
+                          data-toggle-section="detailsTable"
+                          data-show-label="Show Details"
+                          data-hide-label="Hide Details">Hide Details</button>
+                </div>
+              <div id="detailsTable"><div class="table-responsive">
                 <table class="table table-striped table-hover align-middle mb-0">
                   <thead class="table-dark">
                     <tr>
@@ -207,10 +213,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script>
-    window.addEventListener('scroll', () => {
-      document.getElementById('mainNav').classList.toggle('nav-scrolled', window.scrollY > 30);
-    });
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>

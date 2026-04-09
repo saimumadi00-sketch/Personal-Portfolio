@@ -225,31 +225,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script>
-    window.addEventListener('scroll', () => {
-      document.getElementById('mainNav').classList.toggle('nav-scrolled', window.scrollY > 30);
-    });
-
-    // Form validation + shake on fail + success message
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.checkValidity()) {
-        form.classList.add('was-validated');
-        // Shake the form card
-        const card = form.closest('.card');
-        card.classList.add('shake');
-        setTimeout(() => card.classList.remove('shake'), 450);
-        return;
-      }
-      // Success
-      form.reset();
-      form.classList.remove('was-validated');
-      const alert = document.getElementById('successAlert');
-      alert.classList.remove('d-none');
-      alert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => alert.classList.add('d-none'), 5000);
-    });
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
