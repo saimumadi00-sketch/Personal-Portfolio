@@ -1,17 +1,3 @@
-# Lab 5 Portfolio - React + Vite Conversion
-
-This repository contains the Lab 5 version of Md Saimum Al Mahmud's personal portfolio website. The original multi-page HTML, CSS, Bootstrap, and JavaScript portfolio has been converted into a modern React application using Vite as the build tool.
-
-The React version now lives at the repository root. The original static website files are preserved in `old-html-version/` for comparison and backup.
-
-## Owner
-
-**Name:** Md Saimum Al Mahmud  
-**University:** North South University, Dhaka  
-**Major:** Computer Science  
-**Academic Year:** 4th Year
-
-## Project Goal
 
 The goal of this project is to demonstrate how a traditional static portfolio can be refactored into a component-based React application. The old site used separate HTML files and one shared JavaScript file. The new site uses React Router for page navigation, reusable components for repeated UI sections, and React hooks for stateful behavior.
 
