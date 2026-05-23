@@ -3,12 +3,7 @@ import ContactForm from '../components/ContactForm'
 import PageHeader from '../components/PageHeader'
 import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
-
-const pageVariants = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-  exit: { opacity: 0, y: -8, transition: { duration: 0.25 } },
-}
+import { pageVariants } from '../utils/variants'
 
 function Contact({ onToast }) {
   return (
@@ -24,13 +19,6 @@ function Contact({ onToast }) {
       />
 
       <div className="container py-5">
-        <section className="mb-4">
-          <h2 className="display-6 fw-semibold mb-2">Contact Me</h2>
-          <p className="text-secondary mb-0">
-            Reach out for collaboration, internship opportunities, or project discussions.
-          </p>
-        </section>
-
         <section>
           <div className="row g-4">
             <div className="col-lg-5">

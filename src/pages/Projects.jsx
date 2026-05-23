@@ -6,12 +6,7 @@ import ProjectCard from '../components/ProjectCard'
 import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
 import projectsData from '../data/projects'
-
-const pageVariants = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-  exit: { opacity: 0, y: -8, transition: { duration: 0.25 } },
-}
+import { pageVariants } from '../utils/variants'
 
 const filters = ['All', 'Web', 'Python', 'Java']
 const webTags = ['HTML', 'CSS', 'Bootstrap', 'JavaScript']

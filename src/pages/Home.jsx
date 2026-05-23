@@ -8,12 +8,7 @@ import StatCounter from '../components/StatCounter'
 import { useTheme } from '../context/ThemeContext'
 import statsData from '../data/stats'
 import useScrollSpy from '../hooks/useScrollSpy'
-
-const pageVariants = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-  exit: { opacity: 0, y: -8, transition: { duration: 0.25 } },
-}
+import { pageVariants } from '../utils/variants'
 
 const homeSections = [
   { id: 'home-intro', label: 'Intro' },

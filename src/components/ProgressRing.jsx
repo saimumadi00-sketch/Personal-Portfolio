@@ -25,7 +25,12 @@ function ProgressRing({ label, percentage, color = 'primary' }) {
           transition={{ duration: 1.1, ease: 'easeOut' }}
           transform="rotate(-90 60 60)"
         />
-        <text x="60" y="65" textAnchor="middle" className="fw-bold fill-current">
+        <text
+          x="60"
+          y="65"
+          textAnchor="middle"
+          style={{ fill: 'var(--bs-body-color)', fontWeight: 700, fontSize: '1rem' }}
+        >
           {percentage}%
         </text>
       </svg>
