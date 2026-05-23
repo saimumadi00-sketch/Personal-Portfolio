@@ -8,8 +8,8 @@ import SEOHead from '../components/SEOHead'
 import projectsData from '../data/projects'
 import { pageVariants } from '../utils/variants'
 
-const filters = ['All', 'Web', 'Python', 'Java']
-const webTags = ['HTML', 'CSS', 'Bootstrap', 'JavaScript']
+const filters = ['All', 'Web', 'Python', 'Machine Learning', 'React', 'C']
+const webTags = ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'React', 'Vite', 'TypeScript', 'Supabase', 'Node.js', 'Express']
 
 function matchesFilter(project, selectedFilter) {
   if (selectedFilter === 'All') return true

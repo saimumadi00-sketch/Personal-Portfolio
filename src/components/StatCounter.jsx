@@ -1,5 +1,7 @@
-import CountUp from 'react-countup'
+import CountUpPackage from 'react-countup'
 import { useInView } from 'react-intersection-observer'
+
+const CountUp = CountUpPackage.default ?? CountUpPackage
 
 function StatCounter({ value, label, suffix = '', icon }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.35 })
