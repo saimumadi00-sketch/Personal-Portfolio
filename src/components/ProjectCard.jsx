@@ -1,6 +1,6 @@
 import Button from './Button'
 
-function ProjectCard({ title, tags, description, status, onShowDetail }) {
+function ProjectCard({ title, tags, description, status, repositoryUrl, onShowDetail }) {
   return (
     <div className="card h-100 border-0 shadow-sm hover-card">
       <div className="card-body d-flex flex-column">
@@ -16,14 +16,27 @@ function ProjectCard({ title, tags, description, status, onShowDetail }) {
           ))}
         </p>
         <p className="card-text text-secondary flex-grow-1">{description}</p>
-        <Button
-          variant="outline-primary"
-          size="sm"
-          className="align-self-start"
-          onClick={() => onShowDetail(title)}
-        >
-          View Details
-        </Button>
+        <div className="d-flex flex-wrap gap-2">
+  <Button
+    variant="outline-primary"
+    size="sm"
+    onClick={() => onShowDetail(title)}
+  >
+    View Details
+  </Button>
+
+  {repositoryUrl && (
+    <a
+      className="btn btn-dark btn-sm"
+      href={repositoryUrl}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <i className="bi bi-github me-1"></i>
+      GitHub
+    </a>
+  )}
+</div>
       </div>
     </div>
   )
