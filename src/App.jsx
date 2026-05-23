@@ -1,20 +1,10 @@
-import { useEffect, useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useState } from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import ThemeProvider from './context/ThemeContext'
 import MainLayout from './layouts/MainLayout'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Home from './pages/Home'
-import Projects from './pages/Projects'
-import Skills from './pages/Skills'
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark')
   const [toasts, setToasts] = useState([])
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-bs-theme', darkMode ? 'dark' : 'light')
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light')
-  }, [darkMode])
 
   const addToast = (message, type = 'info') => {
     const id = Date.now()
@@ -23,21 +13,11 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <MainLayout
-        darkMode={darkMode}
-        onThemeToggle={() => setDarkMode((current) => !current)}
-        toasts={toasts}
-      >
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects onToast={addToast} />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/contact" element={<Contact onToast={addToast} />} />
-        </Routes>
-      </MainLayout>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <MainLayout toasts={toasts} onToast={addToast} />
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 

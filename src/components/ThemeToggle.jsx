@@ -1,12 +1,17 @@
-function ThemeToggle({ darkMode, onToggle }) {
+import { useTheme } from '../context/ThemeContext'
+
+function ThemeToggle() {
+  const { darkMode, toggleTheme } = useTheme()
+
   return (
     <button
       type="button"
       className="btn btn-outline-light btn-sm"
-      onClick={onToggle}
+      onClick={toggleTheme}
       aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+      <i className={`bi ${darkMode ? 'bi-sun' : 'bi-moon-stars'} me-1`} aria-hidden="true"></i>
+      {darkMode ? 'Light Mode' : 'Dark Mode'}
     </button>
   )
 }

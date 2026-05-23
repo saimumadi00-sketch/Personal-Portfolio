@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
 function SectionToggle({ title, children, defaultVisible = true }) {
@@ -15,7 +16,19 @@ function SectionToggle({ title, children, defaultVisible = true }) {
           {isVisible ? 'Hide' : 'Show'}
         </button>
       </div>
-      {isVisible && <div className="section-toggle-content">{children}</div>}
+      <AnimatePresence initial={false}>
+        {isVisible && (
+          <motion.div
+            className="section-toggle-content"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

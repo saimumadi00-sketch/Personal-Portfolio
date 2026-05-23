@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Button from './Button'
 
 const initialForm = {
   name: '',
@@ -47,6 +48,7 @@ function ContactForm({ onSuccess }) {
   const [submitted, setSubmitted] = useState(false)
   const [charCount, setCharCount] = useState(0)
   const [shake, setShake] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const setFieldError = (name, value) => {
     const error = validateField(name, value)
@@ -79,16 +81,22 @@ function ContactForm({ onSuccess }) {
     setErrors({})
     setSubmitted(false)
     setCharCount(0)
+    setIsSubmitting(false)
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    setIsSubmitting(true)
+
     const nextErrors = validateForm(form)
     setErrors(nextErrors)
 
     if (Object.keys(nextErrors).length > 0) {
       setShake(true)
-      setTimeout(() => setShake(false), 450)
+      setTimeout(() => {
+        setShake(false)
+        setIsSubmitting(false)
+      }, 450)
       return
     }
 
@@ -96,8 +104,11 @@ function ContactForm({ onSuccess }) {
     setErrors({})
     setCharCount(0)
     setSubmitted(true)
-    onSuccess()
-    setTimeout(() => setSubmitted(false), 4000)
+    onSuccess?.()
+    setTimeout(() => {
+      setSubmitted(false)
+      setIsSubmitting(false)
+    }, 4000)
   }
 
   return (
@@ -225,12 +236,12 @@ function ContactForm({ onSuccess }) {
           </div>
 
           <div className="col-12 d-flex flex-wrap gap-2 pt-2">
-            <button type="submit" className="btn btn-primary px-4">
+            <Button type="submit" loading={isSubmitting} className="px-4">
               Send Message
-            </button>
-            <button type="reset" className="btn btn-outline-secondary">
+            </Button>
+            <Button type="reset" variant="outline-secondary">
               Clear Form
-            </button>
+            </Button>
           </div>
         </form>
       </div>

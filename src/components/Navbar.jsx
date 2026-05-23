@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { useTheme } from '../context/ThemeContext'
 import ThemeToggle from './ThemeToggle'
 
 const links = [
@@ -9,9 +10,15 @@ const links = [
   { to: '/contact', label: 'Contact' },
 ]
 
-function Navbar({ darkMode, onThemeToggle }) {
+function Navbar() {
+  const { darkMode } = useTheme()
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top" id="mainNav">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top"
+      id="mainNav"
+      data-theme-mode={darkMode ? 'dark' : 'light'}
+    >
       <div className="container">
         <NavLink className="navbar-brand fw-semibold" to="/">
           Md Saimum Al Mahmud
@@ -41,7 +48,7 @@ function Navbar({ darkMode, onThemeToggle }) {
               </li>
             ))}
             <li className="nav-item ms-lg-2 mt-2 mt-lg-0">
-              <ThemeToggle darkMode={darkMode} onToggle={onThemeToggle} />
+              <ThemeToggle />
             </li>
           </ul>
         </div>
