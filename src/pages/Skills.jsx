@@ -17,6 +17,7 @@ const proficiencyRings = [
   { label: 'HTML/CSS', percentage: 90, color: 'success' },
   { label: 'JavaScript', percentage: 70, color: 'primary' },
   { label: 'Python', percentage: 75, color: 'primary' },
+  { label: 'React', percentage: 75, color: 'primary' },
   { label: 'Java / SQL', percentage: 60, color: 'secondary' },
 ]
 
@@ -45,8 +46,8 @@ function Skills() {
         </section>
 
         <section className="mb-5">
-          <div className="row g-4">
-            <div className="col-lg-6">
+          <div className="row g-4 row-cols-1 row-cols-lg-3">
+            <div className="col">
               <ScrollReveal direction="up">
                 <div className="card border-0 shadow-sm h-100 hover-card">
                   <div className="card-body p-4">
@@ -59,8 +60,21 @@ function Skills() {
               </ScrollReveal>
             </div>
 
-            <div className="col-lg-6">
+            <div className="col">
               <ScrollReveal direction="up" delay={0.1}>
+                <div className="card border-0 shadow-sm h-100 hover-card">
+                  <div className="card-body p-4">
+                    <h2 className="h5 mb-3">Frameworks</h2>
+                    {skills.frameworks.map((skill) => (
+                      <SkillBar key={skill.name} {...skill} />
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <div className="col">
+              <ScrollReveal direction="up" delay={0.2}>
                 <div className="card border-0 shadow-sm h-100 hover-card">
                   <div className="card-body p-4">
                     <h2 className="h5 mb-3">Tools and Technologies</h2>
@@ -95,7 +109,7 @@ function Skills() {
 
         <section className="mt-5">
           <h2 className="h4 mb-4">Proficiency Overview</h2>
-          <div className="row g-4 row-cols-2 row-cols-md-4">
+          <div className="row g-4 row-cols-2 row-cols-md-5">
             {proficiencyRings.map((ring, index) => (
               <div className="col" key={ring.label}>
                 <ScrollReveal direction="up" delay={index * 0.1}>

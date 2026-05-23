@@ -3,6 +3,7 @@ import ContactForm from '../components/ContactForm'
 import PageHeader from '../components/PageHeader'
 import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
+import socialLinks from '../data/socialLinks'
 import { pageVariants } from '../utils/variants'
 
 function Contact({ onToast }) {
@@ -22,6 +23,16 @@ function Contact({ onToast }) {
         <section>
           <div className="row g-4">
             <div className="col-lg-5">
+              <div className="d-flex flex-wrap gap-2 mb-4">
+                <a href={socialLinks.github.href} target="_blank" rel="noreferrer" className="btn btn-dark">
+                  <i className={`bi ${socialLinks.github.icon} me-2`}></i>
+                  {socialLinks.github.label}
+                </a>
+                <a href={socialLinks.liveSite.href} target="_blank" rel="noreferrer" className="btn btn-outline-primary">
+                  <i className={`bi ${socialLinks.liveSite.icon} me-2`}></i>
+                  {socialLinks.liveSite.label}
+                </a>
+              </div>
               <ScrollReveal direction="left">
                 <div className="card border-0 shadow-sm h-100 hover-card">
                   <div className="card-body p-4">
@@ -39,13 +50,13 @@ function Contact({ onToast }) {
                       </li>
                       <li className="list-group-item px-0">
                         <strong>GitHub:</strong>{' '}
-                        <a href="https://github.com/saimumadi00-sketch" className="link-primary">
+                        <a href={socialLinks.github.href} className="link-primary">
                           github.com/saimumadi00-sketch
                         </a>
                       </li>
                       <li className="list-group-item px-0">
                         <strong>LinkedIn:</strong>{' '}
-                        <a href="https://linkedin.com/in/saimum" className="link-primary">
+                        <a href={socialLinks.linkedin.href} className="link-primary">
                           linkedin.com/in/saimum
                         </a>
                       </li>

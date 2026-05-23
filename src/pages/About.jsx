@@ -5,6 +5,8 @@ import ScrollReveal from '../components/ScrollReveal'
 import SectionToggle from '../components/SectionToggle'
 import SEOHead from '../components/SEOHead'
 import Timeline from '../components/Timeline'
+import funFacts from '../data/funFacts'
+import socialLinks from '../data/socialLinks'
 import timelineData from '../data/timeline'
 import { pageVariants } from '../utils/variants'
 
@@ -27,12 +29,39 @@ function About() {
             <ScrollReveal direction="left">
               <div className="card border-0 shadow-lg mb-4 hover-card">
                 <div className="row g-0">
-                  <div className="col-md-4 bg-primary-subtle d-flex align-items-center justify-content-center">
-                    <div className="text-center p-4">
-                      <div className="profile-avatar rounded-circle bg-primary text-white fw-bold d-inline-flex align-items-center justify-content-center mb-3">
-                        SM
+                  <div
+                    className="col-md-4 d-flex align-items-center justify-content-center text-center"
+                    style={{
+                      background: 'linear-gradient(135deg, #0d1117, #1a3a5c)',
+                      padding: '2rem 1.5rem',
+                      minHeight: '200px',
+                    }}
+                  >
+                    <div>
+                      <div
+                        className="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3"
+                        style={{ width: '80px', height: '80px', fontSize: '2.5rem' }}
+                      >
+                        <i className="bi bi-person-fill"></i>
                       </div>
-                      <p className="small text-secondary mb-0">North South University</p>
+                      <p className="fw-bold text-white mb-1">Md Saimum Al Mahmud</p>
+                      <p className="small mb-2" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                        North South University
+                      </p>
+                      <div>
+                        {[socialLinks.github, socialLinks.linkedin, socialLinks.liveSite].map((link) => (
+                          <a
+                            href={link.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="btn btn-sm btn-outline-light me-1 mt-2"
+                            aria-label={link.label}
+                            key={link.label}
+                          >
+                            <i className={`bi ${link.icon}`}></i>
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div className="col-md-8">
@@ -147,6 +176,22 @@ function About() {
                       {interest}
                     </span>
                   ))}
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="card border-0 shadow-sm hover-card mt-4">
+                <div className="card-body">
+                  <h2 className="h5 mb-3">Fun Facts</h2>
+                  <ul className="list-unstyled mb-0">
+                    {funFacts.map((fact, index) => (
+                      <li className={index === funFacts.length - 1 ? '' : 'mb-2'} key={fact.text}>
+                        <i className={`bi ${fact.icon} ${fact.iconClass} me-2`}></i>
+                        {fact.text}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </ScrollReveal>

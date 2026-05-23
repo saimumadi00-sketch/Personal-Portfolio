@@ -1,8 +1,10 @@
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 import Button from './Button'
 
 const initialForm = {
   name: '',
+  phone: '',
   email: '',
   subject: '',
   topic: '',
@@ -117,10 +119,16 @@ function ContactForm({ onSuccess }) {
         <h2 className="h4 mb-4">Send Me a Message</h2>
 
         {submitted && (
-          <div className="alert alert-success border-0 shadow-sm" role="alert">
+          <motion.div
+            className="alert alert-success border-0 shadow-sm"
+            role="alert"
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
             <i className="bi bi-check-circle-fill me-2"></i>
             Message received. Thanks for reaching out.
-          </div>
+          </motion.div>
         )}
 
         <form className="row g-3 needs-validation" noValidate onSubmit={handleSubmit} onReset={handleReset}>
@@ -139,6 +147,21 @@ function ContactForm({ onSuccess }) {
               required
             />
             {errors.name && <div className="invalid-feedback">{errors.name}</div>}
+          </div>
+
+          <div className="col-md-6">
+            <label htmlFor="phone" className="form-label">
+              Phone (optional)
+            </label>
+            <input
+              type="tel"
+              className={`form-control ${getValidationClass('phone')}`}
+              id="phone"
+              name="phone"
+              placeholder="+880..."
+              value={form.phone}
+              onChange={handleChange}
+            />
           </div>
 
           <div className="col-md-6">

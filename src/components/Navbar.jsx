@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 import ThemeToggle from './ThemeToggle'
@@ -12,16 +13,28 @@ const links = [
 
 function Navbar() {
   const { darkMode } = useTheme()
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top"
+      className={`navbar navbar-expand-lg navbar-dark fixed-top portfolio-navbar ${
+        isScrolled ? 'navbar-scrolled' : ''
+      }`}
       id="mainNav"
       data-theme-mode={darkMode ? 'dark' : 'light'}
     >
       <div className="container">
-        <NavLink className="navbar-brand fw-semibold" to="/">
-          Md Saimum Al Mahmud
+        <NavLink className="navbar-brand fw-semibold" to="/" aria-label="Saimum home">
+          <span className="navbar-brand-name">
+            Saimum<span className="navbar-brand-dot">.</span>
+          </span>
         </NavLink>
         <button
           className="navbar-toggler"
