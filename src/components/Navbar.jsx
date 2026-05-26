@@ -9,6 +9,8 @@ const links = [
   { to: '/projects', label: 'Projects' },
   { to: '/skills', label: 'Skills' },
   { to: '/contact', label: 'Contact' },
+  { to: '/resume', label: 'Resume' },
+  { to: '/blog', label: 'Blog' },
 ]
 
 function Navbar() {

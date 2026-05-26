@@ -538,3 +538,65 @@ body {
 .hero-immersive canvas { z-index: 0; }
 .hero-immersive .container { z-index: 1; }
 .hero-immersive .position-absolute { z-index: 1; }
+
+/* ══════════════════════════════════════
+   BATCH 2 — Resume + Blog
+   ══════════════════════════════════════ */
+
+/* Resume */
+.resume-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bs-body-color);
+  border-bottom: 2px solid rgba(13,110,253,0.2);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.resume-exp-item {
+  border-left: 2px solid rgba(13,110,253,0.25);
+  padding-left: 1rem;
+}
+.resume-bullets {
+  padding-left: 1.1rem;
+  margin: 0;
+}
+.resume-bullets li {
+  margin-bottom: 0.3rem;
+}
+
+/* Print styles for Resume */
+@media print {
+  .navbar, footer, .btn, .page-header { display: none !important; }
+  .container { max-width: 100% !important; }
+  body { background: white !important; color: black !important; }
+  .card { box-shadow: none !important; border: 1px solid #ddd !important; }
+  [data-bs-theme='dark'] { background: white !important; color: black !important; }
+}
+
+/* Blog */
+.blog-card {
+  border-top: 3px solid transparent;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-card:hover {
+  border-top-color: #0d6efd;
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.1) !important;
+}
+[data-bs-theme='dark'] .blog-card:hover {
+  border-top-color: #6ea8fe;
+}
+.blog-post-body {
+  font-size: 1.01rem;
+  line-height: 1.85;
+}
+.blog-post-body h3 {
+  color: var(--bs-body-color);
+  border-left: 3px solid #0d6efd;
+  padding-left: 0.75rem;
+}
+.blog-post-body code {
+  font-size: 0.88em;
+}

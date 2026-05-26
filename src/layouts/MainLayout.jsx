@@ -11,6 +11,9 @@ import Contact from '../pages/Contact'
 import Home from '../pages/Home'
 import Projects from '../pages/Projects'
 import Skills from '../pages/Skills'
+import Resume from '../pages/Resume'
+import Blog from '../pages/Blog'
+import BlogPost from '../pages/BlogPost'
 
 function MainLayout({ toasts, onToast }) {
   const { darkMode } = useTheme()
@@ -27,6 +30,9 @@ function MainLayout({ toasts, onToast }) {
             <Route path="/projects" element={<Projects onToast={onToast} />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/contact" element={<Contact onToast={onToast} />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
           </Routes>
         </AnimatePresence>
       </main>
@@ -53,6 +59,8 @@ function MainLayout({ toasts, onToast }) {
                   { to: '/projects', label: 'Projects' },
                   { to: '/skills', label: 'Skills' },
                   { to: '/contact', label: 'Contact' },
+                  { to: '/resume', label: 'Resume' },
+                  { to: '/blog', label: 'Blog' },
                 ].map((link) => (
                   <li key={link.to}>
                     <Link to={link.to}>{link.label}</Link>
