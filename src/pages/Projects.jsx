@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import FilterBar from '../components/FilterBar'
 import PageHeader from '../components/PageHeader'
-import ProjectCard from '../components/ProjectCard'
+import FlipCard from '../components/FlipCard'
 import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
 import projectsData from '../data/projects'
@@ -73,7 +73,7 @@ function Projects({ onToast }) {
             {visibleProjects.map((project, index) => (
               <div className="col" key={project.id}>
                 <ScrollReveal direction="up" delay={index * 0.1}>
-                  <ProjectCard {...project} onShowDetail={handleShowDetail} />
+                  <FlipCard {...project} onShowDetail={handleShowDetail} />
                 </ScrollReveal>
               </div>
             ))}

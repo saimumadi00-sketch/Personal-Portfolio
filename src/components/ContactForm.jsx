@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import Confetti from './Confetti'
 import Button from './Button'
 
 const initialForm = {
@@ -51,6 +52,7 @@ function ContactForm({ onSuccess }) {
   const [charCount, setCharCount] = useState(0)
   const [shake, setShake] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showConfetti, setShowConfetti] = useState(false)
 
   const setFieldError = (name, value) => {
     const error = validateField(name, value)
@@ -106,6 +108,7 @@ function ContactForm({ onSuccess }) {
     setErrors({})
     setCharCount(0)
     setSubmitted(true)
+    setShowConfetti(true)
     onSuccess?.()
     setTimeout(() => {
       setSubmitted(false)
@@ -114,7 +117,9 @@ function ContactForm({ onSuccess }) {
   }
 
   return (
-    <div className={`card border-0 shadow-lg hover-card ${shake ? 'shake' : ''}`}>
+    <>
+      {showConfetti && <Confetti onDone={() => setShowConfetti(false)} />}
+      <div className={`card border-0 shadow-lg hover-card ${shake ? 'shake' : ''}`}>
       <div className="card-body p-4 p-lg-5">
         <h2 className="h4 mb-4">Send Me a Message</h2>
 
@@ -269,6 +274,7 @@ function ContactForm({ onSuccess }) {
         </form>
       </div>
     </div>
+    </>
   )
 }
 

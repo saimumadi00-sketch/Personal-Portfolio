@@ -1,10 +1,17 @@
 import { useState } from 'react'
+import PageLoader from './components/PageLoader'
 import { BrowserRouter } from 'react-router-dom'
 import ThemeProvider from './context/ThemeContext'
 import MainLayout from './layouts/MainLayout'
 
 function App() {
+  const [loading, setLoading] = useState(() => !sessionStorage.getItem('loaded'))
   const [toasts, setToasts] = useState([])
+
+  const handleLoaderDone = () => {
+    sessionStorage.setItem('loaded', '1')
+    setLoading(false)
+  }
 
   const addToast = (message, type = 'info') => {
     const id = Date.now()
@@ -13,11 +20,14 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
+    <>
+      {loading && <PageLoader onDone={handleLoaderDone} />}
+      <ThemeProvider>
       <BrowserRouter>
         <MainLayout toasts={toasts} onToast={addToast} />
       </BrowserRouter>
     </ThemeProvider>
+    </>
   )
 }
 
