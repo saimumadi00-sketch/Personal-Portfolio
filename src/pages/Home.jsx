@@ -10,6 +10,8 @@ import quotesData from '../data/quotes'
 import statsData from '../data/stats'
 import useScrollSpy from '../hooks/useScrollSpy'
 import { pageVariants } from '../utils/variants'
+import MagneticButton from '../components/MagneticButton'
+import StarField from '../components/StarField'
 
 const homeSections = [
   { id: 'home-intro', label: 'Intro' },
@@ -103,7 +105,8 @@ function Home() {
 
       <section className="hero-immersive" id="home-intro">
         <div className="hero-glow" aria-hidden="true"></div>
-        <div className="container position-relative">
+        <StarField />
+        <div className="container position-relative" style={{ zIndex: 1 }}>
           <ScrollReveal direction="up">
             <div className="row g-5 align-items-center">
               <div className="col-lg-8">

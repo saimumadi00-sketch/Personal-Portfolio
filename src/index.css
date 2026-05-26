@@ -494,3 +494,47 @@ body {
   color: #6ea8fe;
   border-left-color: #6ea8fe;
 }
+
+/* ══════════════════════════════════════
+   BATCH 1 — Visual Features
+   ══════════════════════════════════════ */
+
+/* Feature 5 — Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 110, 253, 0.45);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 110, 253, 0.75);
+}
+[data-bs-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(110, 168, 254, 0.45);
+}
+[data-bs-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(110, 168, 254, 0.75);
+}
+
+/* Feature 11 — Cursor dot (hide on touch) */
+@media (hover: none) {
+  #cursor-dot { display: none !important; }
+}
+
+/* Feature 12 — Magnetic button cursor style */
+.magnetic-target {
+  cursor: none;
+}
+@media (hover: none) {
+  .magnetic-target { cursor: auto; }
+}
+
+/* Hero canvas z-index guard */
+.hero-immersive { isolation: isolate; }
+.hero-immersive canvas { z-index: 0; }
+.hero-immersive .container { z-index: 1; }
+.hero-immersive .position-absolute { z-index: 1; }
