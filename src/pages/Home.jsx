@@ -148,7 +148,16 @@ function Home() {
                   ))}
                 </div>
               </div>
-              <div className="col-lg-4">
+              <div className="col-lg-4 d-flex flex-column gap-3">
+                {/* Portrait */}
+                <div className="hero-portrait-wrap">
+                  <img
+                    src="/portrait.jpeg"
+                    alt="Md Saimum Al Mahmud"
+                    className="hero-portrait"
+                  />
+                </div>
+                {/* Current Focus */}
                 <div className="hero-focus-card">
                   <h2 className="h5 mb-3">Current Focus</h2>
                   <p className="mb-2">
