@@ -1,6 +1,7 @@
 import { AnimatePresence } from 'framer-motion'
 import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import BackToTop from '../components/BackToTop'
+import ReadingProgress from '../components/ReadingProgress'
 import CursorEffects from '../components/CursorEffects'
 import Navbar from '../components/Navbar'
 import Toast from '../components/Toast'
@@ -97,6 +98,7 @@ function MainLayout({ toasts, onToast }) {
           </div>
         </div>
       </footer>
+      <ReadingProgress />
       <CursorEffects />
       <BackToTop />
       <Toast toasts={toasts} />

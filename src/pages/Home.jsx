@@ -12,6 +12,7 @@ import useScrollSpy from '../hooks/useScrollSpy'
 import { pageVariants } from '../utils/variants'
 import MagneticButton from '../components/MagneticButton'
 import StarField from '../components/StarField'
+import LazyImage from '../components/LazyImage'
 
 const homeSections = [
   { id: 'home-intro', label: 'Intro' },
@@ -154,10 +155,11 @@ function Home() {
               <div className="col-lg-4 d-flex flex-column gap-3">
                 {/* Portrait */}
                 <div className="hero-portrait-wrap">
-                  <img
+                  <LazyImage
                     src="/portrait.jpeg"
                     alt="Md Saimum Al Mahmud"
                     className="hero-portrait"
+                    style={{ width: '100%', height: '320px' }}
                   />
                 </div>
                 {/* Current Focus */}

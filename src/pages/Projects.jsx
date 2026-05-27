@@ -19,8 +19,16 @@ function matchesFilter(project, selectedFilter) {
 
 function Projects({ onToast }) {
   const [filter, setFilter] = useState('All')
+  const [search, setSearch] = useState('')
   const [detailTitle, setDetailTitle] = useState(null)
-  const visibleProjects = projectsData.filter((project) => matchesFilter(project, filter))
+  const visibleProjects = projectsData.filter((project) =>
+    matchesFilter(project, filter) &&
+    (search === '' ||
+      project.title.toLowerCase().includes(search.toLowerCase()) ||
+      project.tags.some((t) => t.toLowerCase().includes(search.toLowerCase())) ||
+      project.description.toLowerCase().includes(search.toLowerCase())
+    )
+  )
 
   const handleFilter = (selectedFilter) => {
     setFilter(selectedFilter)
@@ -58,7 +66,34 @@ function Projects({ onToast }) {
         </section>
 
         <section className="mb-4">
-          <FilterBar filters={filters} active={filter} onChange={handleFilter} />
+          <div className="d-flex flex-wrap gap-3 align-items-center mb-4">
+            <div className="project-search flex-grow-1">
+              <div className="input-group">
+                <span className="input-group-text bg-transparent border-end-0">
+                  <i className="bi bi-search text-muted"></i>
+                </span>
+                <input
+                  type="search"
+                  className="form-control border-start-0 ps-0"
+                  placeholder="Search projects by name, tag, or keyword…"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  aria-label="Search projects"
+                />
+                {search && (
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="button"
+                    onClick={() => setSearch('')}
+                    aria-label="Clear search"
+                  >
+                    <i className="bi bi-x"></i>
+                  </button>
+                )}
+              </div>
+            </div>
+            <FilterBar filters={filters} active={filter} onChange={handleFilter} />
+          </div>
         </section>
 
         {detailTitle && (

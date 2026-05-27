@@ -1,0 +1,20 @@
+{
+  "name": "Md Saimum Al Mahmud — Portfolio",
+  "short_name": "Saimum",
+  "description": "Personal portfolio of Md Saimum Al Mahmud, CS student at North South University, Dhaka.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0d6efd",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "education", "productivity"],
+  "lang": "en-BD"
+}

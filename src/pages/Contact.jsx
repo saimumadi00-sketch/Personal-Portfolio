@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import ContactForm from '../components/ContactForm'
 import PageHeader from '../components/PageHeader'
 import ScrollReveal from '../components/ScrollReveal'
@@ -7,6 +8,19 @@ import socialLinks from '../data/socialLinks'
 import { pageVariants } from '../utils/variants'
 
 function Contact({ onToast }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopyEmail = () => {
+    const email = 'saimumadi00@gmail.com'
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true)
+      onToast?.('Email address copied to clipboard!', 'success')
+      setTimeout(() => setCopied(false), 2500)
+    }).catch(() => {
+      onToast?.('Could not copy — please copy manually.', 'danger')
+    })
+  }
+
   return (
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <SEOHead title="Contact" />
@@ -53,6 +67,17 @@ function Contact({ onToast }) {
                         <a href={socialLinks.github.href} className="link-primary">
                           github.com/saimumadi00-sketch
                         </a>
+                      </li>
+                      <li className="list-group-item px-0">
+                        <strong>Email:</strong>{' '}
+                        <button
+                          className={`btn btn-sm btn-outline-primary copy-email-btn ms-2 ${copied ? 'copied' : ''}`}
+                          onClick={handleCopyEmail}
+                          aria-label="Copy email address"
+                        >
+                          <i className={`bi ${copied ? 'bi-check-lg' : 'bi-clipboard'} me-1`}></i>
+                          {copied ? 'Copied!' : 'Copy Email'}
+                        </button>
                       </li>
                       <li className="list-group-item px-0">
                         <strong>LinkedIn:</strong>{' '}
