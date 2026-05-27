@@ -1,0 +1,5 @@
+Contact: https://saimum-aditto.vercel.app/contact
+Preferred-Languages: en
+Canonical: https://saimum-aditto.vercel.app/.well-known/security.txt
+Policy: If you discover a security vulnerability in this site, please report it via the contact page. This is a personal portfolio — there is no bug bounty programme.
+Expires: 2026-12-31T23:59:59Z

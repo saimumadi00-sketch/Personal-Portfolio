@@ -50,7 +50,7 @@ function Resume() {
             <a
               href={r.github}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn btn-outline-secondary"
             >
               <i className="bi bi-github me-2"></i>GitHub
@@ -58,7 +58,7 @@ function Resume() {
             <a
               href={r.site}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn btn-outline-success"
             >
               <i className="bi bi-globe2 me-2"></i>Live Site
@@ -142,13 +142,13 @@ function Resume() {
                   <li><i className="bi bi-geo-alt me-2"></i>Dhaka, Bangladesh</li>
                   <li>
                     <i className="bi bi-github me-2"></i>
-                    <a href={r.github} target="_blank" rel="noreferrer" className="text-primary">
+                    <a href={r.github} target="_blank" rel="noopener noreferrer" className="text-primary">
                       saimumadi00-sketch
                     </a>
                   </li>
                   <li>
                     <i className="bi bi-globe2 me-2"></i>
-                    <a href={r.site} target="_blank" rel="noreferrer" className="text-primary">
+                    <a href={r.site} target="_blank" rel="noopener noreferrer" className="text-primary">
                       saimum-aditto.vercel.app
                     </a>
                   </li>

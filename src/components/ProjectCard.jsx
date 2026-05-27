@@ -79,7 +79,7 @@ function ProjectCard({ title, tags, description, status, repositoryUrl, liveUrl,
             <a
               href={repositoryUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn btn-sm btn-outline-secondary"
             >
               <i className="bi bi-github me-1"></i>GitHub
@@ -90,7 +90,7 @@ function ProjectCard({ title, tags, description, status, repositoryUrl, liveUrl,
             <a
               href={liveUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn btn-sm btn-success"
             >
               <i className="bi bi-box-arrow-up-right me-1"></i>Live Demo

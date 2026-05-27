@@ -53,7 +53,7 @@ function About() {
                           <a
                             href={link.href}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                             className="btn btn-sm btn-outline-light me-1 mt-2"
                             aria-label={link.label}
                             key={link.label}

@@ -41,7 +41,7 @@ function renderContent(text) {
             // Handle markdown links [text](url)
             const linkMatch = part.match(/\[([^\]]+)\]\(([^)]+)\)/)
             if (linkMatch)
-              return <a key={j} href={linkMatch[2]} target="_blank" rel="noreferrer" className="text-primary">{linkMatch[1]}</a>
+              return <a key={j} href={linkMatch[2]} target="_blank" rel="noopener noreferrer" className="text-primary">{linkMatch[1]}</a>
             return part
           })}
         </p>

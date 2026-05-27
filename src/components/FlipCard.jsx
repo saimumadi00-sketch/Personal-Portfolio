@@ -100,13 +100,13 @@ function FlipCard({ title, tags, description, status, repositoryUrl, liveUrl, sc
                 Details
               </button>
               {repositoryUrl && (
-                <a href={repositoryUrl} target="_blank" rel="noreferrer"
+                <a href={repositoryUrl} target="_blank" rel="noopener noreferrer"
                    className="btn btn-sm btn-outline-secondary">
                   <i className="bi bi-github me-1"></i>GitHub
                 </a>
               )}
               {liveUrl && (
-                <a href={liveUrl} target="_blank" rel="noreferrer"
+                <a href={liveUrl} target="_blank" rel="noopener noreferrer"
                    className="btn btn-sm btn-success">
                   <i className="bi bi-box-arrow-up-right me-1"></i>Live
                 </a>
