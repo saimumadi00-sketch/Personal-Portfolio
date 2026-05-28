@@ -3,6 +3,11 @@ import { useState } from 'react'
 import Confetti from './Confetti'
 import Button from './Button'
 
+// Security: strip HTML tags and trim whitespace from user input
+const sanitize = (val) => (typeof val === 'string' ? val.replace(/<[^>]*>/g, '').trim() : val)
+
+
+
 const initialForm = {
   name: '',
   phone: '',
@@ -53,6 +58,7 @@ function ContactForm({ onSuccess }) {
   const [shake, setShake] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
+  const [cooldown, setCooldown] = useState(0)
 
   const setFieldError = (name, value) => {
     const error = validateField(name, value)
@@ -110,6 +116,14 @@ function ContactForm({ onSuccess }) {
     setSubmitted(true)
     setShowConfetti(true)
     onSuccess?.()
+    // Rate-limit: block resubmission for 30 seconds
+    let secs = 30
+    setCooldown(secs)
+    const tick = setInterval(() => {
+      secs -= 1
+      setCooldown(secs)
+      if (secs <= 0) clearInterval(tick)
+    }, 1000)
     setTimeout(() => {
       setSubmitted(false)
       setIsSubmitting(false)
@@ -264,8 +278,8 @@ function ContactForm({ onSuccess }) {
           </div>
 
           <div className="col-12 d-flex flex-wrap gap-2 pt-2">
-            <Button type="submit" loading={isSubmitting} className="px-4">
-              Send Message
+            <Button type="submit" loading={isSubmitting} disabled={cooldown > 0} className="px-4">
+              {cooldown > 0 ? `Wait ${cooldown}s before resending` : 'Send Message'}
             </Button>
             <Button type="reset" variant="outline-secondary">
               Clear Form
