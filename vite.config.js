@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   build: {
     chunkSizeWarningLimit: 650,
+    sourcemap: false,
     rolldownOptions: {
       checks: {
         pluginTimings: false,
