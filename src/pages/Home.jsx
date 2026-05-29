@@ -107,7 +107,7 @@ function Home() {
       <section className="hero-immersive" id="home-intro">
         <div className="hero-glow" aria-hidden="true"></div>
         <StarField />
-        <div className="container position-relative" style={{ zIndex: 1 }}>
+        <div className="container position-relative" style={{ zIndex: 2 }}>
           <ScrollReveal direction="up">
             <div className="row g-5 align-items-center">
               <div className="col-lg-8">

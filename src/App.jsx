@@ -20,14 +20,14 @@ function App() {
   }
 
   return (
-    <>
-      {loading && <PageLoader onDone={handleLoaderDone} />}
-      <ThemeProvider>
+    <ThemeProvider>
       <BrowserRouter>
-        <MainLayout toasts={toasts} onToast={addToast} />
+        {loading && <PageLoader onDone={handleLoaderDone} />}
+        <div style={{ visibility: loading ? 'hidden' : 'visible' }}>
+          <MainLayout toasts={toasts} onToast={addToast} />
+        </div>
       </BrowserRouter>
     </ThemeProvider>
-    </>
   )
 }
 

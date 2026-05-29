@@ -533,11 +533,19 @@ body {
   .magnetic-target { cursor: auto; }
 }
 
-/* Hero canvas z-index guard */
-.hero-immersive { isolation: isolate; }
-.hero-immersive canvas { z-index: 0; }
-.hero-immersive .container { z-index: 1; }
-.hero-immersive .position-absolute { z-index: 1; }
+/* Hero canvas z-index guard — mobile safe */
+.hero-immersive { position: relative; }
+.hero-immersive canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-immersive > .container,
+.hero-immersive > div > .container {
+  position: relative;
+  z-index: 2;
+}
 
 /* ══════════════════════════════════════
    BATCH 2 — Resume + Blog
