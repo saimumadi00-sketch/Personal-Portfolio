@@ -62,7 +62,6 @@
       "destination": "/index.html"
     }
   ],
-  "functions": {},
   "cleanUrls": true,
   "trailingSlash": false
 }
