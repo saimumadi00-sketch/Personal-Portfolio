@@ -108,8 +108,7 @@ function Home() {
         <div className="hero-glow" aria-hidden="true"></div>
         <StarField />
         <div className="container position-relative" style={{ zIndex: 2 }}>
-          <ScrollReveal direction="up">
-            <div className="row g-5 align-items-center">
+          <div className="row g-5 align-items-center">
               <div className="col-lg-8">
                 <p
                   className="small text-uppercase mb-2"
@@ -180,8 +179,7 @@ function Home() {
                 </div>
               </div>
             </div>
-          </ScrollReveal>
-        </div>
+          </div>
         <div className="position-absolute bottom-0 start-50 translate-middle-x mb-4" aria-hidden="true">
           <i className="bi bi-chevron-down scroll-indicator"></i>
         </div>
