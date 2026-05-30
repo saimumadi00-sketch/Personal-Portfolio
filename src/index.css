@@ -331,6 +331,31 @@ body {
   box-shadow: none !important;
   transition: background 0.25s ease, backdrop-filter 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
+
+/* Mobile open menu — always show a solid background so links are readable */
+@media (max-width: 991.98px) {
+  .portfolio-navbar {
+    background: rgba(13,17,23,0.97) !important;
+    backdrop-filter: blur(12px);
+  }
+  .portfolio-navbar .navbar-collapse {
+    background: rgba(13,17,23,0.97);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 0.75rem 0 1rem;
+    border-radius: 0 0 8px 8px;
+  }
+  .portfolio-navbar .nav-link {
+    padding: 0.6rem 1rem !important;
+    border-radius: 4px;
+  }
+  .portfolio-navbar .nav-link:hover,
+  .portfolio-navbar .nav-link.active {
+    background: rgba(255,255,255,0.08);
+  }
+  .portfolio-navbar .nav-link::after {
+    display: none;
+  }
+}
 .navbar-brand-name {
   color: #fff;
   font-weight: 700;
