@@ -1,25 +1,29 @@
 import { useEffect, useRef } from 'react'
 
-/**
- * StarField — animated particle canvas mounted behind the hero content.
- * Particles drift slowly and connect with lines when close enough.
- */
 function StarField() {
   const canvasRef = useRef(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+
+    // Skip on touch-only devices to save battery
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return
+
     const ctx = canvas.getContext('2d')
     let animId
-    let W, H
+    let W = 0, H = 0
     const PARTICLE_COUNT = 80
     const MAX_DIST = 130
     const particles = []
 
     function resize() {
-      W = canvas.width  = canvas.offsetWidth
-      H = canvas.height = canvas.offsetHeight
+      const w = canvas.offsetWidth
+      const h = canvas.offsetHeight
+      // Guard against zero dimensions during hidden phase
+      if (w === 0 || h === 0) return
+      W = canvas.width  = w
+      H = canvas.height = h
     }
 
     function Particle() {
@@ -40,13 +44,14 @@ function StarField() {
 
     function init() {
       particles.length = 0
+      if (W === 0 || H === 0) return
       for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle())
     }
 
     function draw() {
+      if (W === 0 || H === 0) { animId = requestAnimationFrame(draw); return }
       ctx.clearRect(0, 0, W, H)
 
-      // Draw connections
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x
@@ -64,7 +69,6 @@ function StarField() {
         }
       }
 
-      // Draw dots
       particles.forEach((p) => {
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
@@ -76,15 +80,23 @@ function StarField() {
       animId = requestAnimationFrame(draw)
     }
 
+    // Debounced resize
+    let resizeTimer
+    const handleResize = () => {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(() => { resize(); init() }, 150)
+    }
+
     resize()
     init()
     draw()
 
-    const ro = new ResizeObserver(() => { resize(); init() })
+    const ro = new ResizeObserver(handleResize)
     ro.observe(canvas)
 
     return () => {
       cancelAnimationFrame(animId)
+      clearTimeout(resizeTimer)
       ro.disconnect()
     }
   }, [])

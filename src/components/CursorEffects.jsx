@@ -15,6 +15,8 @@ function CursorEffects() {
   const rafRef       = useRef(null)
 
   useEffect(() => {
+    // Skip entirely on touch-only devices (no mouse)
+    if (window.matchMedia('(hover: none)').matches) return
     // Create spotlight element
     const spotlight = document.createElement('div')
     spotlight.id = 'cursor-spotlight'
