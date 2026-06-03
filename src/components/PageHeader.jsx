@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../context/ThemeContext'
 
 const fadeSlideUp = {
   hidden: { opacity: 0, y: 18 },
@@ -7,8 +8,17 @@ const fadeSlideUp = {
 }
 
 function PageHeader({ title, subtitle, breadcrumbs = [] }) {
+  const { darkMode } = useTheme()
+
   return (
-    <header className="page-header">
+    <header
+      className="page-header"
+      style={{
+        background: darkMode
+          ? 'linear-gradient(135deg, #0d1117 0%, #1a3a5c 100%)'
+          : 'linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%)',
+      }}
+    >
       <div className="container">
         {breadcrumbs.length > 0 && (
           <nav aria-label="breadcrumb" className="mb-3">

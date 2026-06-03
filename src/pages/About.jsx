@@ -4,6 +4,7 @@ import PageHeader from '../components/PageHeader'
 import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
 import Timeline from '../components/Timeline'
+import { useTheme } from '../context/ThemeContext'
 import funFacts from '../data/funFacts'
 import socialLinks from '../data/socialLinks'
 import timelineData from '../data/timeline'
@@ -48,6 +49,8 @@ const values = [
 ]
 
 function About() {
+  const { darkMode } = useTheme()
+
   return (
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <SEOHead
@@ -71,7 +74,12 @@ function About() {
               <div className="card border-0 shadow-lg h-100 overflow-hidden">
                 <div
                   className="d-flex flex-column align-items-center justify-content-center text-center p-4"
-                  style={{ background: 'linear-gradient(135deg,#0d1117,#1a3a5c)', minHeight: '220px' }}
+                  style={{
+                    background: darkMode
+                      ? 'linear-gradient(135deg,#0d1117,#1a3a5c)'
+                      : 'linear-gradient(135deg,#1e3a5f,#2c5282)',
+                    minHeight: '220px',
+                  }}
                 >
                   <div
                     className="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3"

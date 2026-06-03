@@ -3,7 +3,8 @@ body {
   min-height: 100vh;
   min-height: 100svh;
   overflow-x: hidden;
-  background: linear-gradient(180deg, #f8f9fa 0%, #eef3ff 100%);
+  background: linear-gradient(180deg, var(--bs-body-bg) 0%, var(--bs-tertiary-bg) 100%);
+  color: var(--bs-body-color);
 }
 
 
@@ -150,7 +151,6 @@ body {
 
 /* Page header banner */
 .page-header {
-  background: linear-gradient(135deg, #0d1117 0%, #1a3a5c 100%);
   padding: 100px 0 60px;
   margin-top: -1px;  /* flush with navbar */
 }
@@ -214,7 +214,7 @@ body {
   width: 12px; height: 12px;
   border-radius: 50%;
   background: #0d6efd;
-  border: 2px solid #fff;
+  border: 2px solid var(--bs-body-bg);
   box-shadow: 0 0 0 3px rgba(13,110,253,0.25);
 }
 .timeline-item h5  { font-size: 1rem; margin-bottom: 0.15rem; }
@@ -244,7 +244,7 @@ body {
 }
 
 [data-bs-theme='dark'] .timeline-dot {
-  border-color: #212529;
+  border-color: var(--bs-body-bg);
 }
 
 @media (min-width: 768px) {
@@ -281,7 +281,6 @@ body {
 
 /* Immersive hero */
 .hero-immersive {
-  background: linear-gradient(135deg, #0d1117 0%, #1a3a5c 100%);
   min-height: 85vh;
   min-height: 85svh;
   display: flex;
@@ -403,7 +402,7 @@ body {
 
 /* Footer */
 .site-footer {
-  background: #0d1117;
+  background: #1e293b;
   color: rgba(255,255,255,0.65);
   padding: 3rem 0 0;
 }
@@ -630,6 +629,8 @@ body {
   padding-left: 0.75rem;
 }
 .blog-post-body code {
+  background: rgba(0,0,0,0.06) !important;
+  color: var(--bs-body-color);
   font-size: 0.88em;
 }
 
@@ -790,3 +791,21 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 /* Improve touch scrolling */
 .navbar-collapse { overflow-y: auto; max-height: 80svh; }
+
+/* DARK MODE OVERRIDES */
+[data-bs-theme='dark'] .site-footer {
+  background: #0d1117;
+}
+[data-bs-theme='dark'] .resume-section-title {
+  border-bottom-color: rgba(110,168,254,0.35);
+}
+[data-bs-theme='dark'] .resume-exp-item {
+  border-left-color: rgba(110,168,254,0.4);
+}
+[data-bs-theme='dark'] .blog-post-body code {
+  background: rgba(255,255,255,0.1) !important;
+  color: #e2b96f !important;
+}
+[data-bs-theme='dark'] .timeline-dot {
+  border-color: var(--bs-body-bg);
+}

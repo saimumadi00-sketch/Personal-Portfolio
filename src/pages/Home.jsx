@@ -6,6 +6,7 @@ import ScrollReveal from '../components/ScrollReveal'
 import SectionToggle from '../components/SectionToggle'
 import SEOHead from '../components/SEOHead'
 import StatCounter from '../components/StatCounter'
+import { useTheme } from '../context/ThemeContext'
 import quotesData from '../data/quotes'
 import statsData from '../data/stats'
 import useScrollSpy from '../hooks/useScrollSpy'
@@ -33,6 +34,7 @@ function getGreeting() {
 }
 
 function Home() {
+  const { darkMode } = useTheme()
   const activeSection = useScrollSpy(homeSectionIds)
   const [typewriterText, setTypewriterText] = useState('')
   const [showModal, setShowModal] = useState(false)
@@ -104,7 +106,15 @@ function Home() {
         description="Portfolio home page of Md Saimum Al Mahmud, Computer Science student at North South University, Dhaka."
       />
 
-      <section className="hero-immersive" id="home-intro">
+      <section
+        className="hero-immersive"
+        id="home-intro"
+        style={{
+          background: darkMode
+            ? 'linear-gradient(135deg, #0d1117 0%, #1a3a5c 100%)'
+            : 'linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%)',
+        }}
+      >
         <div className="hero-glow" aria-hidden="true"></div>
         <StarField />
         <div className="container position-relative" style={{ zIndex: 2 }}>
