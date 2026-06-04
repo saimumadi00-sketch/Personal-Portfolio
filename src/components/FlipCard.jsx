@@ -12,76 +12,88 @@ const statusClasses = {
 }
 
 function getCategory(tags) {
-  if (tags.some((t) => ['C','Linux','Threads','CLI'].includes(t)))           return 'project-card-c'
-  if (tags.some((t) => ['Python','Machine Learning','Computer Vision','MediaPipe','LSTM','NIDS','YOLO'].includes(t))) return 'project-card-python'
-  if (tags.some((t) => ['React','Vite','Bootstrap','JavaScript','TypeScript','Supabase','Node.js','Express'].includes(t))) return 'project-card-web'
+  if (tags.some((t) => ['C','Linux','Threads','CLI'].includes(t)))
+    return 'project-card-c'
+  if (tags.some((t) => ['Python','Machine Learning','Computer Vision',
+    'MediaPipe','LSTM','NIDS','YOLO'].includes(t)))
+    return 'project-card-python'
+  if (tags.some((t) => ['React','Vite','Bootstrap','JavaScript',
+    'TypeScript','Supabase','Node.js','Express'].includes(t)))
+    return 'project-card-web'
   return 'project-card-other'
 }
 
-/**
- * FlipCard — mouse hover flips the card.
- * Front: title + description + status badge
- * Back:  tech stack + impact + action buttons
- */
-function FlipCard({ title, tags, description, status, repositoryUrl, liveUrl, screenshot, impact, onShowDetail }) {
+function FlipCard({
+  title, tags, description, status,
+  repositoryUrl, liveUrl, screenshot, impact, onShowDetail
+}) {
   const [flipped, setFlipped] = useState(false)
   const catClass    = getCategory(tags)
   const statusClass = statusClasses[status] || 'bg-secondary text-white'
 
   return (
     <div
-      className="flip-card-container"
+      className={`flip-card-outer ${catClass}`}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
-      // touch support
       onTouchStart={() => setFlipped((f) => !f)}
       role="article"
       aria-label={title}
     >
-      <div className={`flip-card-inner ${flipped ? 'is-flipped' : ''}`}>
-
-        {/* ── FRONT ── */}
-        <div className={`flip-card-face flip-card-front card border-0 shadow-sm project-card-accent ${catClass}`}>
+      <div className={`flip-card-scene ${flipped ? 'is-flipped' : ''}`}>
+        <div className="flip-card-front card border-0 shadow-sm">
           {screenshot && (
             <div className="project-screenshot-wrap">
-              <img src={screenshot} alt={`${title} preview`} className="project-screenshot" />
+              <img
+                src={screenshot}
+                alt={`${title} preview`}
+                className="project-screenshot"
+              />
             </div>
           )}
           <div className="card-body d-flex flex-column p-4">
             <div className="d-flex justify-content-between gap-2 align-items-start mb-3">
               <h2 className="h5 card-title mb-0">{title}</h2>
-              <span className={`badge rounded-pill project-status-pill flex-shrink-0 ${statusClass}`}>
+              <span className={`badge rounded-pill flex-shrink-0 ${statusClass}`}>
                 {status}
               </span>
             </div>
-            <p className="card-text text-secondary flex-grow-1 mb-0">{description}</p>
-            <p className="flip-hint mt-3 mb-0">
-              <i className="bi bi-arrow-repeat me-1"></i>Hover to see details
+            <p className="card-text text-secondary flex-grow-1 mb-2">
+              {description}
+            </p>
+            <p className="flip-hint mb-0">
+              <i className="bi bi-arrow-repeat me-1"></i>
+              Hover for details
             </p>
           </div>
         </div>
 
-        {/* ── BACK ── */}
-        <div className={`flip-card-face flip-card-back card border-0 shadow-sm project-card-accent ${catClass}`}>
+        <div className="flip-card-back card border-0 shadow-sm">
           <div className="card-body d-flex flex-column p-4">
             <h2 className="h5 mb-3">{title}</h2>
 
-            {/* Tech stack */}
             <div className="mb-3">
-              <p className="small fw-semibold text-uppercase text-muted mb-1" style={{ letterSpacing: '0.08em' }}>
+              <p
+                className="small fw-semibold text-uppercase text-muted mb-1"
+                style={{ letterSpacing: '0.08em' }}
+              >
                 Tech Stack
               </p>
               <div className="d-flex flex-wrap gap-1">
                 {tags.map((tag) => (
-                  <span key={tag} className="badge text-bg-primary">{tag}</span>
+                  <span key={tag} className="badge text-bg-primary">
+                    {tag}
+                  </span>
                 ))}
               </div>
             </div>
 
-            {/* Impact */}
             {impact && (
               <div className="mb-3 flex-grow-1">
-                <p className="small fw-semibold text-uppercase text-muted mb-1" style={{ letterSpacing: '0.08em' }}>
+                <p
+                  className="small fw-semibold text-uppercase text-muted mb-1"
+                  style={{ letterSpacing: '0.08em' }}
+                >
                   Impact
                 </p>
                 <p className="project-impact mb-0">
@@ -91,7 +103,6 @@ function FlipCard({ title, tags, description, status, repositoryUrl, liveUrl, sc
               </div>
             )}
 
-            {/* Buttons */}
             <div className="d-flex flex-wrap gap-2 mt-auto">
               <button
                 className="btn btn-sm btn-outline-primary"
@@ -100,21 +111,28 @@ function FlipCard({ title, tags, description, status, repositoryUrl, liveUrl, sc
                 Details
               </button>
               {repositoryUrl && (
-                <a href={repositoryUrl} target="_blank" rel="noopener noreferrer"
-                   className="btn btn-sm btn-outline-secondary">
+                <a
+                  href={repositoryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-sm btn-outline-secondary"
+                >
                   <i className="bi bi-github me-1"></i>GitHub
                 </a>
               )}
               {liveUrl && (
-                <a href={liveUrl} target="_blank" rel="noopener noreferrer"
-                   className="btn btn-sm btn-success">
+                <a
+                  href={liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-sm btn-success"
+                >
                   <i className="bi bi-box-arrow-up-right me-1"></i>Live
                 </a>
               )}
             </div>
           </div>
         </div>
-
       </div>
     </div>
   )

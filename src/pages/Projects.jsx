@@ -104,12 +104,10 @@ function Projects({ onToast }) {
         )}
 
         <section>
-          <div className="row row-cols-1 row-cols-sm-2 g-4">
-            {visibleProjects.map((project, index) => (
+          <div className="row row-cols-1 row-cols-md-2 g-4">
+            {visibleProjects.map((project) => (
               <div className="col" key={project.id}>
-                <ScrollReveal direction="up" delay={index * 0.1}>
-                  <FlipCard {...project} onShowDetail={handleShowDetail} />
-                </ScrollReveal>
+                <FlipCard {...project} onShowDetail={handleShowDetail} />
               </div>
             ))}
           </div>

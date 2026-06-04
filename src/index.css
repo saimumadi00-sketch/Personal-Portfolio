@@ -639,54 +639,68 @@ body {
    ══════════════════════════════════════ */
 
 /* Feature 15 — Flip Card */
-.flip-card-container {
-  perspective: 1000px;
-  height: 100%;
-  min-height: 280px;
-}
-.flip-card-inner {
+.flip-card-outer {
   position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.project-card-web    { border-top: 3px solid #0d6efd; }
+.project-card-python { border-top: 3px solid #198754; }
+.project-card-c      { border-top: 3px solid #6f42c1; }
+.project-card-other  { border-top: 3px solid #6c757d; }
+
+.flip-card-scene {
+  position: relative;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
-.flip-card-inner.is-flipped {
+.flip-card-scene.is-flipped {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
 }
-.flip-card-face {
-  position: absolute;
-  inset: 0;
+.flip-card-front {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 8px;
-  overflow: hidden;
+  border-radius: 0 0 6px 6px !important;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
 .flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
+  border-radius: 0 0 6px 6px !important;
+  overflow: hidden;
 }
 .flip-hint {
-  font-size: 0.75rem;
-  color: rgba(128,128,128,0.6);
+  font-size: 0.72rem;
+  color: rgba(128,128,128,0.5);
   text-align: center;
 }
 
-/* Touch devices — show hint differently */
 @media (hover: none) {
-  .flip-hint { display: block; }
+  .flip-card-scene { transform-style: flat; }
+  .flip-card-scene.is-flipped { transform: none; }
+  .flip-card-front { display: block; }
+  .flip-card-back {
+    position: relative;
+    inset: auto;
+    transform: none;
+    display: none;
+    margin-top: 0;
+  }
+  .flip-card-scene.is-flipped .flip-card-front { display: none; }
+  .flip-card-scene.is-flipped .flip-card-back {
+    display: block;
+    position: relative;
+  }
 }
-@media (hover: hover) {
-  .flip-hint { opacity: 0.5; }
-}
-
-/* Ensure col height fills for flip card */
-.projects-grid .col { display: flex; flex-direction: column; }
 
 /* ══════════════════════════════════════
    BATCH 4 — Technical Features
@@ -763,18 +777,6 @@ html { overflow-x: hidden; }
     padding: 70px 0 40px;
   }
   .hero-portrait { height: 180px; }
-}
-
-/* Flip card — disable 3D on touch, show back on tap instead */
-@media (hover: none) {
-  .flip-card-container { perspective: none; }
-  .flip-card-inner { transform-style: flat; -webkit-transform-style: flat; }
-  .flip-card-inner.is-flipped { transform: none; }
-  .flip-card-face { position: relative; inset: auto; }
-  .flip-card-back { transform: none; display: none; }
-  .flip-card-inner.is-flipped .flip-card-front { display: none; }
-  .flip-card-inner.is-flipped .flip-card-back { display: block; }
-  .flip-card-container { min-height: auto; }
 }
 
 /* Safe area bottom padding on iOS */
