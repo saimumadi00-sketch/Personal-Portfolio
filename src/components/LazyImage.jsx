@@ -8,6 +8,8 @@ function LazyImage({ src, alt, className = '', style = {}, wrapperClassName = ''
   const [loaded, setLoaded] = useState(false)
   const [inView, setInView] = useState(false)
   const ref = useRef(null)
+  const wrapperClasses = ['lazy-img-wrap', wrapperClassName].filter(Boolean).join(' ')
+  const imageClasses = ['lazy-img', loaded ? 'loaded' : '', className].filter(Boolean).join(' ')
 
   useEffect(() => {
     if (!ref.current) return
@@ -25,12 +27,12 @@ function LazyImage({ src, alt, className = '', style = {}, wrapperClassName = ''
   }, [])
 
   return (
-    <div ref={ref} className={`lazy-img-wrap ${wrapperClassName}`} style={style}>
+    <div ref={ref} className={wrapperClasses} style={style}>
       {inView && (
         <img
           src={src}
           alt={alt}
-          className={`lazy-img ${loaded ? 'loaded' : ''} ${className}`}
+          className={imageClasses}
           onLoad={() => setLoaded(true)}
         />
       )}

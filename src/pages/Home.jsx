@@ -11,7 +11,6 @@ import quotesData from '../data/quotes'
 import statsData from '../data/stats'
 import useScrollSpy from '../hooks/useScrollSpy'
 import { pageVariants } from '../utils/variants'
-import MagneticButton from '../components/MagneticButton'
 import StarField from '../components/StarField'
 import LazyImage from '../components/LazyImage'
 
@@ -118,8 +117,8 @@ function Home() {
         <div className="hero-glow" aria-hidden="true"></div>
         <StarField />
         <div className="container position-relative" style={{ zIndex: 2 }}>
-          <div className="row g-5 align-items-center">
-              <div className="col-lg-8">
+          <div className="row g-4 align-items-center">
+              <div className="col-12 col-lg-8">
                 <p
                   className="small text-uppercase mb-2"
                   style={{ color: 'rgba(255,255,255,0.5)', letterSpacing: '0.16em' }}
@@ -161,16 +160,15 @@ function Home() {
                   ))}
                 </div>
               </div>
-              <div className="col-lg-4 d-flex flex-column gap-3">
+              <div className="col-12 col-lg-4 d-flex flex-column gap-0 gap-lg-3">
                 {/* Portrait */}
-                <div className="hero-portrait-wrap">
-                  <LazyImage
-                    src="/portrait.jpeg"
-                    alt="Md Saimum Al Mahmud"
-                    className="hero-portrait"
-                    style={{ width: '100%', height: '320px' }}
-                  />
-                </div>
+                <LazyImage
+                  src="/portrait.jpeg"
+                  alt="Md Saimum Al Mahmud"
+                  className="hero-portrait"
+                  wrapperClassName="hero-portrait-wrap"
+                  style={{ width: '100%' }}
+                />
                 {/* Current Focus */}
                 <div className="hero-focus-card">
                   <h2 className="h5 mb-3">Current Focus</h2>
