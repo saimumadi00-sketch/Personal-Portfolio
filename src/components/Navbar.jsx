@@ -1,148 +1,125 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { useTheme } from '../context/ThemeContext'
 import ThemeToggle from './ThemeToggle'
 
 const links = [
-  { to: '/',         label: 'Home',     end: true },
-  { to: '/about',    label: 'About'              },
-  { to: '/projects', label: 'Projects'           },
-  { to: '/skills',   label: 'Skills'             },
-  { to: '/contact',  label: 'Contact'            },
-  { to: '/resume',   label: 'Resume'             },
-  { to: '/blog',     label: 'Blog'               },
+  { to: '/', label: 'Home', end: true },
+  { to: '/about', label: 'About' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/skills', label: 'Skills' },
+  { to: '/contact', label: 'Contact' },
+  { to: '/resume', label: 'Resume' },
+  { to: '/blog', label: 'Blog' },
 ]
 
 function Navbar() {
-  const { darkMode } = useTheme()
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [menuOpen,   setMenuOpen]   = useState(false)
-  const collapseRef                 = useRef(null)
-  const location                    = useLocation()
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
 
-  // Scroll shadow
+  // Shadow on scroll
   useEffect(() => {
-    const handle = () => setIsScrolled(window.scrollY > 10)
-    handle()
-    window.addEventListener('scroll', handle, { passive: true })
-    return () => window.removeEventListener('scroll', handle)
+    const fn = () => setScrolled(window.scrollY > 10)
+    fn()
+    window.addEventListener('scroll', fn, { passive: true })
+    return () => window.removeEventListener('scroll', fn)
   }, [])
 
-  // Close menu on route change
+  // Close on route change
   useEffect(() => {
-    setMenuOpen(false)
-  }, [location])
+    const frame = window.requestAnimationFrame(() => setMenuOpen(false))
+    return () => window.cancelAnimationFrame(frame)
+  }, [location.pathname])
 
-  // Close menu on outside click / tap
+  // Close on Escape
   useEffect(() => {
-    if (!menuOpen) return
-    const handle = (e) => {
-      const nav = document.getElementById('mainNav')
-      if (nav && !nav.contains(e.target)) setMenuOpen(false)
+    const fn = (e) => {
+      if (e.key === 'Escape') setMenuOpen(false)
     }
-    document.addEventListener('mousedown', handle)
-    document.addEventListener('touchstart', handle)
+    document.addEventListener('keydown', fn)
+    return () => document.removeEventListener('keydown', fn)
+  }, [])
+
+  // Lock body scroll when menu is open on mobile
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => {
-      document.removeEventListener('mousedown', handle)
-      document.removeEventListener('touchstart', handle)
+      document.body.style.overflow = ''
     }
   }, [menuOpen])
 
-  // Close on Escape key
-  useEffect(() => {
-    const handle = (e) => { if (e.key === 'Escape') setMenuOpen(false) }
-    document.addEventListener('keydown', handle)
-    return () => document.removeEventListener('keydown', handle)
-  }, [])
-
-  const closeMenu = () => setMenuOpen(false)
+  const close = () => setMenuOpen(false)
 
   return (
-    <nav
-      className={`navbar navbar-expand-lg navbar-dark fixed-top portfolio-navbar ${
-        isScrolled || menuOpen ? 'navbar-scrolled' : ''
-      }`}
-      id="mainNav"
-    >
-      <div className="container">
-        <NavLink
-          className="navbar-brand fw-semibold"
-          to="/"
-          aria-label="Saimum home"
-          onClick={closeMenu}
-        >
-          Saimum<span className="navbar-brand-dot">.</span>
-        </NavLink>
+    <>
+      <nav
+        className={`portfolio-navbar${scrolled || menuOpen ? ' nav-scrolled' : ''}`}
+        id="mainNav"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="nav-inner">
+          <NavLink className="nav-brand" to="/" onClick={close} aria-label="Go to home">
+            Saimum<span className="nav-brand-dot">.</span>
+          </NavLink>
 
-        <button
-          className="navbar-toggler border-0"
-          type="button"
-          aria-controls="mainNavbar"
-          aria-expanded={menuOpen}
-          aria-label="Toggle navigation"
-          onClick={() => setMenuOpen((o) => !o)}
-        >
-          {/* Animated hamburger → X */}
-          <span
-            style={{
-              display: 'block',
-              width: '22px',
-              position: 'relative',
-              height: '16px',
-            }}
-          >
-            {[0, 6, 12].map((top, i) => (
-              <span
-                key={i}
-                style={{
-                  display: 'block',
-                  position: 'absolute',
-                  height: '2px',
-                  width: i === 1 && menuOpen ? '0%' : '100%',
-                  background: '#fff',
-                  borderRadius: '2px',
-                  top: `${top}px`,
-                  left: i === 1 && menuOpen ? '50%' : '0',
-                  transform:
-                    menuOpen && i === 0 ? 'rotate(45deg) translate(4px, 4px)'
-                    : menuOpen && i === 2 ? 'rotate(-45deg) translate(4px, -4px)'
-                    : 'none',
-                  transition: 'all 0.25s ease',
-                }}
-              />
-            ))}
-          </span>
-        </button>
-
-        {/* Controlled collapse — no Bootstrap JS dependency */}
-        <div
-          ref={collapseRef}
-          id="mainNavbar"
-          className="navbar-collapse"
-          style={{
-            display: menuOpen ? 'block' : '',
-          }}
-        >
-          <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-1 pb-3 pb-lg-0">
+          <ul className="nav-links-desktop" role="list">
             {links.map((link) => (
-              <li className="nav-item" key={link.to}>
+              <li key={link.to}>
                 <NavLink
                   end={link.end}
-                  className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
                   to={link.to}
-                  onClick={closeMenu}
+                  className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
                 >
                   {link.label}
                 </NavLink>
               </li>
             ))}
-            <li className="nav-item mt-2 mt-lg-0 ms-lg-2">
+            <li>
+              <ThemeToggle />
+            </li>
+          </ul>
+
+          <button
+            className="nav-hamburger"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobileMenu"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <span className={`ham-bar ham-top${menuOpen ? ' open' : ''}`} />
+            <span className={`ham-bar ham-mid${menuOpen ? ' open' : ''}`} />
+            <span className={`ham-bar ham-bot${menuOpen ? ' open' : ''}`} />
+          </button>
+        </div>
+
+        <div
+          id="mobileMenu"
+          className={`nav-mobile-menu${menuOpen ? ' is-open' : ''}`}
+          aria-hidden={!menuOpen}
+        >
+          <ul role="list">
+            {links.map((link) => (
+              <li key={link.to}>
+                <NavLink
+                  end={link.end}
+                  to={link.to}
+                  className={({ isActive }) => `nav-mobile-link${isActive ? ' active' : ''}`}
+                  onClick={close}
+                >
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
+            <li className="nav-mobile-toggle">
               <ThemeToggle />
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {menuOpen && <div className="nav-backdrop" onClick={close} aria-hidden="true" />}
+    </>
   )
 }
 
