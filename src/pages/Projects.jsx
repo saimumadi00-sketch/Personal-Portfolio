@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import FilterBar from '../components/FilterBar'
 import PageHeader from '../components/PageHeader'
-import FlipCard from '../components/FlipCard'
+import ProjectCard from '../components/ProjectCard'
 import SEOHead from '../components/SEOHead'
 import projectsData from '../data/projects'
 import { pageVariants } from '../utils/variants'
@@ -98,7 +98,7 @@ function Projects() {
             <div className="row row-cols-1 row-cols-md-2 g-4">
               {visibleProjects.map((project) => (
                 <div className="col" key={project.id}>
-                  <FlipCard {...project} />
+                  <ProjectCard {...project} />
                 </div>
               ))}
             </div>
