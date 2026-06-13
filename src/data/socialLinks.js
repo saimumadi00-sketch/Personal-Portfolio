@@ -9,6 +9,11 @@ const socialLinks = {
     href: 'https://linkedin.com/in/saimum',
     icon: 'bi-linkedin',
   },
+  email: {
+    label: 'Email',
+    href: 'mailto:saimumadi00@gmail.com',
+    icon: 'bi-envelope-fill',
+  },
   liveSite: {
     label: 'Live Site',
     href: 'https://saimum-aditto.vercel.app',

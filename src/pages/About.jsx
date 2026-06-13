@@ -55,7 +55,7 @@ function About() {
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <SEOHead
         title="About"
-        description="Learn about Md Saimum Al Mahmud — CS student at North South University, Dhaka. Background, values, education, and journey."
+        description="Learn about MD Saimum Al Mahmud Aditto — CSE student at North South University, Dhaka. Background, values, education, and journey."
       />
       <PageHeader
         title="About Me"
@@ -87,12 +87,12 @@ function About() {
                   >
                     <i className="bi bi-person-fill"></i>
                   </div>
-                  <h1 className="h5 text-white mb-1 fw-bold">Md Saimum Al Mahmud</h1>
+                  <h1 className="h5 text-white mb-1 fw-bold">MD Saimum Al Mahmud Aditto</h1>
                   <p className="small mb-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                    CS Student · NSU Dhaka
+                    CSE Student · NSU Dhaka
                   </p>
                   <p className="small mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                    4th Year · 2026
+                    Final Year · Enrolled
                   </p>
                   <div className="d-flex gap-2 justify-content-center flex-wrap">
                     {Object.values(socialLinks).map((link) => (
@@ -140,7 +140,7 @@ function About() {
                 <div className="card-body p-4 p-lg-5">
                   <h2 className="h3 fw-bold mb-3">Hi, I'm Saimum.</h2>
                   <p className="text-secondary lh-lg mb-3">
-                    I'm a final-year Computer Science student at North South University in Dhaka,
+                    I'm a final-year Computer Science and Engineering student at North South University in Dhaka,
                     Bangladesh. My journey with code started in 2021 with a single HTML file and
                     has grown into building full-stack web applications, machine learning pipelines,
                     and open-source CLI tools.
@@ -151,6 +151,12 @@ function About() {
                     four years at NSU pushing through algorithm courses, database systems, and
                     software engineering — and spending an equal amount of time on personal
                     projects that actually ship.
+                  </p>
+                  <p className="text-secondary lh-lg mb-3">
+                    Beyond university I've worked as a Customer Care Representative at ASL BPO,
+                    volunteered as IT support on a Forestry Department NGO project in Sreemongol,
+                    and served as Class Representative in both high school and college — experiences
+                    that shaped my communication, responsibility, and people skills.
                   </p>
                   <p className="text-secondary lh-lg mb-4">
                     Outside of studying I follow the latest in frontend tooling, write
@@ -211,13 +217,13 @@ function About() {
                   </h2>
                   <div className="row g-3">
                     {[
-                      { label: 'Full Name',   value: 'Md Saimum Al Mahmud'                },
-                      { label: 'Location',    value: 'Dhaka City, Bangladesh'              },
+                      { label: 'Full Name',   value: 'MD Saimum Al Mahmud Aditto'          },
+                      { label: 'Location',    value: 'Vassantek, Dhaka Cantonment, Bangladesh' },
                       { label: 'University',  value: 'North South University'              },
-                      { label: 'Major',       value: 'B.Sc. Computer Science'              },
-                      { label: 'Year',        value: '4th Year (2026)'                     },
-                      { label: 'Email',       value: 'Available on request'                },
-                      { label: 'Languages',   value: 'Bengali (Native), English (Fluent)'  },
+                      { label: 'Major',       value: 'B.Sc. Computer Science & Engineering (CSE)' },
+                      { label: 'Year',        value: 'Final Year (Enrolled)'               },
+                      { label: 'Email',       value: 'saimumadi00@gmail.com'               },
+                      { label: 'Languages',   value: 'Bengali (Native), English (Advanced)' },
                       { label: 'Status',      value: 'Open to internships & collaboration' },
                     ].map((row) => (
                       <div className="col-12 col-sm-6" key={row.label}>
@@ -280,7 +286,7 @@ function About() {
                   </h2>
                   <div className="mb-3 pb-3 border-bottom">
                     <p className="fw-bold mb-0">North South University</p>
-                    <p className="small text-primary mb-1">B.Sc. Computer Science · 2021–Present</p>
+                    <p className="small text-primary mb-1">B.Sc. Computer Science & Engineering (CSE) · 2021–Present</p>
                     <p className="small text-muted mb-0">Dhaka, Bangladesh</p>
                   </div>
                   <div>

@@ -54,10 +54,10 @@ function Contact({ onToast }) {
                     <div className="alert alert-light border mb-3">I usually respond within 24 to 48 hours.</div>
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item px-0">
-                        <strong>Name:</strong> Md Saimum Al Mahmud
+                        <strong>Name:</strong> MD Saimum Al Mahmud Aditto
                       </li>
                       <li className="list-group-item px-0">
-                        <strong>Location:</strong> Dhaka, Bangladesh
+                        <strong>Location:</strong> Vassantek, Dhaka Cantonment, Bangladesh
                       </li>
                       <li className="list-group-item px-0">
                         <strong>University:</strong> North South University
@@ -69,7 +69,7 @@ function Contact({ onToast }) {
                         </a>
                       </li>
                       <li className="list-group-item px-0">
-                        <strong>Email:</strong>{' '}
+                        <strong>Email:</strong> saimumadi00@gmail.com{' '}
                         <button
                           className={`btn btn-sm btn-outline-primary copy-email-btn ms-2 ${copied ? 'copied' : ''}`}
                           onClick={handleCopyEmail}

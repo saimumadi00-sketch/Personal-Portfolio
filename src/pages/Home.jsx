@@ -102,7 +102,7 @@ function Home() {
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <SEOHead
         title="Home"
-        description="Portfolio home page of Md Saimum Al Mahmud, Computer Science student at North South University, Dhaka."
+        description="Portfolio home page of MD Saimum Al Mahmud Aditto, Computer Science & Engineering student at North South University, Dhaka."
       />
 
       <section
@@ -164,7 +164,7 @@ function Home() {
                 {/* Portrait */}
                 <LazyImage
                   src="/portrait.jpeg"
-                  alt="Md Saimum Al Mahmud"
+                  alt="MD Saimum Al Mahmud Aditto"
                   className="hero-portrait"
                   wrapperClassName="hero-portrait-wrap"
                   style={{ width: '100%' }}
@@ -182,7 +182,7 @@ function Home() {
                   </p>
                   <p className="mb-0">
                     <span className="badge text-bg-light text-dark me-1">Goal</span>
-                    Full-stack internship in 2026
+                    Software Engineering or Web Dev internship
                   </p>
                 </div>
               </div>

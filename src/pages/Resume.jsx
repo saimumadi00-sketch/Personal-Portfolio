@@ -104,6 +104,20 @@ function Resume() {
               </div>
             </section>
 
+            <section className="resume-section mb-4">
+              <h2 className="resume-section-title">
+                <i className="bi bi-award me-2 text-primary"></i>
+                Extra Curricular
+              </h2>
+              <ul className="resume-bullets">
+                {r.extracurricular.map((item, i) => (
+                  <li key={i} className="text-secondary small mb-1">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
             {/* Education */}
             <section className="resume-section mb-4">
               <h2 className="resume-section-title">
@@ -139,7 +153,7 @@ function Resume() {
                 </h2>
                 <ul className="list-unstyled small d-grid gap-2 mb-0 text-secondary">
                   <li><i className="bi bi-envelope me-2"></i>{r.email}</li>
-                  <li><i className="bi bi-geo-alt me-2"></i>Dhaka, Bangladesh</li>
+                  <li><i className="bi bi-geo-alt me-2"></i>{r.location}</li>
                   <li>
                     <i className="bi bi-github me-2"></i>
                     <a href={r.github} target="_blank" rel="noopener noreferrer" className="text-primary">

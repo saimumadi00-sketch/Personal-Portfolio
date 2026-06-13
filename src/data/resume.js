@@ -1,75 +1,116 @@
 const resume = {
-  name: 'Md Saimum Al Mahmud',
-  title: 'Computer Science Student',
+  name: 'MD Saimum Al Mahmud Aditto',
+  title: 'Computer Science & Engineering Student',
   university: 'North South University, Dhaka',
-  year: '4th Year (2026)',
-  email: 'Available on request',
+  year: 'Final Year (Enrolled)',
+  email: 'saimumadi00@gmail.com',
+  altEmail: 'saimum.mahmud@northsouth.edu',
+  phone: '01631351004',
   github: 'https://github.com/saimumadi00-sketch',
   site: 'https://saimum-aditto.vercel.app',
+  location: 'Vassantek, Dhaka Cantonment, Bangladesh',
 
   summary:
-    'Final-year Computer Science student at North South University, Dhaka. ' +
-    'Passionate about full-stack web development, machine learning pipelines, ' +
-    'and building clean, user-focused software. Actively seeking internship ' +
-    'opportunities in software engineering and web development.',
+    'Final-year Computer Science and Engineering student at ' +
+    'North South University, Dhaka. A responsible, detail-oriented ' +
+    'developer with hands-on experience in customer service, IT support, ' +
+    'and web development. Passionate about building clean, user-focused ' +
+    'software and actively seeking internship opportunities in software ' +
+    'engineering and web development.',
 
   education: [
     {
-      degree: 'B.Sc. Computer Science',
+      degree: 'B.Sc. Computer Science and Engineering (CSE)',
       institution: 'North South University',
       location: 'Dhaka, Bangladesh',
-      period: '2021 – Present',
-      notes: 'Algorithms, Web Technologies, Databases, Software Engineering, ML',
+      period: '2021 - Present',
+      notes: 'Web Technologies, Algorithms, Database Systems, ' +
+             'Software Engineering, Machine Learning, OS, Networks',
     },
     {
       degree: 'Higher Secondary Certificate (HSC)',
-      institution: 'Dhaka, Bangladesh',
-      location: 'Bangladesh',
-      period: '2019 – 2021',
-      notes: 'Science stream — Mathematics, Physics, Chemistry',
+      institution: 'Ispahani Public School and College',
+      location: 'Dhaka, Bangladesh',
+      period: 'Completed',
+      notes: 'Science stream. Served as Class Representative (CR).',
     },
   ],
 
   experience: [
     {
-      role: 'Lab Portfolio Project',
-      org: 'NSU CSE482 — Internet & Web Technology',
-      period: '2024 – 2025',
+      role: 'Customer Care Representative',
+      org: 'ASL BPO - Night Shift',
+      period: 'Mar 2023 - Jul 2023',
       bullets: [
-        'Built a 5-page portfolio across 5 labs: HTML/CSS → Bootstrap → Responsive → JavaScript → React',
-        'Deployed final React + Vite build to Vercel with custom domain',
-        'Implemented framer-motion animations, ThemeContext, IntersectionObserver, and React Router v6',
+        'Handled customer queries and complaints on a night-shift schedule',
+        'Used Salesforce CRM to log and resolve customer issues',
+        'Developed strong communication and client service skills ' +
+        'under high-pressure conditions',
+      ],
+    },
+    {
+      role: 'IT Support Volunteer',
+      org: 'NGO Project - Forestry Department, Sreemongol',
+      period: '2022',
+      bullets: [
+        'Provided IT support for an NGO environmental project ' +
+        'organized by the Forestry Department of Bangladesh',
+        'Managed technical equipment and assisted field teams ' +
+        'with data collection and documentation',
+      ],
+    },
+    {
+      role: 'Lab Portfolio Project',
+      org: 'NSU CSE482 - Internet & Web Technology',
+      period: '2024 - 2025',
+      bullets: [
+        'Built a 5-page portfolio across 5 progressive labs: ' +
+        'HTML/CSS to Bootstrap to Responsive to JavaScript to React + Vite',
+        'Deployed final React build to Vercel with framer-motion ' +
+        'animations, ThemeContext, and React Router v6',
+        'Implemented PWA support, security headers, and ' +
+        'full mobile responsiveness',
       ],
     },
     {
       role: 'Human Behaviour Detection System',
-      org: 'NSU ML Coursework',
+      org: 'NSU Machine Learning Coursework',
       period: '2024',
       bullets: [
-        'Built real-time action classifier using MediaPipe BlazePose + Keras LSTM',
-        'Targeted ≥85% validation accuracy across 5 live behaviour classes',
-        'Integrated sliding frame window for temporal sequence classification',
-      ],
-    },
-    {
-      role: 'Network Intrusion Detection System',
-      org: 'NSU ML Coursework',
-      period: '2024',
-      bullets: [
-        'Multi-stage ML pipeline: preprocessing, anomaly detection, threat classification',
-        'Implemented severity scoring and privacy-safe alert generation',
+        'Built real-time action classifier using MediaPipe ' +
+        'BlazePose keypoints + Keras LSTM',
+        'Targeted at least 85% validation accuracy across 5 live ' +
+        'behaviour classes via webcam',
       ],
     },
   ],
 
   skills: {
-    languages: ['HTML/CSS', 'JavaScript', 'Python', 'Java', 'C', 'SQL'],
-    frameworks: ['React', 'Bootstrap', 'framer-motion', 'Node.js', 'Express'],
-    tools: ['Git', 'GitHub', 'VS Code', 'Vite', 'MySQL', 'MediaPipe', 'Keras'],
-    concepts: ['REST APIs', 'OOP', 'Data Structures', 'Algorithms', 'Machine Learning', 'Computer Vision'],
+    languages: [
+      'HTML/CSS', 'JavaScript', 'Python', 'Java', 'C', 'SQL',
+    ],
+    frameworks: [
+      'React', 'Bootstrap', 'framer-motion', 'Node.js', 'Express',
+    ],
+    tools: [
+      'Git', 'GitHub', 'VS Code', 'Vite', 'MySQL',
+      'MS Office', 'Salesforce', 'MediaPipe', 'Keras',
+    ],
+    concepts: [
+      'REST APIs', 'OOP', 'Data Structures', 'Algorithms',
+      'Machine Learning', 'Computer Vision', 'SEO Basics',
+      'Cyber Security Basics', 'Social Media Management',
+    ],
   },
 
-  languages: ['Bengali (Native)', 'English (Fluent)'],
+  extracurricular: [
+    'British Council member since college',
+    'IT Support role on NGO project by the Forestry ' +
+    'Department at Sreemongol',
+    'Class Representative (CR) in high school and college',
+  ],
+
+  languages: ['Bengali (Native)', 'English (Advanced)'],
 }
 
 export default resume
