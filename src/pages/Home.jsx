@@ -108,7 +108,7 @@ function Home() {
         <StarField />
         <div className="container position-relative" style={{ zIndex: 2 }}>
           <div className="row g-4 align-items-center">
-            <div className="col-12 col-lg-7 text-center text-lg-start">
+            <div className="col-12 col-lg-7 text-center text-lg-start order-2 order-lg-1">
               <p
                 className="small text-uppercase mb-2"
                 style={{ color: 'rgba(255,255,255,0.5)', letterSpacing: '0.16em' }}
@@ -131,9 +131,24 @@ function Home() {
               </div>
             </div>
 
-            <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-end">
+            <div className="col-12 col-lg-5 d-flex flex-column align-items-center align-items-lg-end gap-3 order-1 order-lg-2">
+              {/* Portrait — visible on all screens */}
               <motion.div
-                className="hero-visual-stack"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="hero-portrait-wrap"
+                style={{ width: '100%', maxWidth: '260px' }}
+              >
+                <img
+                  src="/portrait.jpeg"
+                  alt="MD Saimum Al Mahmud Aditto"
+                  className="hero-portrait"
+                />
+              </motion.div>
+              {/* Code card — desktop only */}
+              <motion.div
+                className="hero-code-card shadow-lg d-none d-lg-block"
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}

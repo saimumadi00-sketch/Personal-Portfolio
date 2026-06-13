@@ -1204,3 +1204,60 @@ a, button { -webkit-tap-highlight-color: transparent; }
     text-align: left;
   }
 }
+
+/* ══════════════════════════════════════
+   PORTRAIT + HERO MOBILE FIXES
+   ══════════════════════════════════════ */
+
+/* Portrait in hero */
+.hero-portrait-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+  border: 2px solid rgba(255,255,255,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  line-height: 0;
+}
+.hero-portrait-wrap:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  border-color: rgba(110,168,254,0.45);
+}
+.hero-portrait {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+
+/* Desktop — taller portrait */
+@media (min-width: 992px) {
+  .hero-portrait { height: 320px; object-position: center 30%; }
+}
+
+/* Mobile — shorter, centered, full width constrained */
+@media (max-width: 575px) {
+  .hero-portrait { height: 220px; object-position: center 30%; }
+  .hero-portrait-wrap { max-width: 200px !important; margin: 0 auto; }
+}
+
+/* Project card — clean static version */
+.project-card-accent {
+  border-top: 3px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+}
+.project-card-web    { border-top-color: #0d6efd; }
+.project-card-python { border-top-color: #198754; }
+.project-card-c      { border-top-color: #6f42c1; }
+.project-card-other  { border-top-color: #6c757d; }
+
+.hover-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.12) !important;
+}
+
+/* Hero row — portrait on top on mobile */
+@media (max-width: 991px) {
+  .hero-code-card { display: none !important; }
+}
