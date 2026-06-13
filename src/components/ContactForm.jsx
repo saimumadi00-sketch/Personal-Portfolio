@@ -13,7 +13,6 @@ const initialForm = {
   phone: '',
   email: '',
   subject: '',
-  topic: '',
   message: '',
   consent: false,
 }
@@ -82,7 +81,6 @@ function ContactForm({ onSuccess }) {
   const getValidationClass = (name) => {
     if (errors[name]) return 'is-invalid'
     if (name === 'consent') return form.consent ? 'is-valid' : ''
-    if (name === 'topic') return form.topic ? 'is-valid' : ''
     return form[name] ? 'is-valid' : ''
   }
 
@@ -218,25 +216,6 @@ function ContactForm({ onSuccess }) {
               required
             />
             {errors.subject && <div className="invalid-feedback">{errors.subject}</div>}
-          </div>
-
-          <div className="col-md-6">
-            <label htmlFor="topic" className="form-label">
-              Topic
-            </label>
-            <select
-              className={`form-select ${getValidationClass('topic')}`}
-              id="topic"
-              name="topic"
-              value={form.topic}
-              onChange={handleChange}
-            >
-              <option value="">Choose...</option>
-              <option value="Internship">Internship</option>
-              <option value="Freelance Project">Freelance Project</option>
-              <option value="Collaboration">Collaboration</option>
-              <option value="General Question">General Question</option>
-            </select>
           </div>
 
           <div className="col-12">

@@ -4,13 +4,6 @@ import SEOHead from '../components/SEOHead'
 import resumeData from '../data/resume'
 import { pageVariants } from '../utils/variants'
 
-const categoryColors = {
-  languages:  'text-bg-primary',
-  frameworks: 'text-bg-success',
-  tools:      'text-bg-secondary',
-  concepts:   'text-bg-dark',
-}
-
 function Resume() {
   const r = resumeData
 
@@ -82,7 +75,7 @@ function Resume() {
             {/* Experience */}
             <section className="resume-section mb-4">
               <h2 className="resume-section-title">
-                <i className="bi bi-briefcase-fill me-2 text-primary"></i>Experience &amp; Projects
+                <i className="bi bi-briefcase-fill me-2 text-primary"></i>Experience
               </h2>
               <div className="d-grid gap-4">
                 {r.experience.map((exp, i) => (
@@ -176,18 +169,11 @@ function Resume() {
                 <h2 className="resume-section-title mb-3">
                   <i className="bi bi-code-slash me-2 text-primary"></i>Skills
                 </h2>
-                {Object.entries(r.skills).map(([cat, items]) => (
-                  <div key={cat} className="mb-3">
-                    <p className="small fw-semibold text-uppercase text-muted mb-1" style={{ letterSpacing: '0.08em' }}>
-                      {cat}
-                    </p>
-                    <div className="d-flex flex-wrap gap-1">
-                      {items.map((s) => (
-                        <span key={s} className={`badge ${categoryColors[cat] || 'text-bg-secondary'}`}>{s}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                <div className="small text-secondary d-grid gap-2">
+                  <p className="mb-0"><strong>Languages:</strong> HTML/CSS, JavaScript, Python, Java, C, SQL</p>
+                  <p className="mb-0"><strong>Frameworks:</strong> React, Bootstrap, Node.js</p>
+                  <p className="mb-0"><strong>Tools:</strong> Git, VS Code, Salesforce, MS Office</p>
+                </div>
               </div>
             </div>
 

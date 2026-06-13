@@ -104,12 +104,14 @@ function FlipCard({
             )}
 
             <div className="d-flex flex-wrap gap-2 mt-auto">
-              <button
-                className="btn btn-sm btn-outline-primary"
-                onClick={() => onShowDetail(title)}
-              >
-                Details
-              </button>
+              {onShowDetail && (
+                <button
+                  className="btn btn-sm btn-outline-primary"
+                  onClick={() => onShowDetail(title)}
+                >
+                  Details
+                </button>
+              )}
               {repositoryUrl && (
                 <a
                   href={repositoryUrl}

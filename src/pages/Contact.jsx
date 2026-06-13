@@ -51,16 +51,9 @@ function Contact({ onToast }) {
                 <div className="card border-0 shadow-sm h-100 hover-card">
                   <div className="card-body p-4">
                     <h2 className="h5 mb-3">Contact Information</h2>
-                    <div className="alert alert-light border mb-3">I usually respond within 24 to 48 hours.</div>
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item px-0">
-                        <strong>Name:</strong> MD Saimum Al Mahmud Aditto
-                      </li>
-                      <li className="list-group-item px-0">
                         <strong>Location:</strong> Vassantek, Dhaka Cantonment, Bangladesh
-                      </li>
-                      <li className="list-group-item px-0">
-                        <strong>University:</strong> North South University
                       </li>
                       <li className="list-group-item px-0">
                         <strong>GitHub:</strong>{' '}
@@ -86,10 +79,6 @@ function Contact({ onToast }) {
                         </a>
                       </li>
                     </ul>
-                    <div className="mt-3">
-                      <span className="badge text-bg-primary me-1">Open to Work</span>
-                      <span className="badge text-bg-success">Student Developer</span>
-                    </div>
                   </div>
                 </div>
               </ScrollReveal>

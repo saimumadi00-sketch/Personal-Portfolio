@@ -38,11 +38,8 @@ function Skills() {
         <section className="mb-4">
           <h2 className="display-6 fw-semibold mb-2">Technical Toolkit</h2>
           <p className="text-secondary mb-3">
-            A summary of the technical and soft skills developed through coursework, projects, and self-learning.
+            Skills used across the portfolio, coursework apps, and ML prototypes.
           </p>
-          <div className="alert alert-info border-0 shadow-sm mb-0">
-            Current focus: strengthening full-stack fundamentals and building deployment-ready applications.
-          </div>
         </section>
 
         <section className="mb-5">
@@ -125,9 +122,6 @@ function Skills() {
             <div className="card border-0 shadow-sm hover-card">
               <div className="card-body p-4">
                 <h2 className="h5 mb-3">Soft Skills and Languages</h2>
-                <p className="mb-3 text-secondary">
-                  Core collaboration strengths and communication skills used in team projects.
-                </p>
                 <div className="mb-3">
                   {skills.soft.map((skill) => (
                     <span className="badge rounded-pill text-bg-dark me-2 mb-2 soft-pill" key={skill}>
@@ -137,7 +131,7 @@ function Skills() {
                 </div>
                 <div>
                   <span className="badge text-bg-success me-2 soft-pill">Bengali - Native</span>
-                  <span className="badge text-bg-primary soft-pill">English - Fluent</span>
+                  <span className="badge text-bg-primary soft-pill">English - Advanced</span>
                 </div>
               </div>
             </div>

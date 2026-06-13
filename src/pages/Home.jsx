@@ -9,19 +9,8 @@ import StatCounter from '../components/StatCounter'
 import { useTheme } from '../context/ThemeContext'
 import quotesData from '../data/quotes'
 import statsData from '../data/stats'
-import useScrollSpy from '../hooks/useScrollSpy'
 import { pageVariants } from '../utils/variants'
 import StarField from '../components/StarField'
-import LazyImage from '../components/LazyImage'
-
-const homeSections = [
-  { id: 'home-intro', label: 'Intro' },
-  { id: 'home-highlights', label: 'Highlights' },
-  { id: 'home-stats', label: 'Stats' },
-  { id: 'home-links', label: 'Links' },
-]
-
-const homeSectionIds = homeSections.map((section) => section.id)
 
 function getGreeting() {
   const hour = new Date().getHours()
@@ -34,7 +23,6 @@ function getGreeting() {
 
 function Home() {
   const { darkMode } = useTheme()
-  const activeSection = useScrollSpy(homeSectionIds)
   const [typewriterText, setTypewriterText] = useState('')
   const [showModal, setShowModal] = useState(false)
   const charIndex = useRef(0)
@@ -44,11 +32,7 @@ function Home() {
 
   useEffect(() => {
     const phrases = [
-      'Computer Science Student',
-      'Aspiring Web Developer',
-      'Frontend Enthusiast',
-      'Problem Solver',
-      'NSU - Final Year',
+      'CS student at NSU Dhaka - building things for the web.',
     ]
 
     const type = () => {
@@ -117,77 +101,34 @@ function Home() {
         <div className="hero-glow" aria-hidden="true"></div>
         <StarField />
         <div className="container position-relative" style={{ zIndex: 2 }}>
-          <div className="row g-4 align-items-center">
-              <div className="col-12 col-lg-8">
-                <p
-                  className="small text-uppercase mb-2"
-                  style={{ color: 'rgba(255,255,255,0.5)', letterSpacing: '0.16em' }}
-                >
-                  {getGreeting()}, visitor.
-                </p>
-                <span className="badge text-bg-primary mb-3">Open to Internship Opportunities</span>
-                <h1 className="fw-bold mb-2" style={{ color: '#fff', fontSize: 'clamp(2.5rem,6vw,4rem)' }}>
-                  Hi, I&apos;m Saimum.
-                </h1>
-                <p className="lead mb-4">
-                  <span id="typewriterText" style={{ color: '#6ea8fe' }}>
-                    {typewriterText}
-                  </span>
-                </p>
-                <p className="fs-5 mb-4" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '680px' }}>
-                  I build clean, responsive websites and enjoy solving real-world problems through practical software
-                  projects.
-                </p>
-                <div className="d-flex flex-wrap gap-2 mt-2">
-                  <Link className="btn btn-primary btn-lg" to="/projects">
-                    View My Projects
-                  </Link>
-                  <button className="btn btn-outline-light btn-lg" type="button" onClick={() => setShowModal(true)}>
-                    Quick Intro
-                  </button>
-                </div>
-                <div className="d-flex flex-wrap gap-2 mt-4" aria-label="Home sections">
-                  {homeSections.map((section) => (
-                    <a
-                      href={`#${section.id}`}
-                      className={`btn btn-sm ${
-                        activeSection === section.id ? 'btn-light text-dark' : 'btn-outline-light'
-                      }`}
-                      key={section.id}
-                    >
-                      {section.label}
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <div className="col-12 col-lg-4 d-flex flex-column gap-0 gap-lg-3">
-                {/* Portrait */}
-                <LazyImage
-                  src="/portrait.jpeg"
-                  alt="MD Saimum Al Mahmud Aditto"
-                  className="hero-portrait"
-                  wrapperClassName="hero-portrait-wrap"
-                  style={{ width: '100%' }}
-                />
-                {/* Current Focus */}
-                <div className="hero-focus-card">
-                  <h2 className="h5 mb-3">Current Focus</h2>
-                  <p className="mb-2">
-                    <span className="badge text-bg-light text-dark me-1">Frontend</span>
-                    HTML, CSS, Bootstrap, JavaScript
-                  </p>
-                  <p className="mb-2">
-                    <span className="badge text-bg-light text-dark me-1">Backend</span>
-                    Python and Java fundamentals
-                  </p>
-                  <p className="mb-0">
-                    <span className="badge text-bg-light text-dark me-1">Goal</span>
-                    Software Engineering or Web Dev internship
-                  </p>
-                </div>
+          <div className="row align-items-center">
+              <div className="col-12 col-lg-10 col-xl-8 text-center text-lg-start">
+              <p
+                className="small text-uppercase mb-2"
+                style={{ color: 'rgba(255,255,255,0.5)', letterSpacing: '0.16em' }}
+              >
+                {getGreeting()}, visitor.
+              </p>
+              <span className="badge text-bg-primary mb-3">Open to Internship Opportunities</span>
+              <h1 className="fw-bold mb-2" style={{ color: '#fff', fontSize: 'clamp(2.5rem,6vw,4rem)' }}>
+                Hi, I&apos;m Saimum.
+              </h1>
+              <p className="lead mb-4">
+                <span id="typewriterText" style={{ color: '#6ea8fe' }}>
+                  {typewriterText}
+                </span>
+              </p>
+              <div className="d-flex flex-wrap gap-2 mt-2 justify-content-center justify-content-lg-start">
+                <Link className="btn btn-primary btn-lg" to="/projects">
+                  View My Projects
+                </Link>
+                <button className="btn btn-outline-light btn-lg" type="button" onClick={() => setShowModal(true)}>
+                  Quick Intro
+                </button>
               </div>
             </div>
           </div>
+        </div>
         <div className="position-absolute bottom-0 start-50 translate-middle-x mb-4" aria-hidden="true">
           <i className="bi bi-chevron-down scroll-indicator"></i>
         </div>
@@ -266,9 +207,9 @@ function Home() {
         <section id="home-links">
           <div className="row g-4 row-cols-1 row-cols-md-3">
             {[
-              { title: 'About Me', text: 'Learn more about my background, education, and technical interests.', to: '/about' },
-              { title: 'Skills', text: 'Review my language proficiency, tools, and collaboration strengths.', to: '/skills' },
-              { title: 'Contact', text: 'Reach out for collaboration, project discussions, or opportunities.', to: '/contact' },
+              { title: 'About Me', text: "Background, work experience, and what I'm up to now.", to: '/about' },
+              { title: 'Skills', text: 'Languages, frameworks, and tools I use daily.', to: '/skills' },
+              { title: 'Contact', text: 'Email, GitHub, and a form - all in one place.', to: '/contact' },
             ].map((card, index) => (
               <div className="col" key={card.title}>
                 <ScrollReveal direction="up" delay={index * 0.1}>
@@ -290,7 +231,7 @@ function Home() {
             className="mt-5 py-5 px-4 rounded-4"
             style={{ background: 'linear-gradient(135deg,#0d1117,#1a3a5c)' }}
           >
-            <h2 className="h4 text-white mb-4 text-center">Words I Code By</h2>
+            <h2 className="h4 text-white mb-4 text-center">Principles</h2>
             <div className="row g-4 row-cols-1 row-cols-md-3">
               {quotesData.map((quote, i) => (
                 <div className="col" key={quote.author}>
@@ -322,8 +263,8 @@ function Home() {
                   <button type="button" className="btn-close" onClick={() => setShowModal(false)} aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
-                  I am a final-year Computer Science student at North South University in Dhaka with a strong interest in
-                  modern web development and software engineering.
+                  I am a final-year CSE student at North South University in Dhaka, focused on web development and
+                  practical software engineering.
                 </div>
                 <div className="modal-footer">
                   <Link className="btn btn-primary" to="/about" onClick={() => setShowModal(false)}>

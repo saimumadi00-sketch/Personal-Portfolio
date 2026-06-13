@@ -8,7 +8,7 @@ import SEOHead from '../components/SEOHead'
 import projectsData from '../data/projects'
 import { pageVariants } from '../utils/variants'
 
-const filters = ['All', 'Web', 'Python', 'Machine Learning', 'React', 'C']
+const filters = ['All', 'Web', 'Python', 'Java', 'C']
 const webTags = ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'React', 'Vite', 'TypeScript', 'Supabase', 'Node.js', 'Express']
 
 function matchesFilter(project, selectedFilter) {
@@ -17,10 +17,9 @@ function matchesFilter(project, selectedFilter) {
   return project.tags.includes(selectedFilter)
 }
 
-function Projects({ onToast }) {
+function Projects() {
   const [filter, setFilter] = useState('All')
   const [search, setSearch] = useState('')
-  const [detailTitle, setDetailTitle] = useState(null)
   const visibleProjects = projectsData.filter((project) =>
     matchesFilter(project, filter) &&
     (search === '' ||
@@ -32,11 +31,6 @@ function Projects({ onToast }) {
 
   const handleFilter = (selectedFilter) => {
     setFilter(selectedFilter)
-  }
-
-  const handleShowDetail = (title) => {
-    setDetailTitle(title)
-    onToast?.(`${title} details opened`, 'info')
   }
 
   return (
@@ -56,12 +50,6 @@ function Projects({ onToast }) {
           <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
             <h2 className="display-6 fw-semibold mb-0">Selected Work</h2>
             <span className="badge text-bg-dark">{visibleProjects.length} Visible Projects</span>
-          </div>
-          <p className="text-secondary">
-            These are selected projects completed through university coursework and personal learning.
-          </p>
-          <div className="alert alert-primary border-0 shadow-sm">
-            Most projects focus on practical workflows, clean structure, and consistent user experience.
           </div>
         </section>
 
@@ -96,18 +84,11 @@ function Projects({ onToast }) {
           </div>
         </section>
 
-        {detailTitle && (
-          <div className="alert alert-info alert-dismissible fade show shadow-sm" role="alert">
-            <strong>{detailTitle}</strong> uses React state to open this project detail alert.
-            <button type="button" className="btn-close" aria-label="Close" onClick={() => setDetailTitle(null)}></button>
-          </div>
-        )}
-
         <section>
           <div className="row row-cols-1 row-cols-md-2 g-4">
             {visibleProjects.map((project) => (
               <div className="col" key={project.id}>
-                <FlipCard {...project} onShowDetail={handleShowDetail} />
+                <FlipCard {...project} />
               </div>
             ))}
           </div>
@@ -124,7 +105,6 @@ function Projects({ onToast }) {
                       <tr>
                         <th scope="col">Project</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Next Step</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -133,21 +113,18 @@ function Projects({ onToast }) {
                         <td>
                           <span className="badge text-bg-success">Live</span>
                         </td>
-                        <td>Add case studies and deployment links</td>
                       </tr>
                       <tr>
                         <td>Grade Calculator</td>
                         <td>
                           <span className="badge text-bg-warning">Improving</span>
                         </td>
-                        <td>Export results to CSV</td>
                       </tr>
                       <tr>
                         <td>Registration System</td>
                         <td>
                           <span className="badge text-bg-secondary">Academic</span>
                         </td>
-                        <td>Refactor data storage</td>
                       </tr>
                     </tbody>
                   </table>

@@ -3,48 +3,48 @@ import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
-import Timeline from '../components/Timeline'
 import { useTheme } from '../context/ThemeContext'
 import funFacts from '../data/funFacts'
 import socialLinks from '../data/socialLinks'
-import timelineData from '../data/timeline'
 import { pageVariants } from '../utils/variants'
 
-const courses = [
-  'Data Structures & Algorithms',
-  'Web Technologies (CSE482)',
-  'Database Systems',
-  'Software Engineering',
-  'Operating Systems',
-  'Computer Networks',
-  'Machine Learning',
-  'Object-Oriented Programming',
-]
-
 const interests = [
-  { icon: 'bi-code-slash',     label: 'Frontend Development' },
-  { icon: 'bi-robot',          label: 'Machine Learning'      },
-  { icon: 'bi-phone',          label: 'Mobile-First Design'   },
-  { icon: 'bi-diagram-3',      label: 'System Architecture'   },
-  { icon: 'bi-github',         label: 'Open Source'           },
-  { icon: 'bi-book',           label: 'Tech Writing'          },
+  { icon: 'bi-code-slash', label: 'Frontend Development' },
+  { icon: 'bi-robot', label: 'Machine Learning' },
+  { icon: 'bi-phone', label: 'Mobile-First Design' },
+  { icon: 'bi-diagram-3', label: 'System Architecture' },
+  { icon: 'bi-github', label: 'Open Source' },
+  { icon: 'bi-book', label: 'Tech Writing' },
 ]
 
 const values = [
   {
     icon: 'bi-bullseye',
     title: 'Clean Code',
-    desc: 'I write code for the next developer, not just the compiler. Readable, consistent, and well-structured.',
+    desc: 'I keep coursework and portfolio code readable enough to revisit after the semester ends.',
   },
   {
     icon: 'bi-person-check',
     title: 'User-First',
-    desc: 'Every interface decision starts with the person using it — not the technology behind it.',
+    desc: 'Customer care work taught me to listen first, then solve the actual problem in front of me.',
   },
   {
     icon: 'bi-arrow-repeat',
     title: 'Continuous Learning',
-    desc: 'Technology moves fast. I stay curious, follow new tools closely, and apply what I learn.',
+    desc: 'I turn CSE coursework into shipped projects so the learning has a visible result.',
+  },
+]
+
+const workExperience = [
+  {
+    role: 'Customer Care Representative',
+    org: 'ASL BPO',
+    detail: 'Handled night-shift customer queries, complaints, and Salesforce CRM updates.',
+  },
+  {
+    role: 'IT Support Volunteer',
+    org: 'Forestry Department NGO Project, Sreemongol',
+    detail: 'Supported field teams with technical equipment, data collection, and documentation.',
   },
 ]
 
@@ -55,20 +55,16 @@ function About() {
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <SEOHead
         title="About"
-        description="Learn about MD Saimum Al Mahmud Aditto — CSE student at North South University, Dhaka. Background, values, education, and journey."
+        description="Background, work experience, and current focus for MD Saimum Al Mahmud Aditto."
       />
       <PageHeader
         title="About Me"
-        subtitle="The person behind the code"
+        subtitle="Background, work, and what I am doing now"
         breadcrumbs={[{ label: 'Home', to: '/' }, { label: 'About' }]}
       />
 
       <div className="container py-5">
-
-        {/* ── HERO ROW ── */}
         <div className="row g-4 align-items-stretch mb-5">
-
-          {/* Profile panel */}
           <div className="col-lg-4">
             <ScrollReveal direction="left">
               <div className="card border-0 shadow-lg h-100 overflow-hidden">
@@ -89,10 +85,10 @@ function About() {
                   </div>
                   <h1 className="h5 text-white mb-1 fw-bold">MD Saimum Al Mahmud Aditto</h1>
                   <p className="small mb-1" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                    CSE Student · NSU Dhaka
+                    CSE Student - NSU Dhaka
                   </p>
                   <p className="small mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                    Final Year · Enrolled
+                    Final Year - Enrolled
                   </p>
                   <div className="d-flex gap-2 justify-content-center flex-wrap">
                     {Object.values(socialLinks).map((link) => (
@@ -113,16 +109,18 @@ function About() {
                   </div>
                 </div>
 
-                {/* Quick stats row */}
                 <div className="card-body p-0">
                   <div className="row g-0 text-center border-top">
                     {[
-                      { num: '8',   label: 'Projects'  },
-                      { num: '5',   label: 'Labs'       },
-                      { num: '4th', label: 'Year'       },
+                      { num: '8', label: 'Projects' },
+                      { num: '5', label: 'Labs' },
+                      { num: 'Final', label: 'Year' },
                     ].map((s) => (
-                      <div className="col-4 py-3 border-end" key={s.label}
-                        style={{ borderColor: 'rgba(128,128,128,0.15)' }}>
+                      <div
+                        className="col-4 py-3 border-end"
+                        key={s.label}
+                        style={{ borderColor: 'rgba(128,128,128,0.15)' }}
+                      >
                         <div className="fw-bold fs-5">{s.num}</div>
                         <div className="text-muted" style={{ fontSize: '0.72rem' }}>{s.label}</div>
                       </div>
@@ -133,54 +131,27 @@ function About() {
             </ScrollReveal>
           </div>
 
-          {/* Bio panel */}
           <div className="col-lg-8">
             <ScrollReveal direction="right">
               <div className="card border-0 shadow-sm h-100">
                 <div className="card-body p-4 p-lg-5">
-                  <h2 className="h3 fw-bold mb-3">Hi, I'm Saimum.</h2>
+                  <h2 className="h3 fw-bold mb-3">Hi, I&apos;m Saimum.</h2>
                   <p className="text-secondary lh-lg mb-3">
-                    I'm a final-year Computer Science and Engineering student at North South University in Dhaka,
-                    Bangladesh. My journey with code started in 2021 with a single HTML file and
-                    has grown into building full-stack web applications, machine learning pipelines,
-                    and open-source CLI tools.
+                    I'm Saimum - a final-year CSE student at North South University, Dhaka. I build web applications,
+                    ML pipelines, and CLI tools, and I care about code that is readable, maintainable, and actually
+                    ships.
                   </p>
-                  <p className="text-secondary lh-lg mb-3">
-                    I care deeply about the quality of what I build — not just whether it works,
-                    but whether it's readable, accessible, and maintainable. I've spent the last
-                    four years at NSU pushing through algorithm courses, database systems, and
-                    software engineering — and spending an equal amount of time on personal
-                    projects that actually ship.
+                  <p className="text-secondary lh-lg mb-0">
+                    Outside university I've worked as a Customer Care Representative at ASL BPO, volunteered as IT
+                    support for a Forestry Department NGO in Sreemongol, and served as Class Representative in high
+                    school and college. I'm currently open to software engineering and web development internships.
                   </p>
-                  <p className="text-secondary lh-lg mb-3">
-                    Beyond university I've worked as a Customer Care Representative at ASL BPO,
-                    volunteered as IT support on a Forestry Department NGO project in Sreemongol,
-                    and served as Class Representative in both high school and college — experiences
-                    that shaped my communication, responsibility, and people skills.
-                  </p>
-                  <p className="text-secondary lh-lg mb-4">
-                    Outside of studying I follow the latest in frontend tooling, write
-                    occasionally about things I've built, and enjoy the challenge of making
-                    complex systems feel simple to the person using them.
-                  </p>
-                  <div className="d-flex flex-wrap gap-2">
-                    <span className="badge text-bg-primary">Web Development</span>
-                    <span className="badge text-bg-success">Machine Learning</span>
-                    <span className="badge text-bg-secondary">Systems Programming</span>
-                    <span className="badge text-bg-warning">Clean Code</span>
-                    <span className="badge text-bg-info">Open Source</span>
-                  </div>
-                  <div className="d-flex flex-wrap gap-2 mt-4">
-                    <Link className="btn btn-primary" to="/projects">See My Projects</Link>
-                    <Link className="btn btn-outline-secondary" to="/contact">Get in Touch</Link>
-                  </div>
                 </div>
               </div>
             </ScrollReveal>
           </div>
         </div>
 
-        {/* ── VALUES ── */}
         <ScrollReveal direction="up">
           <div className="row g-4 mb-5">
             {values.map((v, i) => (
@@ -202,13 +173,8 @@ function About() {
           </div>
         </ScrollReveal>
 
-        {/* ── DETAILS + SIDEBAR ── */}
         <div className="row g-4 mb-5">
-
-          {/* Left — details */}
           <div className="col-lg-8">
-
-            {/* Personal details — no toggle, always visible */}
             <ScrollReveal direction="left">
               <div className="card border-0 shadow-sm hover-card mb-4">
                 <div className="card-body p-4">
@@ -217,18 +183,20 @@ function About() {
                   </h2>
                   <div className="row g-3">
                     {[
-                      { label: 'Full Name',   value: 'MD Saimum Al Mahmud Aditto'          },
-                      { label: 'Location',    value: 'Vassantek, Dhaka Cantonment, Bangladesh' },
-                      { label: 'University',  value: 'North South University'              },
-                      { label: 'Major',       value: 'B.Sc. Computer Science & Engineering (CSE)' },
-                      { label: 'Year',        value: 'Final Year (Enrolled)'               },
-                      { label: 'Email',       value: 'saimumadi00@gmail.com'               },
-                      { label: 'Languages',   value: 'Bengali (Native), English (Advanced)' },
-                      { label: 'Status',      value: 'Open to internships & collaboration' },
+                      { label: 'Full Name', value: 'MD Saimum Al Mahmud Aditto' },
+                      { label: 'Location', value: 'Vassantek, Dhaka Cantonment, Bangladesh' },
+                      { label: 'University', value: 'North South University' },
+                      { label: 'Major', value: 'B.Sc. Computer Science & Engineering (CSE)' },
+                      { label: 'Year', value: 'Final Year (Enrolled)' },
+                      { label: 'Email', value: 'saimumadi00@gmail.com' },
+                      { label: 'Languages', value: 'Bengali (Native), English (Advanced)' },
+                      { label: 'Status', value: 'Available for collaboration' },
                     ].map((row) => (
                       <div className="col-12 col-sm-6" key={row.label}>
-                        <p className="small text-muted mb-0 text-uppercase fw-semibold"
-                           style={{ fontSize: '0.68rem', letterSpacing: '0.08em' }}>
+                        <p
+                          className="small text-muted mb-0 text-uppercase fw-semibold"
+                          style={{ fontSize: '0.68rem', letterSpacing: '0.08em' }}
+                        >
                           {row.label}
                         </p>
                         <p className="mb-0 fw-medium">{row.value}</p>
@@ -239,8 +207,26 @@ function About() {
               </div>
             </ScrollReveal>
 
-            {/* Interests */}
             <ScrollReveal direction="left" delay={0.05}>
+              <div className="card border-0 shadow-sm hover-card mb-4">
+                <div className="card-body p-4">
+                  <h2 className="h5 fw-bold mb-3">
+                    <i className="bi bi-briefcase-fill me-2 text-primary"></i>Work Experience
+                  </h2>
+                  <div className="d-grid gap-3">
+                    {workExperience.map((item) => (
+                      <div key={item.role}>
+                        <p className="fw-bold mb-0">{item.role}</p>
+                        <p className="small text-primary mb-1">{item.org}</p>
+                        <p className="small text-secondary mb-0">{item.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal direction="left" delay={0.1}>
               <div className="card border-0 shadow-sm hover-card mb-4">
                 <div className="card-body p-4">
                   <h2 className="h5 fw-bold mb-3">
@@ -264,55 +250,14 @@ function About() {
                 </div>
               </div>
             </ScrollReveal>
-
-            {/* Timeline */}
-            <ScrollReveal direction="up">
-              <h2 className="h4 fw-bold mb-4">
-                <i className="bi bi-clock-history me-2 text-primary"></i>My Journey
-              </h2>
-              <Timeline items={timelineData} />
-            </ScrollReveal>
           </div>
 
-          {/* Right sidebar */}
           <div className="col-lg-4 d-flex flex-column gap-4">
-
-            {/* Education */}
-            <ScrollReveal direction="right">
-              <div className="card border-0 shadow-sm hover-card">
-                <div className="card-body p-4">
-                  <h2 className="h5 fw-bold mb-3">
-                    <i className="bi bi-mortarboard-fill me-2 text-primary"></i>Education
-                  </h2>
-                  <div className="mb-3 pb-3 border-bottom">
-                    <p className="fw-bold mb-0">North South University</p>
-                    <p className="small text-primary mb-1">B.Sc. Computer Science & Engineering (CSE) · 2021–Present</p>
-                    <p className="small text-muted mb-0">Dhaka, Bangladesh</p>
-                  </div>
-                  <div>
-                    <p className="small fw-semibold text-uppercase text-muted mb-2"
-                       style={{ letterSpacing: '0.08em' }}>
-                      Relevant Courses
-                    </p>
-                    <div className="d-flex flex-wrap gap-1">
-                      {courses.map((c) => (
-                        <span key={c} className="badge text-bg-light border text-dark"
-                              style={{ fontSize: '0.7rem' }}>
-                          {c}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Fun Facts */}
             <ScrollReveal direction="right" delay={0.1}>
               <div className="card border-0 shadow-sm hover-card">
                 <div className="card-body p-4">
                   <h2 className="h5 fw-bold mb-3">
-                    <i className="bi bi-lightning-charge-fill me-2 text-warning"></i>Fun Facts
+                    <i className="bi bi-lightning-charge-fill me-2 text-warning"></i>Beyond Code
                   </h2>
                   <ul className="list-unstyled d-grid gap-2 mb-0">
                     {funFacts.map((fact) => (
@@ -326,38 +271,31 @@ function About() {
               </div>
             </ScrollReveal>
 
-            {/* Currently */}
             <ScrollReveal direction="right" delay={0.15}>
               <div className="card border-0 shadow-sm hover-card">
                 <div className="card-body p-4">
                   <h2 className="h5 fw-bold mb-3">
-                    <i className="bi bi-broadcast me-2 text-success"></i>Currently
+                    <i className="bi bi-broadcast me-2 text-success"></i>Right Now
                   </h2>
                   <ul className="list-unstyled d-grid gap-2 mb-0">
                     <li className="d-flex align-items-start gap-2">
                       <span className="badge text-bg-success mt-1 flex-shrink-0">Now</span>
-                      <span className="small text-secondary">Final year at NSU — preparing to graduate</span>
+                      <span className="small text-secondary">Finishing final-year CSE coursework at NSU</span>
                     </li>
                     <li className="d-flex align-items-start gap-2">
                       <span className="badge text-bg-primary mt-1 flex-shrink-0">Build</span>
-                      <span className="small text-secondary">Improving this portfolio with new features</span>
+                      <span className="small text-secondary">Maintaining a React + Vite portfolio deployed on Vercel</span>
                     </li>
                     <li className="d-flex align-items-start gap-2">
-                      <span className="badge text-bg-warning mt-1 flex-shrink-0" style={{color:'#000'}}>Open</span>
-                      <span className="small text-secondary">Seeking internships in web or ML engineering</span>
-                    </li>
-                    <li className="d-flex align-items-start gap-2">
-                      <span className="badge text-bg-secondary mt-1 flex-shrink-0">Read</span>
-                      <span className="small text-secondary">Following React 19 ecosystem updates</span>
+                      <span className="badge text-bg-secondary mt-1 flex-shrink-0">Study</span>
+                      <span className="small text-secondary">Practicing web development and machine learning fundamentals</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </ScrollReveal>
-
           </div>
         </div>
-
       </div>
     </motion.div>
   )
