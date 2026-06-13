@@ -71,10 +71,10 @@ function ContactForm({ onSuccess }) {
 
   const handleChange = (event) => {
     const { name, type, checked, value } = event.target
-    const nextValue = type === 'checkbox' ? checked : value
+    const nextValue = type === 'checkbox' ? checked : sanitize(value)
 
     setForm((prev) => ({ ...prev, [name]: nextValue }))
-    if (name === 'message') setCharCount(value.length)
+    if (name === 'message') setCharCount(nextValue.length)
     setFieldError(name, nextValue)
   }
 

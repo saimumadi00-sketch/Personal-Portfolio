@@ -58,8 +58,6 @@ function CursorEffects() {
           e.clientY >= rect.top  && e.clientY <= rect.bottom
         )
         if (inside) {
-          const x = e.clientX - rect.left
-          const y = e.clientY - rect.top
           spotlight.style.opacity = '1'
           spotlight.style.background = `radial-gradient(
             600px circle at ${e.clientX}px ${e.clientY}px,

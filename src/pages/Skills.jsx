@@ -35,13 +35,6 @@ function Skills() {
       />
 
       <div className="container py-5">
-        <section className="mb-4">
-          <h2 className="display-6 fw-semibold mb-2">Technical Toolkit</h2>
-          <p className="text-secondary mb-3">
-            Skills used across the portfolio, coursework apps, and ML prototypes.
-          </p>
-        </section>
-
         <section className="mb-5">
           <div className="row g-4 row-cols-1 row-cols-lg-3">
             <div className="col">
@@ -115,6 +108,9 @@ function Skills() {
               </div>
             ))}
           </div>
+          <p className="text-muted small text-center mt-3">
+            Levels are based on coursework, lab work, and personal projects - not certifications.
+          </p>
         </section>
 
         <section className="mt-5">

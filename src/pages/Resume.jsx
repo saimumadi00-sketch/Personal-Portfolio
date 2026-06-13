@@ -80,12 +80,12 @@ function Resume() {
               <div className="d-grid gap-4">
                 {r.experience.map((exp, i) => (
                   <div key={i} className="resume-exp-item">
-                    <div className="d-flex flex-wrap justify-content-between align-items-start gap-1 mb-1">
+                    <div className="resume-item-header d-flex flex-wrap justify-content-between align-items-start gap-2 mb-1">
                       <div>
                         <h3 className="h6 fw-bold mb-0">{exp.role}</h3>
                         <p className="small text-muted mb-0">{exp.org}</p>
                       </div>
-                      <span className="badge text-bg-light border text-muted">{exp.period}</span>
+                      <span className="resume-period-badge">{exp.period}</span>
                     </div>
                     <ul className="resume-bullets mt-2 mb-0">
                       {exp.bullets.map((b, j) => (
@@ -119,12 +119,12 @@ function Resume() {
               <div className="d-grid gap-3">
                 {r.education.map((edu, i) => (
                   <div key={i} className="resume-exp-item">
-                    <div className="d-flex flex-wrap justify-content-between align-items-start gap-1">
+                    <div className="resume-item-header d-flex flex-wrap justify-content-between align-items-start gap-2">
                       <div>
                         <h3 className="h6 fw-bold mb-0">{edu.degree}</h3>
                         <p className="small text-muted mb-0">{edu.institution} &mdash; {edu.location}</p>
                       </div>
-                      <span className="badge text-bg-light border text-muted">{edu.period}</span>
+                      <span className="resume-period-badge">{edu.period}</span>
                     </div>
                     {edu.notes && (
                       <p className="small text-secondary mt-1 mb-0">{edu.notes}</p>
