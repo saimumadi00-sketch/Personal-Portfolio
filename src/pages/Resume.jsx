@@ -111,6 +111,27 @@ function Resume() {
               </ul>
             </section>
 
+            <section className="resume-section mb-4">
+              <h2 className="resume-section-title">
+                <i className="bi bi-patch-check me-2 text-primary"></i>
+                Certification
+              </h2>
+              <div className="d-grid gap-3">
+                {r.certifications.map((cert) => (
+                  <div key={cert.name} className="resume-exp-item">
+                    <h3 className="h6 fw-bold mb-0">{cert.name}</h3>
+                    <p className="small text-muted mb-1">Issued by {cert.issuer}</p>
+                    <p className="small text-secondary mb-0">Issued: {cert.issued}</p>
+                    {cert.credentialUrl && (
+                      <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="small text-primary">
+                        Verify credential
+                      </a>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+
             {/* Education */}
             <section className="resume-section mb-4">
               <h2 className="resume-section-title">
@@ -154,6 +175,12 @@ function Resume() {
                     </a>
                   </li>
                   <li>
+                    <i className="bi bi-linkedin me-2"></i>
+                    <a href={r.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary">
+                      linkedin.com/in/saimum
+                    </a>
+                  </li>
+                  <li>
                     <i className="bi bi-globe2 me-2"></i>
                     <a href={r.site} target="_blank" rel="noopener noreferrer" className="text-primary">
                       saimum-aditto.vercel.app
@@ -170,15 +197,17 @@ function Resume() {
                   <i className="bi bi-code-slash me-2 text-primary"></i>Skills
                 </h2>
                 <div className="small text-secondary d-grid gap-2">
-                  <p className="mb-0"><strong>Languages:</strong> HTML/CSS, JavaScript, Python, Java, C, SQL</p>
-                  <p className="mb-0"><strong>Frameworks:</strong> React, Bootstrap, Node.js</p>
-                  <p className="mb-0"><strong>Tools:</strong> Git, VS Code, Salesforce, MS Office</p>
+                  <p className="mb-0"><strong>Programming:</strong> {r.skills.programming.join(', ')}</p>
+                  <p className="mb-0"><strong>Web:</strong> {r.skills.webDevelopment.join(', ')}</p>
+                  <p className="mb-0"><strong>ML / CV:</strong> {r.skills.machineLearning.join(', ')}</p>
+                  <p className="mb-0"><strong>Systems & Security:</strong> {r.skills.systemsSecurity.join(', ')}</p>
+                  <p className="mb-0"><strong>Tools:</strong> {r.skills.tools.join(', ')}</p>
                 </div>
               </div>
             </div>
 
             {/* Languages */}
-            <div className="card border-0 shadow-sm">
+            <div className="card border-0 shadow-sm mb-4">
               <div className="card-body">
                 <h2 className="resume-section-title mb-3">
                   <i className="bi bi-translate me-2 text-primary"></i>Languages
@@ -186,6 +215,19 @@ function Resume() {
                 <div className="d-flex flex-wrap gap-2">
                   {r.languages.map((l) => (
                     <span key={l} className="badge text-bg-dark">{l}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="card border-0 shadow-sm">
+              <div className="card-body">
+                <h2 className="resume-section-title mb-3">
+                  <i className="bi bi-compass me-2 text-primary"></i>Currently Exploring
+                </h2>
+                <div className="d-flex flex-wrap gap-2">
+                  {r.currentlyExploring.map((item) => (
+                    <span key={item} className="badge text-bg-primary">{item}</span>
                   ))}
                 </div>
               </div>

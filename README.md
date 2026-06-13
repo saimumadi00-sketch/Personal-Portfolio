@@ -1,4 +1,4 @@
-# Md Saimum Al Mahmud - Personal Website
+# Saimum Al-Mahmud - Personal Website
 
 This repository powers my personal portfolio website:
 
@@ -8,7 +8,7 @@ It is maintained as a long-term home for my background, projects, skills, and co
 
 ## Owner
 
-Md Saimum Al Mahmud  
+Saimum Al-Mahmud  
 Computer Science, 4th Year  
 North South University, Dhaka
 

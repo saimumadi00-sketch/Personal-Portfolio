@@ -1,22 +1,24 @@
 const resume = {
-  name: 'MD Saimum Al Mahmud Aditto',
-  title: 'Computer Science & Engineering Student',
+  name: 'Saimum Al-Mahmud',
+  title: 'Computer Science Student',
   university: 'North South University, Dhaka',
   year: 'Final Year (Enrolled)',
-  email: 'saimumadi00@gmail.com',
+  email: 'aditto.nikolai@gmail.com',
   altEmail: 'saimum.mahmud@northsouth.edu',
   phone: '01631351004',
   github: 'https://github.com/saimumadi00-sketch',
+  linkedin: 'https://linkedin.com/in/saimum',
   site: 'https://saimum-aditto.vercel.app',
   location: 'Vassantek, Dhaka Cantonment, Bangladesh',
 
+  introduction: [
+    'Computer Science student focused on machine learning, computer vision, full-stack web development and systems security.',
+    'I build practical software projects involving artificial intelligence, web applications, systems programming and cybersecurity.',
+  ],
+
   summary:
-    'Final-year Computer Science and Engineering student at ' +
-    'North South University, Dhaka. A responsible, detail-oriented ' +
-    'developer with hands-on experience in customer service, IT support, ' +
-    'and web development. Passionate about building clean, user-focused ' +
-    'software and actively seeking internship opportunities in software ' +
-    'engineering and web development.',
+    'Computer Science student focused on machine learning, computer vision, full-stack web development and systems security. ' +
+    'I build practical software projects involving artificial intelligence, web applications, systems programming and cybersecurity.',
 
   education: [
     {
@@ -24,8 +26,7 @@ const resume = {
       institution: 'North South University',
       location: 'Dhaka, Bangladesh',
       period: '2021 - Present',
-      notes: 'Web Technologies, Algorithms, Database Systems, ' +
-             'Software Engineering, Machine Learning, OS, Networks',
+      notes: 'Web Technologies, Algorithms, Database Systems, Software Engineering, Machine Learning, OS, Networks',
     },
     {
       degree: 'Higher Secondary Certificate (HSC)',
@@ -44,8 +45,7 @@ const resume = {
       bullets: [
         'Handled customer queries and complaints on a night-shift schedule',
         'Used Salesforce CRM to log and resolve customer issues',
-        'Developed strong communication and client service skills ' +
-        'under high-pressure conditions',
+        'Developed strong communication and client service skills under high-pressure conditions',
       ],
     },
     {
@@ -53,37 +53,47 @@ const resume = {
       org: 'NGO Project - Forestry Department, Sreemongol',
       period: '2022',
       bullets: [
-        'Provided IT support for an NGO environmental project ' +
-        'organized by the Forestry Department of Bangladesh',
-        'Managed technical equipment and assisted field teams ' +
-        'with data collection and documentation',
+        'Provided IT support for an NGO environmental project organized by the Forestry Department of Bangladesh',
+        'Managed technical equipment and assisted field teams with data collection and documentation',
       ],
     },
   ],
 
   skills: {
-    languages: [
-      'HTML/CSS', 'JavaScript', 'Python', 'Java', 'C', 'SQL',
+    programming: ['C', 'Python', 'JavaScript', 'HTML', 'CSS', 'SQL'],
+    webDevelopment: ['React', 'Vite', 'Node.js', 'Express.js', 'Bootstrap', 'REST APIs', 'MongoDB'],
+    machineLearning: ['TensorFlow', 'Keras', 'Scikit-learn', 'OpenCV', 'MediaPipe', 'YOLO', 'BiLSTM', 'Transformers.js'],
+    systemsSecurity: [
+      'Linux',
+      'POSIX Threads',
+      'Multithreading',
+      'Synchronisation',
+      'Network Intrusion Detection',
+      'Security Logging',
     ],
-    frameworks: [
-      'React', 'Bootstrap', 'framer-motion', 'Node.js', 'Express',
-    ],
-    tools: [
-      'Git', 'GitHub', 'VS Code', 'Vite', 'MySQL',
-      'MS Office', 'Salesforce', 'MediaPipe', 'Keras',
-    ],
-    concepts: [
-      'REST APIs', 'OOP', 'Data Structures', 'Algorithms',
-      'Machine Learning', 'Computer Vision', 'SEO Basics',
-      'Cyber Security Basics', 'Social Media Management',
-    ],
+    tools: ['Git', 'GitHub', 'VS Code', 'Google Colab', 'Kaggle', 'npm', 'Vercel', 'AWS'],
   },
+
+  certifications: [
+    {
+      name: 'AWS Certification',
+      issuer: 'Amazon Web Services',
+      issued: 'Details pending',
+      credentialUrl: '',
+    },
+  ],
 
   extracurricular: [
     'British Council member since college',
-    'IT Support role on NGO project by the Forestry ' +
-    'Department at Sreemongol',
+    'IT Support role on NGO project by the Forestry Department at Sreemongol',
     'Class Representative (CR) in high school and college',
+  ],
+
+  currentlyExploring: [
+    'Adaptive IoT honeypots',
+    'Post-quantum secure messaging',
+    'DevSecOps and SBOM automation',
+    'AWS cloud services',
   ],
 
   languages: ['Bengali (Native)', 'English (Advanced)'],

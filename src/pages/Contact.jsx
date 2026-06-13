@@ -9,9 +9,11 @@ import { pageVariants } from '../utils/variants'
 
 function Contact({ onToast }) {
   const [copied, setCopied] = useState(false)
+  const email = socialLinks.email.href.replace('mailto:', '')
+  const githubLabel = socialLinks.github.href.replace('https://', '')
+  const linkedinLabel = socialLinks.linkedin.href.replace('https://', '')
 
   const handleCopyEmail = () => {
-    const email = 'saimumadi00@gmail.com'
     navigator.clipboard.writeText(email).then(() => {
       setCopied(true)
       onToast?.('Email address copied to clipboard!', 'success')
@@ -58,11 +60,11 @@ function Contact({ onToast }) {
                       <li className="list-group-item px-0">
                         <strong>GitHub:</strong>{' '}
                         <a href={socialLinks.github.href} className="link-primary">
-                          github.com/saimumadi00-sketch
+                          {githubLabel}
                         </a>
                       </li>
                       <li className="list-group-item px-0">
-                        <strong>Email:</strong> saimumadi00@gmail.com{' '}
+                        <strong>Email:</strong> {email}{' '}
                         <button
                           className={`btn btn-sm btn-outline-primary copy-email-btn ms-2 ${copied ? 'copied' : ''}`}
                           onClick={handleCopyEmail}
@@ -75,7 +77,7 @@ function Contact({ onToast }) {
                       <li className="list-group-item px-0">
                         <strong>LinkedIn:</strong>{' '}
                         <a href={socialLinks.linkedin.href} className="link-primary">
-                          linkedin.com/in/saimum
+                          {linkedinLabel}
                         </a>
                       </li>
                     </ul>

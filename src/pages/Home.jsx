@@ -21,7 +21,7 @@ const navCards = [
   {
     icon: 'bi-tools',
     title: 'Full Stack',
-    text: 'React, Python, Java, Bootstrap, Node, MySQL.',
+    text: 'React, Node.js, Express.js, MongoDB, Bootstrap.',
     button: 'View Skills',
     to: '/skills',
   },
@@ -46,7 +46,6 @@ function getGreeting() {
 function Home() {
   const { darkMode } = useTheme()
   const [typewriterText, setTypewriterText] = useState('')
-  const [showModal, setShowModal] = useState(false)
   const charIndex = useRef(0)
   const phraseIndex = useRef(0)
   const isDeleting = useRef(false)
@@ -89,30 +88,11 @@ function Home() {
     return () => clearTimeout(timeoutRef.current)
   }, [])
 
-  useEffect(() => {
-    if (!showModal) {
-      document.body.style.overflow = ''
-      return undefined
-    }
-
-    document.body.style.overflow = 'hidden'
-
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') setShowModal(false)
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.body.style.overflow = ''
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [showModal])
-
   return (
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <SEOHead
         title="Home"
-        description="Portfolio of MD Saimum Al Mahmud Aditto: CSE student at NSU Dhaka, web developer, and software engineering intern candidate."
+        description="Portfolio of Saimum Al-Mahmud: Computer Science student at NSU Dhaka focused on machine learning, computer vision, full-stack web development, and systems security."
       />
 
       <section
@@ -148,27 +128,33 @@ function Home() {
                 <Link className="btn btn-primary btn-lg" to="/projects">
                   View My Projects
                 </Link>
-                <button className="btn btn-outline-light btn-lg" type="button" onClick={() => setShowModal(true)}>
-                  Quick Intro
-                </button>
               </div>
             </div>
 
-            <div className="col-lg-5 d-none d-lg-flex justify-content-end">
+            <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-end">
               <motion.div
-                className="hero-code-card shadow-lg"
+                className="hero-visual-stack"
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                aria-label="Developer profile code snippet"
               >
-                <div className="hero-code-titlebar">
-                  <span className="hero-code-dot" style={{ background: '#ff5f56' }}></span>
-                  <span className="hero-code-dot" style={{ background: '#ffbd2e' }}></span>
-                  <span className="hero-code-dot" style={{ background: '#27c93f' }}></span>
-                  <span className="hero-code-filename">saimum.js</span>
+                <div className="hero-portrait-card">
+                  <img
+                    src="/portrait.png"
+                    alt="Saimum Al-Mahmud"
+                    className="hero-traditional-portrait"
+                  />
                 </div>
-                <pre className="hero-code-body"><code><span className="code-keyword">const</span> saimum <span className="code-punct">=</span> <span className="code-punct">{'{'}</span>{'\n  '}<span className="code-key">role</span><span className="code-punct">:</span>{'     '}<span className="code-string">&quot;CSE Student @ NSU&quot;</span><span className="code-punct">,</span>{'\n  '}<span className="code-key">building</span><span className="code-punct">:</span> <span className="code-string">&quot;web apps + ML tools&quot;</span><span className="code-punct">,</span>{'\n  '}<span className="code-key">location</span><span className="code-punct">:</span> <span className="code-string">&quot;Dhaka, Bangladesh&quot;</span><span className="code-punct">,</span>{'\n  '}<span className="code-key">open</span><span className="code-punct">:</span>{'     '}<span className="code-keyword">true</span><span className="code-punct">,</span> <span className="code-comment">// internships</span>{'\n'}<span className="code-punct">{'}'}</span></code></pre>
+
+                <div className="hero-code-card shadow-lg" aria-label="Developer profile code snippet">
+                  <div className="hero-code-titlebar">
+                    <span className="hero-code-dot" style={{ background: '#ff5f56' }}></span>
+                    <span className="hero-code-dot" style={{ background: '#ffbd2e' }}></span>
+                    <span className="hero-code-dot" style={{ background: '#27c93f' }}></span>
+                    <span className="hero-code-filename">saimum.js</span>
+                  </div>
+                  <pre className="hero-code-body"><code><span className="code-keyword">const</span> saimum <span className="code-punct">=</span> <span className="code-punct">{'{'}</span>{'\n  '}<span className="code-key">role</span><span className="code-punct">:</span>{'     '}<span className="code-string">&quot;CSE Student @ NSU&quot;</span><span className="code-punct">,</span>{'\n  '}<span className="code-key">building</span><span className="code-punct">:</span> <span className="code-string">&quot;web apps + ML tools&quot;</span><span className="code-punct">,</span>{'\n  '}<span className="code-key">location</span><span className="code-punct">:</span> <span className="code-string">&quot;Dhaka, Bangladesh&quot;</span><span className="code-punct">,</span>{'\n  '}<span className="code-key">open</span><span className="code-punct">:</span>{'     '}<span className="code-keyword">true</span><span className="code-punct">,</span> <span className="code-comment">// internships</span>{'\n'}<span className="code-punct">{'}'}</span></code></pre>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -225,46 +211,6 @@ function Home() {
         </section>
       </div>
 
-      {showModal && (
-        <>
-          <div
-            className="modal fade show d-block"
-            tabIndex="-1"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="introModalLabel"
-          >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h2 className="modal-title h5" id="introModalLabel">
-                    Quick Introduction
-                  </h2>
-                  <button type="button" className="btn-close" onClick={() => setShowModal(false)} aria-label="Close"></button>
-                </div>
-                <div className="modal-body">
-                  I am a final-year CSE student at North South University in Dhaka, focused on web development and
-                  practical software engineering.
-                </div>
-                <div className="modal-footer">
-                  <Link className="btn btn-primary" to="/about" onClick={() => setShowModal(false)}>
-                    Read Profile
-                  </Link>
-                  <button type="button" className="btn btn-outline-secondary" onClick={() => setShowModal(false)}>
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button
-            type="button"
-            className="modal-backdrop fade show border-0"
-            aria-label="Close quick introduction"
-            onClick={() => setShowModal(false)}
-          ></button>
-        </>
-      )}
     </motion.div>
   )
 }

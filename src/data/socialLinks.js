@@ -11,7 +11,7 @@ const socialLinks = {
   },
   email: {
     label: 'Email',
-    href: 'mailto:saimumadi00@gmail.com',
+    href: 'mailto:aditto.nikolai@gmail.com',
     icon: 'bi-envelope-fill',
   },
   liveSite: {
