@@ -47,7 +47,14 @@ function Navbar() {
     }
   }, [menuOpen])
 
-  const close = () => setMenuOpen(false)
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }
+
+  const close = () => {
+    setMenuOpen(false)
+    scrollToTop()
+  }
 
   return (
     <>
@@ -69,6 +76,7 @@ function Navbar() {
                   end={link.end}
                   to={link.to}
                   className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+                  onClick={scrollToTop}
                 >
                   {link.label}
                 </NavLink>

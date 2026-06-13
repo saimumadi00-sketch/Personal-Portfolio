@@ -12,13 +12,14 @@ const resume = {
   location: 'Vassantek, Dhaka Cantonment, Bangladesh',
 
   introduction: [
-    'Computer Science student focused on machine learning, computer vision, full-stack web development and systems security.',
-    'I build practical software projects involving artificial intelligence, web applications, systems programming and cybersecurity.',
+    'Computer Science student focused on machine learning, computer vision, full-stack web development, systems security and network security.',
+    'I build practical software projects involving artificial intelligence, web applications, systems programming, cybersecurity and hands-on network analysis.',
   ],
 
   summary:
-    'Computer Science student focused on machine learning, computer vision, full-stack web development and systems security. ' +
-    'I build practical software projects involving artificial intelligence, web applications, systems programming and cybersecurity.',
+    'Computer Science student focused on machine learning, computer vision, full-stack web development, systems security and network security. ' +
+    'I build practical software projects involving artificial intelligence, web applications, systems programming and cybersecurity. ' +
+    'Completed university network security lab work with moderate hands-on experience using Kali Linux and common cybersecurity/networking tools.',
 
   education: [
     {
@@ -26,7 +27,7 @@ const resume = {
       institution: 'North South University',
       location: 'Dhaka, Bangladesh',
       period: '2021 - Present',
-      notes: 'Web Technologies, Algorithms, Database Systems, Software Engineering, Machine Learning, OS, Networks',
+      notes: 'Web Technologies, Algorithms, Database Systems, Software Engineering, Machine Learning, OS, Networks, Network Security',
     },
     {
       degree: 'Higher Secondary Certificate (HSC)',
@@ -65,13 +66,31 @@ const resume = {
     machineLearning: ['TensorFlow', 'Keras', 'Scikit-learn', 'OpenCV', 'MediaPipe', 'YOLO', 'BiLSTM', 'Transformers.js'],
     systemsSecurity: [
       'Linux',
+      'Kali Linux',
       'POSIX Threads',
       'Multithreading',
       'Synchronisation',
+      'Network Security',
+      'Network Traffic Analysis',
+      'Vulnerability Assessment',
       'Network Intrusion Detection',
       'Security Logging',
     ],
-    tools: ['Git', 'GitHub', 'VS Code', 'Google Colab', 'Kaggle', 'npm', 'Vercel', 'AWS'],
+    tools: [
+      'Git',
+      'GitHub',
+      'VS Code',
+      'Google Colab',
+      'Kaggle',
+      'npm',
+      'Vercel',
+      'AWS',
+      'Kali Linux',
+      'Wireshark',
+      'Nmap',
+      'Burp Suite',
+      'Metasploit',
+    ],
   },
 
   certifications: [
@@ -86,11 +105,13 @@ const resume = {
   extracurricular: [
     'British Council member since college',
     'IT Support role on NGO project by the Forestry Department at Sreemongol',
+    'Completed university network security lab work with Kali Linux and common cybersecurity/networking tools',
     'Class Representative (CR) in high school and college',
   ],
 
   currentlyExploring: [
     'Adaptive IoT honeypots',
+    'Network traffic analysis',
     'Post-quantum secure messaging',
     'DevSecOps and SBOM automation',
     'AWS cloud services',

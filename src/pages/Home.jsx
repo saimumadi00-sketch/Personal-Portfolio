@@ -34,6 +34,14 @@ const navCards = [
   },
 ]
 
+const heroFocusItems = [
+  'Machine learning',
+  'Computer vision',
+  'Full-stack web',
+  'Network security',
+  'Kali Linux',
+]
+
 function getGreeting() {
   const hour = new Date().getHours()
   if (hour < 5) return 'Good night'
@@ -131,46 +139,38 @@ function Home() {
               </div>
             </div>
 
-            <div className="col-12 col-lg-5 d-flex flex-column align-items-center align-items-lg-end gap-3 order-1 order-lg-2">
-              {/* Portrait — visible on all screens */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="hero-portrait-wrap"
-                style={{ width: '100%', maxWidth: '260px' }}
-              >
-                <img
-                  src="/portrait.jpeg"
-                  alt="MD Saimum Al Mahmud Aditto"
-                  className="hero-portrait"
-                />
-              </motion.div>
-              {/* Code card — desktop only */}
-              <motion.div
-                className="hero-code-card shadow-lg d-none d-lg-block"
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              >
-                <div className="hero-portrait-card">
-                  <img
-                    src="/portrait.png"
-                    alt="Saimum Al-Mahmud"
-                    className="hero-traditional-portrait"
-                  />
-                </div>
-
-                <div className="hero-code-card shadow-lg" aria-label="Developer profile code snippet">
-                  <div className="hero-code-titlebar">
-                    <span className="hero-code-dot" style={{ background: '#ff5f56' }}></span>
-                    <span className="hero-code-dot" style={{ background: '#ffbd2e' }}></span>
-                    <span className="hero-code-dot" style={{ background: '#27c93f' }}></span>
-                    <span className="hero-code-filename">saimum.js</span>
+            <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-end order-1 order-lg-2">
+              <div className="hero-portrait-stack">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className="hero-portrait-wrap"
+                >
+                  <div className="hero-portrait-card">
+                    <img
+                      src="/portrait.png"
+                      alt="Saimum Al-Mahmud"
+                      className="hero-traditional-portrait"
+                    />
                   </div>
-                  <pre className="hero-code-body"><code><span className="code-keyword">const</span> saimum <span className="code-punct">=</span> <span className="code-punct">{'{'}</span>{'\n  '}<span className="code-key">role</span><span className="code-punct">:</span>{'     '}<span className="code-string">&quot;CSE Student @ NSU&quot;</span><span className="code-punct">,</span>{'\n  '}<span className="code-key">building</span><span className="code-punct">:</span> <span className="code-string">&quot;web apps + ML tools&quot;</span><span className="code-punct">,</span>{'\n  '}<span className="code-key">location</span><span className="code-punct">:</span> <span className="code-string">&quot;Dhaka, Bangladesh&quot;</span><span className="code-punct">,</span>{'\n  '}<span className="code-key">open</span><span className="code-punct">:</span>{'     '}<span className="code-keyword">true</span><span className="code-punct">,</span> <span className="code-comment">// internships</span>{'\n'}<span className="code-punct">{'}'}</span></code></pre>
-                </div>
-              </motion.div>
+                </motion.div>
+
+                <motion.div
+                  className="hero-focus-panel"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45, duration: 0.5 }}
+                  aria-label="Current focus areas"
+                >
+                  <p className="hero-focus-label">Current focus</p>
+                  <div className="hero-focus-tags">
+                    {heroFocusItems.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ const interests = [
   { icon: 'bi-robot', label: 'Machine Learning' },
   { icon: 'bi-camera-video', label: 'Computer Vision' },
   { icon: 'bi-shield-lock', label: 'Systems Security' },
+  { icon: 'bi-router', label: 'Network Security' },
   { icon: 'bi-cloud', label: 'AWS Cloud Services' },
   { icon: 'bi-diagram-3', label: 'Full-Stack Architecture' },
 ]
@@ -53,6 +54,7 @@ const quickStats = [
 const rightNow = [
   { badge: 'Now', badgeClass: 'success', text: 'Finishing final-year CSE coursework at NSU' },
   { badge: 'Build', badgeClass: 'primary', text: 'Building AI, web, systems programming, and cybersecurity projects' },
+  { badge: 'Lab', badgeClass: 'danger', text: 'Completed university network security lab work with moderate Kali Linux practice' },
   { badge: 'Study', badgeClass: 'secondary', text: 'Exploring AWS, DevSecOps, SBOM automation, and secure messaging' },
 ]
 
