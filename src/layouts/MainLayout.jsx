@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion'
-import { Link, Route, Routes, useLocation } from 'react-router-dom'
+import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import BackToTop from '../components/BackToTop'
 import ReadingProgress from '../components/ReadingProgress'
 import CursorEffects from '../components/CursorEffects'
@@ -7,14 +7,11 @@ import Navbar from '../components/Navbar'
 import Toast from '../components/Toast'
 import { useTheme } from '../context/ThemeContext'
 import socialLinks from '../data/socialLinks'
-import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Home from '../pages/Home'
 import Projects from '../pages/Projects'
 import Skills from '../pages/Skills'
 import Resume from '../pages/Resume'
-import Blog from '../pages/Blog'
-import BlogPost from '../pages/BlogPost'
 
 function MainLayout({ toasts, onToast }) {
   const { darkMode } = useTheme()
@@ -27,13 +24,11 @@ function MainLayout({ toasts, onToast }) {
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<Navigate to="/" replace />} />
             <Route path="/projects" element={<Projects onToast={onToast} />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/contact" element={<Contact onToast={onToast} />} />
             <Route path="/resume" element={<Resume />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
           </Routes>
         </AnimatePresence>
       </main>
@@ -56,12 +51,10 @@ function MainLayout({ toasts, onToast }) {
               <ul className="list-unstyled mb-0 d-grid gap-2">
                 {[
                   { to: '/', label: 'Home' },
-                  { to: '/about', label: 'About' },
                   { to: '/projects', label: 'Projects' },
                   { to: '/skills', label: 'Skills' },
                   { to: '/contact', label: 'Contact' },
                   { to: '/resume', label: 'Resume' },
-                  { to: '/blog', label: 'Blog' },
                 ].map((link) => (
                   <li key={link.to}>
                     <Link to={link.to}>{link.label}</Link>

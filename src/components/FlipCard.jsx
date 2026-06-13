@@ -9,6 +9,9 @@ const statusClasses = {
   'Full Stack': 'bg-info text-dark',
   Coursework:   'bg-light text-dark',
   'Web App':    'bg-primary text-white',
+  'Security Lab': 'bg-danger text-white',
+  Prototype:    'bg-warning text-dark',
+  Repository:   'bg-secondary text-white',
 }
 
 function getCategory(tags) {
