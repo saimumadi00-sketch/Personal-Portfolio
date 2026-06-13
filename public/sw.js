@@ -6,8 +6,7 @@ const PRECACHE = [
   '/skills',
   '/contact',
   '/resume',
-  '/blog',
-  '/portrait.jpeg',
+  '/portrait.png',
 ]
 
 self.addEventListener('install', (e) => {

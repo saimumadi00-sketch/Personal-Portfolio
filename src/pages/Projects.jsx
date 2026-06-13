@@ -3,13 +3,25 @@ import { useState } from 'react'
 import FilterBar from '../components/FilterBar'
 import PageHeader from '../components/PageHeader'
 import FlipCard from '../components/FlipCard'
-import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
 import projectsData from '../data/projects'
 import { pageVariants } from '../utils/variants'
 
-const filters = ['All', 'Web', 'Python', 'Java', 'C']
-const webTags = ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'React', 'Vite', 'TypeScript', 'Supabase', 'Node.js', 'Express']
+const filters = ['All', 'Web', 'Python', 'C', 'Security', 'Game']
+const webTags = [
+  'HTML',
+  'CSS',
+  'Bootstrap',
+  'JavaScript',
+  'React',
+  'Vite',
+  'TypeScript',
+  'Supabase',
+  'Node.js',
+  'Express',
+  'Tailwind CSS',
+  'Vercel',
+]
 
 function matchesFilter(project, selectedFilter) {
   if (selectedFilter === 'All') return true
@@ -38,7 +50,7 @@ function Projects() {
       <SEOHead title="Projects" />
       <PageHeader
         title="My Projects"
-        subtitle="Things I've built"
+        subtitle="Public GitHub repositories and deployed work"
         breadcrumbs={[
           { label: 'Home', to: '/' },
           { label: 'Projects' },
@@ -48,7 +60,7 @@ function Projects() {
       <div className="container py-5">
         <section className="mb-4">
           <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
-            <h2 className="display-6 fw-semibold mb-0">Selected Work</h2>
+            <h2 className="display-6 fw-semibold mb-0">GitHub Projects</h2>
             <span className="badge text-bg-dark">{visibleProjects.length} Visible Projects</span>
           </div>
         </section>
@@ -63,7 +75,7 @@ function Projects() {
                 <input
                   type="search"
                   className="form-control border-start-0 ps-0"
-                  placeholder="Search projects by name, tag, or keyword…"
+                  placeholder="Search projects by name, tag, or keyword..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   aria-label="Search projects"
@@ -92,46 +104,6 @@ function Projects() {
               </div>
             ))}
           </div>
-        </section>
-
-        <section className="mt-5">
-          <ScrollReveal direction="up">
-            <div className="card border-0 shadow-sm hover-card">
-              <div className="card-body p-4">
-                <h2 className="h5 mb-3">Project Roadmap</h2>
-                <div className="table-responsive">
-                  <table className="table table-bordered table-hover align-middle mb-0">
-                    <thead className="table-light">
-                      <tr>
-                        <th scope="col">Project</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Portfolio Website</td>
-                        <td>
-                          <span className="badge text-bg-success">Live</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Grade Calculator</td>
-                        <td>
-                          <span className="badge text-bg-warning">Improving</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Registration System</td>
-                        <td>
-                          <span className="badge text-bg-secondary">Academic</span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
         </section>
       </div>
     </motion.div>

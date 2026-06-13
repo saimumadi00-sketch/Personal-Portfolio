@@ -59,30 +59,6 @@ const resume = {
         'with data collection and documentation',
       ],
     },
-    {
-      role: 'Lab Portfolio Project',
-      org: 'NSU CSE482 - Internet & Web Technology',
-      period: '2024 - 2025',
-      bullets: [
-        'Built a 5-page portfolio across 5 progressive labs: ' +
-        'HTML/CSS to Bootstrap to Responsive to JavaScript to React + Vite',
-        'Deployed final React build to Vercel with framer-motion ' +
-        'animations, ThemeContext, and React Router v6',
-        'Implemented PWA support, security headers, and ' +
-        'full mobile responsiveness',
-      ],
-    },
-    {
-      role: 'Human Behaviour Detection System',
-      org: 'NSU Machine Learning Coursework',
-      period: '2024',
-      bullets: [
-        'Built real-time action classifier using MediaPipe ' +
-        'BlazePose keypoints + Keras LSTM',
-        'Targeted at least 85% validation accuracy across 5 live ' +
-        'behaviour classes via webcam',
-      ],
-    },
   ],
 
   skills: {
