@@ -1,4 +1,5 @@
 import { AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
 import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import BackToTop from '../components/BackToTop'
 import ReadingProgress from '../components/ReadingProgress'
@@ -17,6 +18,14 @@ import Resume from '../pages/Resume'
 function MainLayout({ toasts, onToast }) {
   const { darkMode } = useTheme()
   const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [location.pathname])
+
+  const handlePageLinkClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }
 
   return (
     <div className={darkMode ? 'site-shell site-shell-dark' : 'site-shell site-shell-light'}>
@@ -59,7 +68,7 @@ function MainLayout({ toasts, onToast }) {
                   { to: '/resume', label: 'Resume' },
                 ].map((link) => (
                   <li key={link.to}>
-                    <Link to={link.to}>{link.label}</Link>
+                    <Link to={link.to} onClick={handlePageLinkClick}>{link.label}</Link>
                   </li>
                 ))}
               </ul>

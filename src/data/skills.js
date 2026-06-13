@@ -19,6 +19,9 @@ const skills = {
     { name: 'npm / Vercel', level: 'Intermediate' },
     { name: 'AWS', level: 'Beginner' },
     { name: 'Linux', level: 'Intermediate' },
+    { name: 'Kali Linux', level: 'Intermediate' },
+    { name: 'Wireshark / Nmap', level: 'Intermediate' },
+    { name: 'Burp Suite / Metasploit', level: 'Intermediate' },
     { name: 'Security Logging', level: 'Intermediate' },
   ],
   domains: [
@@ -42,9 +45,13 @@ const skills = {
       icon: 'bi-shield-lock',
       items: [
         'Linux',
+        'Kali Linux',
         'POSIX Threads',
         'Multithreading',
         'Synchronisation',
+        'Network Security',
+        'Network Traffic Analysis',
+        'Vulnerability Assessment',
         'Network Intrusion Detection',
         'Security Logging',
       ],
