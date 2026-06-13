@@ -19,6 +19,9 @@ const webTags = [
   'Supabase',
   'Node.js',
   'Express',
+  'Express.js',
+  'MongoDB',
+  'REST APIs',
   'Tailwind CSS',
   'Vercel',
 ]
@@ -27,7 +30,9 @@ function matchesFilter(project, selectedFilter) {
   if (selectedFilter === 'All') return true
   if (selectedFilter === 'Web') return project.tags.some((tag) => webTags.includes(tag))
   if (selectedFilter === 'ML') {
-    return project.tags.some((tag) => ['Machine Learning', 'Computer Vision', 'MediaPipe', 'LSTM', 'YOLO'].includes(tag))
+    return project.tags.some((tag) =>
+      ['Machine Learning', 'Computer Vision', 'MediaPipe', 'LSTM', 'BiLSTM', 'YOLO', 'TensorFlow', 'Scikit-learn'].includes(tag)
+    )
   }
   return project.tags.includes(selectedFilter)
 }

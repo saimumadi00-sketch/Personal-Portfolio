@@ -87,7 +87,7 @@ function MainLayout({ toasts, onToast }) {
 
           <div className="site-footer-bottom">
             <div className="d-flex flex-column flex-md-row justify-content-between gap-2">
-              <span>&copy; 2026 Md Saimum Al Mahmud</span>
+              <span>&copy; 2026 Saimum Al-Mahmud</span>
               <span>Built with React + Vite + Bootstrap</span>
             </div>
           </div>

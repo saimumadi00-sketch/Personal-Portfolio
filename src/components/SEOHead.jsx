@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet-async'
 
 const defaultDescription =
-  'Portfolio of MD Saimum Al Mahmud Aditto, Computer Science & Engineering student at North South University, Dhaka Cantonment, Bangladesh.'
+  'Portfolio of Saimum Al-Mahmud, Computer Science student focused on machine learning, computer vision, full-stack web development and systems security.'
 
 function SEOHead({ title = 'Portfolio', description = defaultDescription, keywords = 'portfolio, computer science, react, web development' }) {
-  const fullTitle = title === 'Portfolio' ? 'Md Saimum Al Mahmud | Portfolio' : `${title} | Md Saimum Al Mahmud`
+  const fullTitle = title === 'Portfolio' ? 'Saimum Al-Mahmud | Portfolio' : `${title} | Saimum Al-Mahmud`
 
   return (
     <Helmet>

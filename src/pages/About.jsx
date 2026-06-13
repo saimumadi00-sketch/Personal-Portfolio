@@ -9,10 +9,10 @@ import { pageVariants } from '../utils/variants'
 const interests = [
   { icon: 'bi-code-slash', label: 'Frontend Development' },
   { icon: 'bi-robot', label: 'Machine Learning' },
-  { icon: 'bi-phone', label: 'Mobile-First Design' },
-  { icon: 'bi-diagram-3', label: 'System Architecture' },
-  { icon: 'bi-github', label: 'Open Source' },
-  { icon: 'bi-book', label: 'Tech Writing' },
+  { icon: 'bi-camera-video', label: 'Computer Vision' },
+  { icon: 'bi-shield-lock', label: 'Systems Security' },
+  { icon: 'bi-cloud', label: 'AWS Cloud Services' },
+  { icon: 'bi-diagram-3', label: 'Full-Stack Architecture' },
 ]
 
 const values = [
@@ -52,8 +52,8 @@ const quickStats = [
 
 const rightNow = [
   { badge: 'Now', badgeClass: 'success', text: 'Finishing final-year CSE coursework at NSU' },
-  { badge: 'Build', badgeClass: 'primary', text: 'Maintaining a React + Vite portfolio deployed on Vercel' },
-  { badge: 'Study', badgeClass: 'secondary', text: 'Practicing web development and machine learning fundamentals' },
+  { badge: 'Build', badgeClass: 'primary', text: 'Building AI, web, systems programming, and cybersecurity projects' },
+  { badge: 'Study', badgeClass: 'secondary', text: 'Exploring AWS, DevSecOps, SBOM automation, and secure messaging' },
 ]
 
 function About() {
@@ -61,7 +61,7 @@ function About() {
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <SEOHead
         title="About"
-        description="Background and experience of MD Saimum Al Mahmud Aditto, final-year CSE student at North South University."
+        description="Background and experience of Saimum Al-Mahmud, final-year Computer Science student at North South University."
       />
       <PageHeader
         title="About"
@@ -79,15 +79,11 @@ function About() {
               <section className="card border-0 shadow-sm hover-card mb-4">
                 <div className="card-body p-4 p-lg-5">
                   <h2 className="h4 fw-bold mb-3">Profile</h2>
-                  <p className="text-secondary lh-lg mb-3">
-                    I am a final-year Computer Science and Engineering student at North South University, Dhaka. I
-                    build web applications, ML pipelines, and practical coursework projects that turn class concepts
-                    into usable software.
-                  </p>
-                  <p className="text-secondary lh-lg mb-0">
-                    Outside university, I have worked in customer support, volunteered in field IT support, and kept
-                    improving this portfolio as a long-term home for my projects, skills, and internship search.
-                  </p>
+                  {resumeData.introduction.map((paragraph, index) => (
+                    <p className={`text-secondary lh-lg ${index === resumeData.introduction.length - 1 ? 'mb-0' : 'mb-3'}`} key={paragraph}>
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
               </section>
             </ScrollReveal>
@@ -219,7 +215,7 @@ function About() {
             </ScrollReveal>
 
             <ScrollReveal direction="right" delay={0.25}>
-              <section className="card border-0 shadow-sm hover-card">
+              <section className="card border-0 shadow-sm hover-card mb-4">
                 <div className="card-body p-4">
                   <h2 className="h5 fw-bold mb-3">
                     <i className="bi bi-broadcast me-2 text-success"></i>Right Now
@@ -232,6 +228,23 @@ function About() {
                       </li>
                     ))}
                   </ul>
+                </div>
+              </section>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right" delay={0.3}>
+              <section className="card border-0 shadow-sm hover-card">
+                <div className="card-body p-4">
+                  <h2 className="h5 fw-bold mb-3">
+                    <i className="bi bi-compass me-2 text-primary"></i>Currently Exploring
+                  </h2>
+                  <div className="d-flex flex-wrap gap-2">
+                    {resumeData.currentlyExploring.map((item) => (
+                      <span className="badge text-bg-primary soft-pill" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </section>
             </ScrollReveal>

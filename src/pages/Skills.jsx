@@ -14,11 +14,11 @@ const levelBadge = {
 }
 
 const proficiencyRings = [
-  { label: 'HTML/CSS', percentage: 90, color: 'success' },
-  { label: 'JavaScript', percentage: 70, color: 'primary' },
-  { label: 'Python', percentage: 75, color: 'primary' },
-  { label: 'React', percentage: 75, color: 'primary' },
-  { label: 'Java / SQL', percentage: 60, color: 'secondary' },
+  { label: 'HTML / CSS', percentage: 90, color: 'success' },
+  { label: 'Python', percentage: 78, color: 'primary' },
+  { label: 'JavaScript', percentage: 74, color: 'primary' },
+  { label: 'React', percentage: 78, color: 'primary' },
+  { label: 'ML / CV', percentage: 68, color: 'secondary' },
 ]
 
 function Skills() {
@@ -35,6 +35,32 @@ function Skills() {
       />
 
       <div className="container py-5">
+        <section className="mb-5">
+          <div className="row g-4 row-cols-1 row-cols-md-2">
+            {skills.domains.map((domain, index) => (
+              <div className="col" key={domain.title}>
+                <ScrollReveal direction="up" delay={index * 0.08}>
+                  <div className="card border-0 shadow-sm h-100 hover-card">
+                    <div className="card-body p-4">
+                      <h2 className="h5 mb-3">
+                        <i className={`bi ${domain.icon} me-2 text-primary`}></i>
+                        {domain.title}
+                      </h2>
+                      <div className="d-flex flex-wrap gap-2">
+                        {domain.items.map((item) => (
+                          <span className="badge rounded-pill text-bg-dark soft-pill" key={item}>
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="mb-5">
           <div className="row g-4 row-cols-1 row-cols-lg-3">
             <div className="col">
