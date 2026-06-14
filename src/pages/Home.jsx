@@ -159,7 +159,7 @@ function Home() {
                 >
                   <div className="hero-portrait-card">
                     <img
-                      src="/portrait.jpeg"
+                      src="/portrait.png"
                       alt="Saimum Al-Mahmud"
                       className="hero-traditional-portrait"
                     />
