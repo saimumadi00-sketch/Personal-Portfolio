@@ -1,5 +1,21 @@
 const projects = [
   {
+    id: 9,
+    title: 'Proti Binimoy',
+    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'SSLCommerz'],
+    description:
+      'A full-stack Bangladeshi marketplace platform (MERN stack). ' +
+      'Buyers and sellers can post listings, negotiate offers, message ' +
+      'each other, manage orders, and complete payments via SSLCommerz.',
+    status: 'Live',
+    repositoryUrl: 'https://github.com/TashfiqMahmud/-Proti-Binimoy',
+    liveUrl: null,
+    screenshot: null,
+    impact:
+      'End-to-end marketplace with JWT auth, Google OAuth, real-time ' +
+      'chat, offer management, and integrated SSLCommerz payment gateway.',
+  },
+  {
     id: 1,
     title: 'SYNTHSEC / DeepfakeScan',
     tags: ['React', 'Vite', 'Transformers.js', 'Machine Learning', 'Security'],
