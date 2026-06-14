@@ -32,6 +32,13 @@ const navCards = [
     button: 'Get in Touch',
     to: '/contact',
   },
+  {
+    icon: 'bi-journal-text',
+    title: 'Dev Notes',
+    text: 'Write-ups on things I built, broke, and learned.',
+    button: 'Read Blog',
+    to: '/blog',
+  },
 ]
 
 const heroFocusItems = [
@@ -136,6 +143,9 @@ function Home() {
                 <Link className="btn btn-primary btn-lg" to="/projects">
                   View My Projects
                 </Link>
+                <Link className="btn btn-outline-light btn-lg" to="/about">
+                  About Me
+                </Link>
               </div>
             </div>
 
@@ -149,7 +159,7 @@ function Home() {
                 >
                   <div className="hero-portrait-card">
                     <img
-                      src="/portrait.png"
+                      src="/portrait.jpeg"
                       alt="Saimum Al-Mahmud"
                       className="hero-traditional-portrait"
                     />
@@ -191,7 +201,7 @@ function Home() {
         </section>
 
         <section id="home-links" className="mb-5">
-          <div className="row g-4 row-cols-1 row-cols-md-3">
+          <div className="row g-4 row-cols-1 row-cols-sm-2 row-cols-xl-4">
             {navCards.map((card) => (
               <div className="col" key={card.title}>
                 <div className="card h-100 shadow-sm border-0 hover-card text-center">
@@ -216,7 +226,7 @@ function Home() {
 
         <section className="py-5 px-4 rounded-4" style={{ background: 'linear-gradient(135deg,#0d1117,#1a3a5c)' }}>
           <h2 className="h4 text-white mb-4 text-center">Principles</h2>
-          <div className="row g-4 row-cols-1 row-cols-md-3">
+          <div className="row g-4 row-cols-1 row-cols-sm-2 row-cols-xl-4">
             {quotesData.map((quote) => (
               <div className="col" key={quote.author}>
                 <QuoteCard {...quote} />

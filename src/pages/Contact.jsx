@@ -11,7 +11,6 @@ function Contact({ onToast }) {
   const [copied, setCopied] = useState(false)
   const email = socialLinks.email.href.replace('mailto:', '')
   const githubLabel = socialLinks.github.href.replace('https://', '')
-  const linkedinLabel = socialLinks.linkedin.href.replace('https://', '')
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(email).then(() => {
@@ -74,12 +73,7 @@ function Contact({ onToast }) {
                           {copied ? 'Copied!' : 'Copy Email'}
                         </button>
                       </li>
-                      <li className="list-group-item px-0">
-                        <strong>LinkedIn:</strong>{' '}
-                        <a href={socialLinks.linkedin.href} className="link-primary">
-                          {linkedinLabel}
-                        </a>
-                      </li>
+
                     </ul>
                   </div>
                 </div>

@@ -111,26 +111,28 @@ function Resume() {
               </ul>
             </section>
 
-            <section className="resume-section mb-4">
-              <h2 className="resume-section-title">
-                <i className="bi bi-patch-check me-2 text-primary"></i>
-                Certification
-              </h2>
-              <div className="d-grid gap-3">
-                {r.certifications.map((cert) => (
-                  <div key={cert.name} className="resume-exp-item">
-                    <h3 className="h6 fw-bold mb-0">{cert.name}</h3>
-                    <p className="small text-muted mb-1">Issued by {cert.issuer}</p>
-                    <p className="small text-secondary mb-0">Issued: {cert.issued}</p>
-                    {cert.credentialUrl && (
-                      <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="small text-primary">
-                        Verify credential
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
+            {r.certifications && r.certifications.length > 0 && (
+              <section className="resume-section mb-4">
+                <h2 className="resume-section-title">
+                  <i className="bi bi-patch-check me-2 text-primary"></i>
+                  Certifications
+                </h2>
+                <div className="d-grid gap-3">
+                  {r.certifications.map((cert) => (
+                    <div key={cert.name} className="resume-exp-item">
+                      <h3 className="h6 fw-bold mb-0">{cert.name}</h3>
+                      <p className="small text-muted mb-1">Issued by {cert.issuer}</p>
+                      <p className="small text-secondary mb-0">Issued: {cert.issued}</p>
+                      {cert.credentialUrl && (
+                        <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="small text-primary">
+                          Verify credential
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Education */}
             <section className="resume-section mb-4">
@@ -172,12 +174,6 @@ function Resume() {
                     <i className="bi bi-github me-2"></i>
                     <a href={r.github} target="_blank" rel="noopener noreferrer" className="text-primary">
                       saimumadi00-sketch
-                    </a>
-                  </li>
-                  <li>
-                    <i className="bi bi-linkedin me-2"></i>
-                    <a href={r.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary">
-                      linkedin.com/in/saimum
                     </a>
                   </li>
                   <li>

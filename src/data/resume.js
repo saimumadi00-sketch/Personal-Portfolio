@@ -3,7 +3,7 @@ const resume = {
   title: 'Computer Science Student',
   university: 'North South University, Dhaka',
   year: 'Final Year (Enrolled)',
-  email: 'aditto.nikolai@gmail.com',
+  email: 'saimumadi00@gmail.com',
   altEmail: 'saimum.mahmud@northsouth.edu',
   phone: '01631351004',
   github: 'https://github.com/saimumadi00-sketch',
@@ -93,14 +93,7 @@ const resume = {
     ],
   },
 
-  certifications: [
-    {
-      name: 'AWS Certification',
-      issuer: 'Amazon Web Services',
-      issued: 'Details pending',
-      credentialUrl: '',
-    },
-  ],
+  certifications: [],
 
   extracurricular: [
     'British Council member since college',

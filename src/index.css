@@ -1268,3 +1268,77 @@ a, button { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 991px) {
   .hero-code-card { display: none !important; }
 }
+
+/* ══════════════════════════════════════
+   HERO PORTRAIT STACK (Home page)
+   ══════════════════════════════════════ */
+.hero-portrait-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+.hero-portrait-card {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  border: 2px solid rgba(255,255,255,0.15);
+  line-height: 0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.hero-portrait-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.5);
+  border-color: rgba(110,168,254,0.4);
+}
+
+.hero-traditional-portrait {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+/* Focus panel below portrait */
+.hero-focus-panel {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  width: 100%;
+}
+.hero-focus-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.hero-focus-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.hero-focus-tags span {
+  font-size: 0.72rem;
+  background: rgba(13,110,253,0.25);
+  color: #6ea8fe;
+  border: 1px solid rgba(110,168,254,0.3);
+  border-radius: 20px;
+  padding: 0.2rem 0.6rem;
+}
+
+/* Mobile: constrain portrait stack */
+@media (max-width: 575px) {
+  .hero-portrait-stack { max-width: 220px; }
+  .hero-traditional-portrait { height: 220px; }
+}
+@media (max-width: 991px) {
+  .hero-traditional-portrait { height: 240px; }
+  .hero-portrait-stack { max-width: 240px; }
+}

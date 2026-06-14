@@ -4,14 +4,9 @@ const socialLinks = {
     href: 'https://github.com/saimumadi00-sketch',
     icon: 'bi-github',
   },
-  linkedin: {
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/in/saimum',
-    icon: 'bi-linkedin',
-  },
   email: {
     label: 'Email',
-    href: 'mailto:aditto.nikolai@gmail.com',
+    href: 'mailto:saimumadi00@gmail.com',
     icon: 'bi-envelope-fill',
   },
   liveSite: {
