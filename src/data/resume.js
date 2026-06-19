@@ -7,19 +7,20 @@ const resume = {
   altEmail: 'saimum.mahmud@northsouth.edu',
   phone: '01631351004',
   github: 'https://github.com/saimumadi00-sketch',
-  linkedin: 'https://linkedin.com/in/saimum',
   site: 'https://saimum-aditto.vercel.app',
   location: 'Vassantek, Dhaka Cantonment, Bangladesh',
 
   introduction: [
-    'Computer Science student focused on machine learning, computer vision, full-stack web development, systems security and network security.',
-    'I build practical software projects involving artificial intelligence, web applications, systems programming, cybersecurity and hands-on network analysis.',
+    'Final-year CSE student at North South University, Dhaka. I build web applications, marketplace platforms, ML pipelines, and CLI tools.',
+    'I have worked as a Customer Care Representative at ASL BPO, volunteered as IT support for a Forestry Department NGO, and shipped 9 projects to GitHub.',
   ],
 
   summary:
-    'Computer Science student focused on machine learning, computer vision, full-stack web development, systems security and network security. ' +
-    'I build practical software projects involving artificial intelligence, web applications, systems programming and cybersecurity. ' +
-    'Completed university network security lab work with moderate hands-on experience using Kali Linux and common cybersecurity/networking tools.',
+    'Final-year Computer Science and Engineering student at North South University, Dhaka. ' +
+    'I build full-stack web applications, ML classification systems, and CLI tools — ' +
+    'from a MERN marketplace with SSLCommerz payments to a real-time LSTM behaviour detector. ' +
+    'Previously worked as a Customer Care Representative at ASL BPO and volunteered as IT support ' +
+    'on an NGO project. Actively seeking software engineering and web development internships.',
 
   education: [
     {
@@ -103,11 +104,10 @@ const resume = {
   ],
 
   currentlyExploring: [
-    'Adaptive IoT honeypots',
-    'Network traffic analysis',
-    'Post-quantum secure messaging',
-    'DevSecOps and SBOM automation',
-    'AWS cloud services',
+    'Full-stack development with React and Node.js',
+    'Machine learning pipelines with Python and Keras',
+    'Building and deploying real projects to production',
+    'Preparing for software engineering internships',
   ],
 
   languages: ['Bengali (Native)', 'English (Advanced)'],
