@@ -63,7 +63,8 @@ const projects = [
       'each other, manage orders, and complete payments via SSLCommerz.',
     status: 'Live',
     repositoryUrl: 'https://github.com/TashfiqMahmud/-Proti-Binimoy',
-    liveUrl: null,
+    liveUrl: 'https://proti-binimoy.vercel.app/',
+    collaborative: true,
     screenshot: null,
     impact:
       'End-to-end marketplace with JWT auth, Google OAuth, real-time ' +

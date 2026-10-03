@@ -166,3 +166,7 @@ Local Vite/static preview has no email function and uses email drafts. Tests sub
 - Keep new UI patterns reusable when they are shared across pages.
 - Run `npm run build` before publishing meaningful changes.
 - Avoid committing `node_modules/` or `dist/`; both are ignored by Git.
+
+### CV maintenance
+
+The downloadable two-page CV is generated from `src/data/resume.js` and selected entries in `src/data/projects.js`. `npm run build` regenerates it automatically; `npm run cv` refreshes it independently. Verify both pages after changing long text. The website also offers a separate print action.

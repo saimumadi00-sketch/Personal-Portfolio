@@ -3,17 +3,12 @@ import PageHeader from '../components/PageHeader'
 import SEOHead from '../components/SEOHead'
 import resumeData from '../data/resume'
 import projectsData from '../data/projects'
+import { pageVariants } from '../utils/variants'
 
 const selectedProjects = projectsData.filter((project) => [4, 11, 12, 14, 16].includes(project.id))
-import { pageVariants } from '../utils/variants'
 
 function Resume() {
   const r = resumeData
-
-  const handleDownload = () => {
-    // Opens the live site for printing as PDF until a PDF file is added to /public
-    window.print()
-  }
 
   return (
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
@@ -33,15 +28,15 @@ function Resume() {
         {/* Top bar */}
         <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-5">
           <div>
-            <h1 className="h2 fw-bold mb-1">{r.name}</h1>
+            <h2 className="h2 fw-bold mb-1">{r.name}</h2>
             <p className="text-muted mb-0">{r.title} &mdash; {r.university}</p>
           </div>
           <div className="d-flex gap-2 flex-wrap">
-            <button
-              onClick={handleDownload}
-              className="btn btn-primary"
-            >
-              <i className="bi bi-download me-2"></i>Download / Print PDF
+            <a href="/saimum-al-mahmud-cv.pdf" download="Saimum-Al-Mahmud-CV.pdf" className="btn btn-primary">
+              <i className="bi bi-download me-2" aria-hidden="true"></i>Download CV (PDF)
+            </a>
+            <button type="button" onClick={() => window.print()} className="btn btn-outline-primary">
+              <i className="bi bi-printer me-2" aria-hidden="true"></i>Print CV
             </button>
             <a
               href={r.github}
@@ -189,7 +184,8 @@ function Resume() {
                   <i className="bi bi-envelope-fill me-2 text-primary"></i>Contact
                 </h2>
                 <ul className="list-unstyled small d-grid gap-2 mb-0 text-secondary">
-                  <li><i className="bi bi-envelope me-2"></i>{r.email}</li>
+                  <li><i className="bi bi-envelope me-2" aria-hidden="true"></i><a href={`mailto:${r.email}`}>{r.email}</a></li>
+                  <li><i className="bi bi-telephone me-2" aria-hidden="true"></i><a href={`tel:${r.phone}`}>{r.phone}</a></li>
                   <li><i className="bi bi-geo-alt me-2"></i>{r.location}</li>
                   <li>
                     <i className="bi bi-github me-2"></i>

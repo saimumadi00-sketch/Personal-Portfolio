@@ -33,7 +33,7 @@ function getCategory(tags) {
 
 function ProjectCard({
   title, tags, description, status,
-  repositoryUrl, liveUrl, screenshot, impact,
+  repositoryUrl, liveUrl, screenshot, impact, collaborative,
 }) {
   const catClass    = getCategory(tags)
   const statusClass = statusClasses[status] || 'bg-secondary text-white'
@@ -64,6 +64,7 @@ function ProjectCard({
         </div>
 
         {/* Tags */}
+        {collaborative && <p className="small text-secondary mb-2">Collaborative project</p>}
         <div className="d-flex flex-wrap gap-1 mb-3">
           {tags.map((tag) => (
             <span key={tag} className="badge text-bg-primary">{tag}</span>
