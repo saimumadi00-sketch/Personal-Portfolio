@@ -3,7 +3,7 @@ const timeline = [
     year: '2021 - Present',
     title: 'B.Sc. Computer Science',
     subtitle: 'North South University, Dhaka',
-    description: 'Studying data structures, web tech, databases, algorithms, and software engineering.',
+    description: 'Majoring in Cybersecurity and Networking, alongside coursework in algorithms, databases, operating systems, and software engineering.',
     type: 'education',
   },
   {

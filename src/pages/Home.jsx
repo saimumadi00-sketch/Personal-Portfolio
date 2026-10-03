@@ -8,20 +8,21 @@ import StarField from '../components/StarField'
 import { useTheme } from '../context/ThemeContext'
 import quotesData from '../data/quotes'
 import statsData from '../data/stats'
+import projectsData from '../data/projects'
 import { pageVariants } from '../utils/variants'
 
 const navCards = [
   {
     icon: 'bi-folder2-open',
-    title: '8 Projects',
-    text: 'From React portfolios to ML intrusion detectors.',
+    title: `${projectsData.length} Projects`,
+    text: 'Cybersecurity, networking, AI, web apps, and games.',
     button: 'Browse Projects',
     to: '/projects',
   },
   {
     icon: 'bi-tools',
-    title: 'Full Stack',
-    text: 'React, Node.js, Express.js, MongoDB, Bootstrap.',
+    title: 'Cybersecurity & Networking',
+    text: 'Network security, intrusion detection, Kali Linux, and security logging.',
     button: 'View Skills',
     to: '/skills',
   },
@@ -42,6 +43,8 @@ const navCards = [
 ]
 
 const heroFocusItems = [
+  'Cybersecurity',
+  'Networking',
   'Machine learning',
   'Computer vision',
   'Full-stack web',
@@ -68,10 +71,12 @@ function Home() {
 
   useEffect(() => {
     const phrases = [
+      'Majoring in Cybersecurity and Networking',
+      'Building network security and IoT lab projects',
       'Building web apps with React + Vite',
       'ML pipelines with Python and Keras',
       'CS student at North South University',
-      'Open to software engineering internships',
+      'Open to cybersecurity and networking internships',
       'Deployed to Vercel — check the source on GitHub',
     ]
 
@@ -107,7 +112,7 @@ function Home() {
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <SEOHead
         title="Home"
-        description="Portfolio of Saimum Al-Mahmud: Computer Science student at NSU Dhaka focused on machine learning, computer vision, full-stack web development, and systems security."
+        description="Portfolio of Saimum Al-Mahmud: Computer Science student at NSU Dhaka majoring in Cybersecurity and Networking, with projects in network defense, machine learning, and full-stack development."
       />
 
       <section
@@ -130,7 +135,7 @@ function Home() {
               >
                 {getGreeting()}, visitor.
               </p>
-              <span className="badge text-bg-primary mb-3">Open to Internship Opportunities</span>
+              <span className="badge text-bg-primary mb-3">Cybersecurity & Networking · Open to Internships</span>
               <h1 className="fw-bold mb-2" style={{ color: '#fff', fontSize: 'clamp(2.5rem,6vw,4rem)' }}>
                 Hi, I&apos;m Saimum.
               </h1>

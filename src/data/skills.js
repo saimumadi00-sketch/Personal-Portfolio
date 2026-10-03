@@ -26,22 +26,7 @@ const skills = {
   ],
   domains: [
     {
-      title: 'Programming',
-      icon: 'bi-code-slash',
-      items: ['C', 'Python', 'JavaScript', 'HTML', 'CSS', 'SQL'],
-    },
-    {
-      title: 'Web Development',
-      icon: 'bi-window-stack',
-      items: ['React', 'Vite', 'Node.js', 'Express.js', 'Bootstrap', 'REST APIs', 'MongoDB'],
-    },
-    {
-      title: 'Machine Learning',
-      icon: 'bi-cpu',
-      items: ['TensorFlow', 'Keras', 'Scikit-learn', 'OpenCV', 'MediaPipe', 'YOLO', 'BiLSTM', 'Transformers.js'],
-    },
-    {
-      title: 'Systems and Security',
+      title: 'Cybersecurity, Networking and Systems',
       icon: 'bi-shield-lock',
       items: [
         'Linux',
@@ -56,6 +41,22 @@ const skills = {
         'Security Logging',
       ],
     },
+    {
+      title: 'Programming',
+      icon: 'bi-code-slash',
+      items: ['C', 'Python', 'JavaScript', 'HTML', 'CSS', 'SQL'],
+    },
+    {
+      title: 'Web Development',
+      icon: 'bi-window-stack',
+      items: ['React', 'Vite', 'Node.js', 'Express.js', 'Bootstrap', 'REST APIs', 'MongoDB'],
+    },
+    {
+      title: 'Machine Learning',
+      icon: 'bi-cpu',
+      items: ['TensorFlow', 'Keras', 'Scikit-learn', 'OpenCV', 'MediaPipe', 'YOLO', 'BiLSTM', 'Transformers.js'],
+    },
+
   ],
   soft: [
     'Problem Solving',

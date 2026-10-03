@@ -4,6 +4,7 @@ import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
 import funFacts from '../data/funFacts'
 import resumeData from '../data/resume'
+import projectsData from '../data/projects'
 import { pageVariants } from '../utils/variants'
 
 const interests = [
@@ -38,7 +39,8 @@ const details = [
   { label: 'Full Name', value: resumeData.name },
   { label: 'Location', value: resumeData.location },
   { label: 'University', value: 'North South University' },
-  { label: 'Major', value: 'B.Sc. Computer Science & Engineering (CSE)' },
+  { label: 'Degree', value: resumeData.education[0].degree },
+  { label: 'Major', value: resumeData.major },
   { label: 'Year', value: resumeData.year },
   { label: 'Email', value: resumeData.email },
   { label: 'Languages', value: resumeData.languages.join(', ') },
@@ -46,13 +48,13 @@ const details = [
 ]
 
 const quickStats = [
-  { value: '8+', label: 'Projects on GitHub' },
+  { value: String(projectsData.filter((project) => project.repositoryUrl).length), label: 'GitHub-linked projects' },
   { value: '5+', label: 'Labs shipped' },
   { value: 'Final', label: 'Year at NSU' },
 ]
 
 const rightNow = [
-  { badge: 'Now', badgeClass: 'success', text: 'Finishing final-year CSE coursework at NSU' },
+  { badge: 'Now', badgeClass: 'success', text: 'Final-year CSE at NSU, majoring in Cybersecurity and Networking' },
   { badge: 'Build', badgeClass: 'primary', text: 'Building AI, web, systems programming, and cybersecurity projects' },
   { badge: 'Lab', badgeClass: 'danger', text: 'Completed university network security lab work with moderate Kali Linux practice' },
   { badge: 'Study', badgeClass: 'secondary', text: 'Exploring AWS, DevSecOps, SBOM automation, and secure messaging' },
@@ -63,7 +65,7 @@ function About() {
     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <SEOHead
         title="About"
-        description="Background and experience of Saimum Al-Mahmud, final-year Computer Science student at North South University."
+        description="Background and experience of Saimum Al-Mahmud, final-year CSE student at North South University majoring in Cybersecurity and Networking."
       />
       <PageHeader
         title="About"

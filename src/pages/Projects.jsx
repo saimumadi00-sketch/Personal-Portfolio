@@ -7,7 +7,7 @@ import SEOHead from '../components/SEOHead'
 import projectsData from '../data/projects'
 import { pageVariants } from '../utils/variants'
 
-const filters = ['All', 'Web', 'Python', 'ML', 'C', 'Java']
+const filters = ['All', 'Security', 'Networking', 'Web', 'Python', 'ML', 'C', 'Game']
 const webTags = [
   'HTML',
   'CSS',
@@ -28,6 +28,12 @@ const webTags = [
 
 function matchesFilter(project, selectedFilter) {
   if (selectedFilter === 'All') return true
+  if (selectedFilter === 'Security') {
+    return project.tags.some((tag) => ['Security', 'Cybersecurity', 'NIDS', 'Cryptography'].includes(tag))
+  }
+  if (selectedFilter === 'Networking') {
+    return project.tags.some((tag) => ['Networking', 'NIDS', 'IoT'].includes(tag))
+  }
   if (selectedFilter === 'Web') return project.tags.some((tag) => webTags.includes(tag))
   if (selectedFilter === 'ML') {
     return project.tags.some((tag) =>

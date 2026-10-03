@@ -9,7 +9,7 @@ It is maintained as a long-term home for my background, projects, skills, and co
 ## Owner
 
 Saimum Al-Mahmud  
-Computer Science, 4th Year  
+Computer Science and Engineering, 4th Year — Major: Cybersecurity and Networking
 North South University, Dhaka
 
 ## Tech Stack

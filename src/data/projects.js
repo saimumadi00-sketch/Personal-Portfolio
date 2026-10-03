@@ -1,6 +1,60 @@
 const projects = [
   {
-    id: 9,
+    "id": 14,
+    "title": "SpamCheck — SMS Spam/Ham Detector",
+    "tags": [
+      "Python",
+      "FastAPI",
+      "Scikit-learn",
+      "TF-IDF",
+      "Machine Learning",
+      "Security"
+    ],
+    "description": "English and Bangla SMS spam classification using word and character TF-IDF features with a locally trained Logistic Regression model.",
+    "status": "ML Project",
+    "repositoryUrl": "https://github.com/saimumadi00-sketch/spam-ham-miniproject",
+    "liveUrl": null,
+    "screenshot": null,
+    "impact": "Serves local predictions through FastAPI with a bilingual interface; the Bangla training set is a small, template-generated seed dataset."
+  },
+  {
+    "id": 15,
+    "title": "Simple Chat",
+    "tags": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Python",
+      "FastAPI",
+      "AI"
+    ],
+    "description": "A full-stack chat application with Markdown replies, conversation context, and a FastAPI backend connected to the Anthropic API.",
+    "status": "Prototype",
+    "repositoryUrl": "https://github.com/saimumadi00-sketch/uni-chatbot",
+    "liveUrl": null,
+    "screenshot": null,
+    "impact": "Handles loading states, provider errors, and draft recovery; conversation history is kept in memory and clears on refresh."
+  },
+  {
+    "id": 16,
+    "title": "Crosscurrent — Yard 07",
+    "tags": [
+      "JavaScript",
+      "WebGL",
+      "Three.js",
+      "Node.js",
+      "Networking",
+      "Game"
+    ],
+    "description": "A browser FPS with offline bot training, a customizable squad lobby, and private multiplayer for Team Deathmatch and Conquest.",
+    "status": "Active",
+    "repositoryUrl": "https://github.com/saimumadi00-sketch/shady-fps",
+    "liveUrl": null,
+    "screenshot": null,
+    "impact": "Implements server-authoritative matches, streamed snapshots, room codes, and desktop/touch controls for private multiplayer; public matchmaking remains simulated."
+  },
+  {
+    id: 13,
     title: 'Proti Binimoy',
     tags: ['React', 'Node.js', 'Express', 'MongoDB', 'SSLCommerz'],
     description:
@@ -161,4 +215,10 @@ const projects = [
   },
 ]
 
-export default projects
+const securityTags = ['Security', 'Cybersecurity', 'Networking', 'NIDS']
+const featuredProjects = [
+  ...projects.filter((project) => project.tags.some((tag) => securityTags.includes(tag))),
+  ...projects.filter((project) => !project.tags.some((tag) => securityTags.includes(tag))),
+]
+
+export default featuredProjects

@@ -2,6 +2,9 @@ import { motion } from 'framer-motion'
 import PageHeader from '../components/PageHeader'
 import SEOHead from '../components/SEOHead'
 import resumeData from '../data/resume'
+import projectsData from '../data/projects'
+
+const selectedProjects = projectsData.filter((project) => [4, 11, 12, 14, 16].includes(project.id))
 import { pageVariants } from '../utils/variants'
 
 function Resume() {
@@ -70,6 +73,24 @@ function Resume() {
                 <i className="bi bi-person-lines-fill me-2 text-primary"></i>Summary
               </h2>
               <p className="text-secondary lh-lg">{r.summary}</p>
+            </section>
+
+            <section className="resume-section mb-4">
+              <h2 className="resume-section-title">
+                <i className="bi bi-shield-lock me-2 text-primary"></i>Selected Projects
+              </h2>
+              <div className="d-grid gap-3">
+                {selectedProjects.map((project) => (
+                  <div className="resume-exp-item" key={project.id}>
+                    <h3 className="h6 fw-bold mb-1">
+                      <a href={project.repositoryUrl} target="_blank" rel="noopener noreferrer">{project.title}</a>
+                    </h3>
+                    <p className="small text-muted mb-1">{project.tags.join(', ')}</p>
+                    <p className="small text-secondary mb-1">{project.description}</p>
+                    <p className="small text-secondary mb-0">{project.impact}</p>
+                  </div>
+                ))}
+              </div>
             </section>
 
             {/* Experience */}
@@ -196,7 +217,7 @@ function Resume() {
                   <p className="mb-0"><strong>Programming:</strong> {r.skills.programming.join(', ')}</p>
                   <p className="mb-0"><strong>Web:</strong> {r.skills.webDevelopment.join(', ')}</p>
                   <p className="mb-0"><strong>ML / CV:</strong> {r.skills.machineLearning.join(', ')}</p>
-                  <p className="mb-0"><strong>Systems & Security:</strong> {r.skills.systemsSecurity.join(', ')}</p>
+                  <p className="mb-0"><strong>Cybersecurity, Networking & Systems:</strong> {r.skills.systemsSecurity.join(', ')}</p>
                   <p className="mb-0"><strong>Tools:</strong> {r.skills.tools.join(', ')}</p>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 const resume = {
   name: 'Saimum Al-Mahmud',
-  title: 'Computer Science Student',
+  title: 'CSE Student | Cybersecurity & Networking',
+  major: 'Cybersecurity and Networking',
   university: 'North South University, Dhaka',
   year: 'Final Year (Enrolled)',
   email: 'saimumadi00@gmail.com',
@@ -11,16 +12,16 @@ const resume = {
   location: 'Vassantek, Dhaka Cantonment, Bangladesh',
 
   introduction: [
-    'Final-year CSE student at North South University, Dhaka. I build web applications, marketplace platforms, ML pipelines, and CLI tools.',
-    'I have worked as a Customer Care Representative at ASL BPO, volunteered as IT support for a Forestry Department NGO, and shipped 9 projects to GitHub.',
+    'Final-year CSE student at North South University, Dhaka, majoring in Cybersecurity and Networking. My projects cover network intrusion detection, IoT honeypots, secure messaging, and full-stack applications.',
+    'I have worked as a Customer Care Representative at ASL BPO, volunteered as IT support for a Forestry Department NGO, and published projects spanning cybersecurity, machine learning, web development, and systems programming on GitHub.',
   ],
 
   summary:
-    'Final-year Computer Science and Engineering student at North South University, Dhaka. ' +
-    'I build full-stack web applications, ML classification systems, and CLI tools — ' +
+    'Final-year Computer Science and Engineering student at North South University, Dhaka, majoring in Cybersecurity and Networking. ' +
+    'My GitHub work includes network intrusion detection, an adaptive IoT honeypot, a secure messaging prototype, and English/Bangla SMS spam classification. I also build full-stack applications and CLI tools — ' +
     'from a MERN marketplace with SSLCommerz payments to a real-time LSTM behaviour detector. ' +
     'Previously worked as a Customer Care Representative at ASL BPO and volunteered as IT support ' +
-    'on an NGO project. Actively seeking software engineering and web development internships.',
+    'on an NGO project. Actively seeking cybersecurity, networking, and software engineering internships.',
 
   education: [
     {
@@ -28,7 +29,7 @@ const resume = {
       institution: 'North South University',
       location: 'Dhaka, Bangladesh',
       period: '2021 - Present',
-      notes: 'Web Technologies, Algorithms, Database Systems, Software Engineering, Machine Learning, OS, Networks, Network Security',
+      notes: 'Major: Cybersecurity and Networking. Coursework: Web Technologies, Algorithms, Database Systems, Software Engineering, Machine Learning, OS, Networks, Network Security',
     },
     {
       degree: 'Higher Secondary Certificate (HSC)',
@@ -104,10 +105,13 @@ const resume = {
   ],
 
   currentlyExploring: [
+    'Cybersecurity and network defense',
+    'Network intrusion detection and IoT honeypot analysis',
+    'Secure messaging and post-quantum security concepts',
     'Full-stack development with React and Node.js',
     'Machine learning pipelines with Python and Keras',
     'Building and deploying real projects to production',
-    'Preparing for software engineering internships',
+    'Preparing for cybersecurity, networking, and software engineering internships',
   ],
 
   languages: ['Bengali (Native)', 'English (Advanced)'],
