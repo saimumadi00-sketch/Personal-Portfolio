@@ -82,7 +82,7 @@ function Contact({ onToast }) {
 
             <div className="col-lg-7">
               <ScrollReveal direction="right">
-                <ContactForm onSuccess={() => onToast?.('Message sent!', 'success')} />
+                <ContactForm />
               </ScrollReveal>
             </div>
           </div>

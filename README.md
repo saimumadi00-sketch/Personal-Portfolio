@@ -151,6 +151,15 @@ npm run lint
 
 The live site is deployed on Vercel. Updates pushed to the deployment branch are picked up by Vercel automatically.
 
+### Contact delivery
+
+The form preserves messages and offers an email draft when direct sending is unavailable.
+To enable direct sending, configure `RESEND_API_KEY` and `CONTACT_EMAIL_FROM` in Vercel's server environment, then redeploy. Use a sender verified with Resend. The recipient comes from `src/data/resume.js`; visitor addresses are used only as Reply-To.
+
+`CONTACT_ALLOWED_ORIGIN` optionally changes the allowed request origin (default: the portfolio's live URL). No secret belongs in a `VITE_` variable or in Git. Requests are validated server-side; the in-memory throttle is per function instance, so larger deployments should also use platform/provider limits.
+
+Local Vite/static preview has no email function and uses email drafts. Tests substitute the email provider and never send real email.
+
 ## Maintenance Notes
 
 - Keep personal content current in `src/data/`.

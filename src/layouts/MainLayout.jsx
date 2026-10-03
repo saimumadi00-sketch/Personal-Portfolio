@@ -14,6 +14,7 @@ import Home from '../pages/Home'
 import Projects from '../pages/Projects'
 import Skills from '../pages/Skills'
 import Resume from '../pages/Resume'
+import NotFound from '../pages/NotFound'
 
 function MainLayout({ toasts, onToast }) {
   const { darkMode } = useTheme()
@@ -29,8 +30,9 @@ function MainLayout({ toasts, onToast }) {
 
   return (
     <div className={darkMode ? 'site-shell site-shell-dark' : 'site-shell site-shell-light'}>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
@@ -39,6 +41,7 @@ function MainLayout({ toasts, onToast }) {
             <Route path="/skills" element={<Skills />} />
             <Route path="/contact" element={<Contact onToast={onToast} />} />
             <Route path="/resume" element={<Resume />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
       </main>

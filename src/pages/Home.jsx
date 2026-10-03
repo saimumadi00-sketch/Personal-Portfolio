@@ -35,10 +35,10 @@ const navCards = [
   },
   {
     icon: 'bi-journal-text',
-    title: 'Dev Notes',
-    text: 'Write-ups on things I built, broke, and learned.',
-    button: 'Read Blog',
-    to: '/blog',
+    title: 'Resume / CV',
+    text: 'My education, experience, and selected security projects.',
+    button: 'View Resume',
+    to: '/resume',
   },
 ]
 

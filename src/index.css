@@ -1342,3 +1342,10 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .hero-traditional-portrait { height: 240px; }
   .hero-portrait-stack { max-width: 240px; }
 }
+
+/* Keyboard navigation */
+.skip-link { position: fixed; top: 0.5rem; left: 0.5rem; padding: 0.65rem 1rem; background: #fff; color: #0d3c78; z-index: 100000; transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+:focus-visible { outline: 3px solid #568cff; outline-offset: 3px; }
+#main-content:focus { outline: none; }
+@media (min-width: 992px) { .nav-mobile-menu, .nav-backdrop { display: none; } }

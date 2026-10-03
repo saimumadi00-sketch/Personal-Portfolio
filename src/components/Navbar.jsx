@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle'
 
@@ -14,7 +14,10 @@ const links = [
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const toggleRef = useRef(null)
+  const menuRef = useRef(null)
   const location = useLocation()
+  const previousPath = useRef(location.pathname)
 
   // Shadow on scroll
   useEffect(() => {
@@ -26,25 +29,43 @@ function Navbar() {
 
   // Close on route change
   useEffect(() => {
+    if (previousPath.current === location.pathname) return
+    previousPath.current = location.pathname
     const frame = window.requestAnimationFrame(() => setMenuOpen(false))
     return () => window.cancelAnimationFrame(frame)
   }, [location.pathname])
 
-  // Close on Escape
+  // Keep keyboard focus in the expanded menu, and restore it on Escape.
   useEffect(() => {
+    if (!menuOpen) return
+    const frame = requestAnimationFrame(() => menuRef.current?.querySelector('a')?.focus())
     const fn = (e) => {
-      if (e.key === 'Escape') setMenuOpen(false)
+      if (e.key === 'Escape') { setMenuOpen(false); toggleRef.current?.focus() }
+      if (e.key === 'Tab') {
+        const items = [toggleRef.current, ...menuRef.current.querySelectorAll('a, button')]
+        const first = items[0]
+        const last = items.at(-1)
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus() }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
+      }
     }
     document.addEventListener('keydown', fn)
-    return () => document.removeEventListener('keydown', fn)
+    return () => { cancelAnimationFrame(frame); document.removeEventListener('keydown', fn) }
+  }, [menuOpen])
+
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 992px)')
+    const closeOnDesktop = () => { if (query.matches) setMenuOpen(false) }
+    query.addEventListener('change', closeOnDesktop)
+    return () => query.removeEventListener('change', closeOnDesktop)
   }, [])
 
   // Lock body scroll when menu is open on mobile
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
+    if (!menuOpen) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = previous }
   }, [menuOpen])
 
   const scrollToTop = () => {
@@ -88,6 +109,8 @@ function Navbar() {
           </ul>
 
           <button
+            ref={toggleRef}
+            type="button"
             className="nav-hamburger"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
@@ -101,7 +124,9 @@ function Navbar() {
         </div>
 
         <div
+          ref={menuRef}
           id="mobileMenu"
+          inert={!menuOpen}
           className={`nav-mobile-menu${menuOpen ? ' is-open' : ''}`}
           aria-hidden={!menuOpen}
         >
@@ -125,7 +150,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {menuOpen && <div className="nav-backdrop" onClick={close} aria-hidden="true" />}
+      {menuOpen && <div className="nav-backdrop" onClick={() => { setMenuOpen(false); toggleRef.current?.focus() }} aria-hidden="true" />}
     </>
   )
 }
