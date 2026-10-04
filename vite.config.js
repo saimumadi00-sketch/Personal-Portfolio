@@ -18,9 +18,8 @@ export default defineConfig({
           if (normalized.includes('/node_modules/framer-motion/')) {
             return 'vendor-motion'
           }
-          if (normalized.includes('/node_modules/bootstrap/')) {
-            return 'vendor-bootstrap'
-          }
+          // Keep Bootstrap CSS in the entry chunk so index.css follows it.
+          // Extracting it as a vendor chunk reverses the stylesheet order.
           if (
             normalized.includes('/node_modules/react-countup/') ||
             normalized.includes('/node_modules/react-intersection-observer/') ||

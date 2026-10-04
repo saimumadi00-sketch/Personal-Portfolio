@@ -189,9 +189,10 @@ body {
 }
 .page-header h1 { color: #fff; }
 .page-header p  { color: rgba(255,255,255,0.65); }
-.breadcrumb-item a         { color: #6ea8fe; text-decoration: none; }
-.breadcrumb-item.active    { color: rgba(255,255,255,0.5); }
-.breadcrumb-item+.breadcrumb-item::before { color: rgba(255,255,255,0.3); }
+.page-header .breadcrumb-item a { color: #dbeafe; text-decoration: none; }
+.page-header .breadcrumb-item a:hover { color: #fff; text-decoration: underline; }
+.page-header .breadcrumb-item.active { color: #e2e8f0; }
+.page-header .breadcrumb-item+.breadcrumb-item::before { color: #cbd5e1; }
 
 /* Stat counter card */
 .stat-card {
