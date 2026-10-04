@@ -1,3 +1,5 @@
+import { projectCounts } from './stats.js'
+
 const funFacts = [
   {
     icon: 'bi-building',
@@ -22,7 +24,7 @@ const funFacts = [
   {
     icon: 'bi-laptop',
     iconClass: 'text-primary',
-    text: 'Deployed 8 projects to GitHub and 1 portfolio live to Vercel',
+    text: `${projectCounts.githubLinkedProjects} GitHub-linked projects and ${projectCounts.liveDemos} live demos listed in my portfolio`,
   },
   {
     icon: 'bi-shield-check',

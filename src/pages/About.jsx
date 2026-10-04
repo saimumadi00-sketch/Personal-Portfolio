@@ -4,7 +4,7 @@ import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
 import funFacts from '../data/funFacts'
 import resumeData from '../data/resume'
-import projectsData from '../data/projects'
+import { projectCounts } from '../data/stats'
 import { pageVariants } from '../utils/variants'
 
 const interests = [
@@ -48,7 +48,7 @@ const details = [
 ]
 
 const quickStats = [
-  { value: String(projectsData.filter((project) => project.repositoryUrl).length), label: 'GitHub-linked projects' },
+  { value: String(projectCounts.githubLinkedProjects), label: 'GitHub-linked projects' },
   { value: '5+', label: 'Labs shipped' },
   { value: 'Final', label: 'Year at NSU' },
 ]

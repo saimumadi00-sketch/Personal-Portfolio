@@ -147,7 +147,7 @@ function Home() {
                 Hi, I&apos;m Saimum.
               </h1>
               <p className="lead mb-4">
-                <span id="typewriterText" style={{ color: '#6ea8fe' }}>
+                <span id="typewriterText" style={{ color: '#dbeafe' }}>
                   {reducedMotion ? 'Majoring in Cybersecurity and Networking' : typewriterText || 'Cybersecurity and Networking'}
                 </span>
               </p>
