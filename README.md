@@ -151,6 +151,10 @@ npm run lint
 
 The live site is deployed on Vercel. Updates pushed to the deployment branch are picked up by Vercel automatically.
 
+Keep `cleanUrls` disabled: the SPA rewrite and offline cache use `/index.html` and `/offline.html`. Enabling it while retaining those destinations breaks direct page requests.
+
+After deployment, run `npm run check:deployment` (or `npm run check:deployment -- https://your-preview.vercel.app`). This checks every public page directly, the sitemap, the email configuration endpoint, and every asset in the deployed service worker. It also verifies that missing API/static files are not rewritten to the app. An unconfigured email provider is reported as a warning; the form can still prepare email drafts.
+
 ### Contact delivery
 
 The form preserves messages and offers an email draft when direct sending is unavailable.
