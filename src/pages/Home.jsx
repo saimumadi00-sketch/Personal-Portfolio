@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import QuoteCard from '../components/QuoteCard'
@@ -6,6 +6,7 @@ import SEOHead from '../components/SEOHead'
 import StatCounter from '../components/StatCounter'
 import StarField from '../components/StarField'
 import { useTheme } from '../context/ThemeContext'
+import usePageVisibility from '../hooks/usePageVisibility'
 import quotesData from '../data/quotes'
 import statsData from '../data/stats'
 import projectsData from '../data/projects'
@@ -62,7 +63,11 @@ function getGreeting() {
 }
 
 function Home() {
+  const reducedMotion = useReducedMotion()
   const { darkMode } = useTheme()
+  const heroRef = useRef(null)
+  const heroInView = useInView(heroRef)
+  const pageVisible = usePageVisibility()
   const [typewriterText, setTypewriterText] = useState('')
   const charIndex = useRef(0)
   const phraseIndex = useRef(0)
@@ -70,6 +75,7 @@ function Home() {
   const timeoutRef = useRef(null)
 
   useEffect(() => {
+    if (reducedMotion || !pageVisible || !heroInView) return
     const phrases = [
       'Majoring in Cybersecurity and Networking',
       'Building network security and IoT lab projects',
@@ -106,16 +112,17 @@ function Home() {
 
     timeoutRef.current = setTimeout(type, 100)
     return () => clearTimeout(timeoutRef.current)
-  }, [])
+  }, [reducedMotion, pageVisible, heroInView])
 
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+    <motion.div variants={pageVariants} initial={reducedMotion ? false : "initial"} animate="animate" exit={reducedMotion ? undefined : "exit"}>
       <SEOHead
         title="Home"
         description="Portfolio of Saimum Al-Mahmud: Computer Science student at NSU Dhaka majoring in Cybersecurity and Networking, with projects in network defense, machine learning, and full-stack development."
       />
 
       <section
+        ref={heroRef}
         className="hero-immersive"
         id="home-intro"
         style={{
@@ -131,7 +138,7 @@ function Home() {
             <div className="col-12 col-lg-7 text-center text-lg-start order-2 order-lg-1">
               <p
                 className="small text-uppercase mb-2"
-                style={{ color: 'rgba(255,255,255,0.5)', letterSpacing: '0.16em' }}
+                style={{ color: 'rgba(255,255,255,0.78)', letterSpacing: '0.16em' }}
               >
                 {getGreeting()}, visitor.
               </p>
@@ -141,7 +148,7 @@ function Home() {
               </h1>
               <p className="lead mb-4">
                 <span id="typewriterText" style={{ color: '#6ea8fe' }}>
-                  {typewriterText}
+                  {reducedMotion ? 'Majoring in Cybersecurity and Networking' : typewriterText || 'Cybersecurity and Networking'}
                 </span>
               </p>
               <div className="d-flex flex-wrap gap-2 mt-2 justify-content-center justify-content-lg-start">
@@ -157,14 +164,19 @@ function Home() {
             <div className="col-12 col-lg-5 d-flex justify-content-center justify-content-lg-end order-1 order-lg-2">
               <div className="hero-portrait-stack">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={reducedMotion ? false : { opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
+                  transition={{ delay: reducedMotion ? 0 : 0.3, duration: reducedMotion ? 0 : 0.6 }}
                   className="hero-portrait-wrap"
                 >
                   <div className="hero-portrait-card">
                     <img
-                      src="/portrait.png"
+                      src="/portrait-640.webp"
+                      srcSet="/portrait-320.webp 320w, /portrait-640.webp 640w"
+                      sizes="(max-width: 575px) 220px, (max-width: 991px) 240px, 280px"
+                      width="640" height="800"
+                      fetchPriority="high"
+                      decoding="async"
                       alt="Saimum Al-Mahmud"
                       className="hero-traditional-portrait"
                     />
@@ -173,9 +185,9 @@ function Home() {
 
                 <motion.div
                   className="hero-focus-panel"
-                  initial={{ opacity: 0, y: 16 }}
+                  initial={reducedMotion ? false : { opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.45, duration: 0.5 }}
+                  transition={{ delay: reducedMotion ? 0 : 0.45, duration: reducedMotion ? 0 : 0.5 }}
                   aria-label="Current focus areas"
                 >
                   <p className="hero-focus-label">Current focus</p>

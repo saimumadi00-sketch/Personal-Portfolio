@@ -170,3 +170,11 @@ Local Vite/static preview has no email function and uses email drafts. Tests sub
 ### CV maintenance
 
 The downloadable two-page CV is generated from `src/data/resume.js` and selected entries in `src/data/projects.js`. `npm run build` regenerates it automatically; `npm run cv` refreshes it independently. Verify both pages after changing long text. The website also offers a separate print action.
+
+### Production assets and offline use
+
+`npm run build` regenerates the CV and sitemap, builds the app, then emits `dist/sw.js` with a content-based version and the complete built asset list. Deploy `dist/` through Vercel; a plain development server does not register the worker. The service worker caches same-origin public assets, excludes API requests and failures, and keeps unrelated caches. Offline reloads require one completed online installation. A waiting update activates after existing tabs close or when the visitor selects Reload.
+
+Optimized portrait and share-preview files are committed. To regenerate them from the source portrait, install Pillow and run `python3 scripts/build-images.py` (requires DejaVu Sans fonts).
+
+Run `npm test` after a production build. Tests cover contact validation, provider failures, keyboard navigation, and offline caching without sending real email.

@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useTheme } from '../context/ThemeContext'
+import { useReducedMotion } from 'framer-motion'
+import usePageVisibility from '../hooks/usePageVisibility'
 
 /**
  * CursorEffects
@@ -8,6 +10,8 @@ import { useTheme } from '../context/ThemeContext'
  */
 function CursorEffects() {
   const { darkMode } = useTheme()
+  const reducedMotion = useReducedMotion()
+  const pageVisible = usePageVisibility()
   const spotlightRef = useRef(null)
   const dotRef       = useRef(null)
   const dotPos       = useRef({ x: -100, y: -100 })
@@ -15,6 +19,7 @@ function CursorEffects() {
   const rafRef       = useRef(null)
 
   useEffect(() => {
+    if (reducedMotion || !pageVisible) return
     // Skip entirely on touch-only devices (no mouse)
     if (window.matchMedia('(hover: none)').matches) return
     // Create spotlight element
@@ -67,14 +72,17 @@ function CursorEffects() {
         } else {
           spotlight.style.opacity = '0'
         }
-      }
+      } else spotlight.style.opacity = '0'
 
       dot.style.opacity = '1'
+      if (rafRef.current === null) rafRef.current = requestAnimationFrame(animate)
     }
 
     const onMouseLeave = () => {
       spotlight.style.opacity = '0'
       dot.style.opacity = '0'
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
     }
 
     // Smooth dot animation loop
@@ -85,9 +93,9 @@ function CursorEffects() {
       if (dotRef.current) {
         dotRef.current.style.transform = `translate(${dotPos.current.x - 4}px, ${dotPos.current.y - 4}px)`
       }
-      rafRef.current = requestAnimationFrame(animate)
+      const moving = Math.abs(dotPos.current.x - mousePos.current.x) + Math.abs(dotPos.current.y - mousePos.current.y) > 0.1
+      rafRef.current = moving ? requestAnimationFrame(animate) : null
     }
-    rafRef.current = requestAnimationFrame(animate)
 
     document.addEventListener('mousemove', onMouseMove)
     document.addEventListener('mouseleave', onMouseLeave)
@@ -98,8 +106,10 @@ function CursorEffects() {
       cancelAnimationFrame(rafRef.current)
       spotlight.remove()
       dot.remove()
+      rafRef.current = null
+      dotRef.current = null
     }
-  }, [])
+  }, [reducedMotion, pageVisible])
 
   // Update dot color on theme change
   useEffect(() => {

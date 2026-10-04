@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 
 function BackToTop() {
+  const reducedMotion = useReducedMotion()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -16,7 +18,7 @@ function BackToTop() {
     <button
       type="button"
       className="btn btn-primary rounded-circle back-to-top"
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={() => window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' })}
       aria-label="Back to top"
     >
       <i className="bi bi-arrow-up"></i>

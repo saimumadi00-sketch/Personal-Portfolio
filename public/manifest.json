@@ -1,7 +1,7 @@
 {
   "name": "Saimum Al-Mahmud - Portfolio",
   "short_name": "Saimum",
-  "description": "Personal portfolio of Saimum Al-Mahmud, Computer Science student at North South University, Dhaka.",
+  "description": "Cybersecurity and Networking portfolio of Saimum Al-Mahmud, CSE student at North South University, Dhaka.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0d1117",
@@ -15,6 +15,10 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["portfolio", "education", "productivity"],
+  "categories": [
+    "portfolio",
+    "education",
+    "productivity"
+  ],
   "lang": "en-BD"
 }

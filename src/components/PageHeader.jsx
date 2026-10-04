@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 
@@ -9,6 +9,7 @@ const fadeSlideUp = {
 
 function PageHeader({ title, subtitle, breadcrumbs = [] }) {
   const { darkMode } = useTheme()
+  const reducedMotion = useReducedMotion()
 
   return (
     <header
@@ -31,7 +32,7 @@ function PageHeader({ title, subtitle, breadcrumbs = [] }) {
             </ol>
           </nav>
         )}
-        <motion.div variants={fadeSlideUp} initial="hidden" animate="visible">
+        <motion.div variants={fadeSlideUp} initial={reducedMotion ? false : 'hidden'} animate="visible">
           <h1 className="display-5 fw-bold mb-2">{title}</h1>
           {subtitle && <p className="lead mb-0">{subtitle}</p>}
         </motion.div>

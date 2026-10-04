@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 function ProgressRing({ label, percentage, color = 'primary' }) {
+  const reducedMotion = useReducedMotion()
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.35 })
   const radius = 50
   const circumference = 2 * Math.PI * radius
@@ -20,9 +21,9 @@ function ProgressRing({ label, percentage, color = 'primary' }) {
           strokeWidth="10"
           strokeLinecap="round"
           strokeDasharray={circumference}
-          initial={{ strokeDashoffset: circumference }}
-          animate={{ strokeDashoffset: inView ? strokeDashoffset : circumference }}
-          transition={{ duration: 1.1, ease: 'easeOut' }}
+          initial={reducedMotion ? false : { strokeDashoffset: circumference }}
+          animate={{ strokeDashoffset: reducedMotion || inView ? strokeDashoffset : circumference }}
+          transition={{ duration: reducedMotion ? 0 : 1.1, ease: 'easeOut' }}
           transform="rotate(-90 60 60)"
         />
         <text

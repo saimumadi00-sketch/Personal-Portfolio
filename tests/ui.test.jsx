@@ -5,6 +5,10 @@ import { act } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import ContactForm from '../src/components/ContactForm.jsx'
 import Navbar from '../src/components/Navbar.jsx'
+import Projects from '../src/pages/Projects.jsx'
+import NotFound from '../src/pages/NotFound.jsx'
+import { HelmetProvider } from 'react-helmet-async'
+import projects from '../src/data/projects.js'
 
 const dom = new JSDOM('<!doctype html><html><body><div id="root"></div></body></html>', { url: 'https://saimum-aditto.vercel.app', pretendToBeVisual: true })
 const queries = new Map()
@@ -79,4 +83,29 @@ test('resizing to desktop closes the mobile menu and releases scroll lock', asyn
   await mount(<MemoryRouter><Navbar /></MemoryRouter>); await click('.nav-hamburger')
   await act(async () => queries.get('(min-width: 992px)').emit(true))
   assert.ok(document.querySelector('#mobileMenu').hasAttribute('inert')); assert.equal(document.body.style.overflow, '')
+})
+
+test('keyboard Tab wraps within the expanded mobile menu', async () => {
+  await mount(<MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}><Navbar /></MemoryRouter>); await click('.nav-hamburger')
+  const last = document.querySelector('#mobileMenu button'), toggle = document.querySelector('.nav-hamburger')
+  last.focus()
+  await act(async () => document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true })))
+  assert.equal(document.activeElement, toggle)
+  await act(async () => document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Tab', shiftKey: true, bubbles: true, cancelable: true })))
+  assert.equal(document.activeElement, last)
+})
+test('security/networking filters and search return the expected project sets', async () => {
+  await mount(<HelmetProvider><MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}><Projects /></MemoryRouter></HelmetProvider>)
+  const choose = async (label) => { const button = [...document.querySelectorAll('button')].find((entry) => entry.textContent === label); await act(async () => button.click()) }
+  await choose('Networking')
+  const expected = projects.filter((project) => project.tags.some((tag) => ['Networking', 'NIDS', 'IoT'].includes(tag)))
+  assert.equal(document.querySelectorAll('.project-card-accent').length, expected.length)
+  await type('input[type="search"]', 'Crosscurrent')
+  assert.equal(document.querySelectorAll('.project-card-accent').length, 1)
+  await choose('Security'); assert.equal(document.querySelectorAll('.project-card-accent').length, 0)
+})
+test('unknown page has recovery links instead of empty content', async () => {
+  await mount(<HelmetProvider><MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }} initialEntries={['/missing']}><NotFound /></MemoryRouter></HelmetProvider>)
+  assert.match(document.querySelector('h1').textContent, /Page not found/)
+  assert.ok(document.querySelector('a[href="/"]')); assert.ok(document.querySelector('a[href="/projects"]'))
 })

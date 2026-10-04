@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import FilterBar from '../components/FilterBar'
 import PageHeader from '../components/PageHeader'
@@ -44,6 +44,7 @@ function matchesFilter(project, selectedFilter) {
 }
 
 function Projects() {
+  const reducedMotion = useReducedMotion()
   const [filter, setFilter] = useState('All')
   const [search, setSearch] = useState('')
   const visibleProjects = projectsData.filter((project) =>
@@ -60,7 +61,7 @@ function Projects() {
   }
 
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+    <motion.div variants={pageVariants} initial={reducedMotion ? false : "initial"} animate="animate" exit={reducedMotion ? undefined : "exit"}>
       <SEOHead title="Projects" />
       <PageHeader
         title="My Projects"

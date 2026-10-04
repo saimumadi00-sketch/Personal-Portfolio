@@ -9,8 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "node --test tests/*.test.mjs && node scripts/test-ui.mjs",
-    "prebuild": "node scripts/build-cv.mjs",
-    "cv": "node scripts/build-cv.mjs"
+    "prebuild": "node scripts/build-site-assets.mjs",
+    "cv": "node scripts/build-cv.mjs",
+    "postbuild": "node scripts/build-offline.mjs"
   },
   "dependencies": {
     "bootstrap": "5.3.8",

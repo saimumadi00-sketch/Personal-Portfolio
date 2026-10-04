@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import PageHeader from '../components/PageHeader'
 import ProgressRing from '../components/ProgressRing'
 import ScrollReveal from '../components/ScrollReveal'
@@ -22,8 +22,9 @@ const proficiencyRings = [
 ]
 
 function Skills() {
+  const reducedMotion = useReducedMotion()
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+    <motion.div variants={pageVariants} initial={reducedMotion ? false : "initial"} animate="animate" exit={reducedMotion ? undefined : "exit"}>
       <SEOHead title="Skills" />
       <PageHeader
         title="My Skills"

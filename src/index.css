@@ -1321,3 +1321,15 @@ a, button { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid #568cff; outline-offset: 3px; }
 #main-content:focus { outline: none; }
 @media (min-width: 992px) { .nav-mobile-menu, .nav-backdrop { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .hover-card:hover, .hero-portrait-card:hover { transform: none; }
+  #typewriterText::after { display: none; }
+  #cursor-dot, #cursor-spotlight { display: none !important; }
+}
+.hero-focus-label { color: #c6d7ec; }
+.hero-focus-tags span { color: #cfdef7; }
+
+.update-notice { position: fixed; bottom: 1rem; left: 1rem; z-index: 9999; width: min(360px, calc(100% - 2rem)); }
+@media print { .update-notice { display: none !important; } }

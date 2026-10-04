@@ -1,4 +1,5 @@
 import { useInView } from 'react-intersection-observer'
+import { useReducedMotion } from 'framer-motion'
 
 const labels = {
   success: 'Advanced',
@@ -7,6 +8,7 @@ const labels = {
 }
 
 function SkillBar({ name, level, badge }) {
+  const reducedMotion = useReducedMotion()
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.35 })
 
   return (
@@ -26,8 +28,8 @@ function SkillBar({ name, level, badge }) {
         <div
           className={`progress-bar bg-${badge}`}
           style={{
-            width: `${inView ? level : 0}%`,
-            transition: 'width 1.1s cubic-bezier(0.4, 0, 0.2, 1)',
+            width: `${reducedMotion || inView ? level : 0}%`,
+            transition: reducedMotion ? 'none' : 'width 1.1s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
         ></div>
       </div>

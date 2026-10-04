@@ -1,16 +1,23 @@
 import { useEffect, useRef } from 'react'
+import { useInView, useReducedMotion } from 'framer-motion'
+import usePageVisibility from '../hooks/usePageVisibility'
 
 function StarField() {
   const canvasRef = useRef(null)
+  const reducedMotion = useReducedMotion()
+  const pageVisible = usePageVisibility()
+  const inView = useInView(canvasRef)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+    if (reducedMotion || !pageVisible || !inView) return
 
     // Skip on touch-only devices to save battery
     if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return
 
     const ctx = canvas.getContext('2d')
+    if (!ctx) return
     let animId
     let W = 0, H = 0
     const PARTICLE_COUNT = 80
@@ -99,7 +106,7 @@ function StarField() {
       clearTimeout(resizeTimer)
       ro.disconnect()
     }
-  }, [])
+  }, [reducedMotion, pageVisible, inView])
 
   return (
     <canvas

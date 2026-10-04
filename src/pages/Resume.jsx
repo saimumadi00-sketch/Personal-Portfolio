@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import PageHeader from '../components/PageHeader'
 import SEOHead from '../components/SEOHead'
 import resumeData from '../data/resume'
@@ -8,10 +8,11 @@ import { pageVariants } from '../utils/variants'
 const selectedProjects = projectsData.filter((project) => [4, 11, 12, 14, 16].includes(project.id))
 
 function Resume() {
+  const reducedMotion = useReducedMotion()
   const r = resumeData
 
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+    <motion.div variants={pageVariants} initial={reducedMotion ? false : "initial"} animate="animate" exit={reducedMotion ? undefined : "exit"}>
       <SEOHead
         title="Resume"
         description={`CV of ${r.name} — ${r.title} at ${r.university}.`}

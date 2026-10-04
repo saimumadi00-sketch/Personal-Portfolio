@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import PageHeader from '../components/PageHeader'
 import ScrollReveal from '../components/ScrollReveal'
 import SEOHead from '../components/SEOHead'
@@ -61,8 +61,9 @@ const rightNow = [
 ]
 
 function About() {
+  const reducedMotion = useReducedMotion()
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+    <motion.div variants={pageVariants} initial={reducedMotion ? false : "initial"} animate="animate" exit={reducedMotion ? undefined : "exit"}>
       <SEOHead
         title="About"
         description="Background and experience of Saimum Al-Mahmud, final-year CSE student at North South University majoring in Cybersecurity and Networking."

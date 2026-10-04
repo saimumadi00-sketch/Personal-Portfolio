@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import ThemeToggle from './ThemeToggle'
+import { useReducedMotion } from 'framer-motion'
 
 const links = [
   { to: '/', label: 'Home', end: true },
@@ -12,6 +13,7 @@ const links = [
 ]
 
 function Navbar() {
+  const reducedMotion = useReducedMotion()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleRef = useRef(null)
@@ -69,7 +71,7 @@ function Navbar() {
   }, [menuOpen])
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, left: 0, behavior: reducedMotion ? 'auto' : 'smooth' })
   }
 
   const close = () => {

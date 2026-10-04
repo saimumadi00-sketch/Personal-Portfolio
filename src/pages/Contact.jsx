@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import ContactForm from '../components/ContactForm'
 import PageHeader from '../components/PageHeader'
@@ -8,6 +8,7 @@ import socialLinks from '../data/socialLinks'
 import { pageVariants } from '../utils/variants'
 
 function Contact({ onToast }) {
+  const reducedMotion = useReducedMotion()
   const [copied, setCopied] = useState(false)
   const email = socialLinks.email.href.replace('mailto:', '')
   const githubLabel = socialLinks.github.href.replace('https://', '')
@@ -23,7 +24,7 @@ function Contact({ onToast }) {
   }
 
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+    <motion.div variants={pageVariants} initial={reducedMotion ? false : "initial"} animate="animate" exit={reducedMotion ? undefined : "exit"}>
       <SEOHead title="Contact" />
       <PageHeader
         title="Get In Touch"

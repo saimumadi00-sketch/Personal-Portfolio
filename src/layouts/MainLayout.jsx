@@ -1,31 +1,38 @@
 import { AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect, useRef } from 'react'
+import { useReducedMotion } from 'framer-motion'
 import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import BackToTop from '../components/BackToTop'
 import ReadingProgress from '../components/ReadingProgress'
 import CursorEffects from '../components/CursorEffects'
 import Navbar from '../components/Navbar'
 import Toast from '../components/Toast'
+import UpdateNotice from '../components/UpdateNotice'
+import PageErrorBoundary from '../components/PageErrorBoundary'
 import { useTheme } from '../context/ThemeContext'
 import socialLinks from '../data/socialLinks'
-import About from '../pages/About'
-import Contact from '../pages/Contact'
 import Home from '../pages/Home'
-import Projects from '../pages/Projects'
-import Skills from '../pages/Skills'
-import Resume from '../pages/Resume'
-import NotFound from '../pages/NotFound'
+const About = lazy(() => import('../pages/About'))
+const Contact = lazy(() => import('../pages/Contact'))
+const Projects = lazy(() => import('../pages/Projects'))
+const Skills = lazy(() => import('../pages/Skills'))
+const Resume = lazy(() => import('../pages/Resume'))
+const NotFound = lazy(() => import('../pages/NotFound'))
 
 function MainLayout({ toasts, onToast }) {
   const { darkMode } = useTheme()
   const location = useLocation()
+  const reducedMotion = useReducedMotion()
+  const previousPath = useRef(location.pathname)
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    if (previousPath.current !== location.pathname) document.getElementById('main-content')?.focus()
+    previousPath.current = location.pathname
   }, [location.pathname])
 
   const handlePageLinkClick = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, left: 0, behavior: reducedMotion ? 'auto' : 'smooth' })
   }
 
   return (
@@ -33,6 +40,8 @@ function MainLayout({ toasts, onToast }) {
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <Navbar />
       <main id="main-content" tabIndex={-1}>
+        <PageErrorBoundary key={location.pathname}>
+        <Suspense fallback={<div role="status" className="container py-5">Loading page…</div>}>
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
@@ -44,6 +53,8 @@ function MainLayout({ toasts, onToast }) {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
+        </Suspense>
+        </PageErrorBoundary>
       </main>
       <footer className="site-footer mt-auto">
         <div className="container">
@@ -109,6 +120,7 @@ function MainLayout({ toasts, onToast }) {
       <CursorEffects />
       <BackToTop />
       <Toast toasts={toasts} />
+      <UpdateNotice />
     </div>
   )
 }
